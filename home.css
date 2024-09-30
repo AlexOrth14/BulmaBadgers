@@ -1,0 +1,129 @@
+/* height is at 2000px so that I could mess with navbar scrolling, font open to change */
+body {
+  height: 2000px;
+  background-color: rgb(138, 108, 108);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+/* transition affects how long it takes for thing to slide on and off screen, position sticks it to top of screen */
+.navbar {
+  position: fixed;
+  height: auto;
+  border-top: 2px solid rgb(69, 40, 40);
+  border-bottom: 2px solid rgb(69, 40, 40);
+  background-color: rgb(92, 117, 74);
+  transition: transform 0.8s;
+}
+
+/* this is for the navbar to disappear, was inspired by actuarial club's navbar sliding offscreen */
+.hidden {
+  transform: translateY(-100%);
+}
+
+/* alignment items on bottom are for the overlay text, needs to be flex so that the centering works */
+#webpage_banner {
+  height: 500px;
+  background-image: url(images/forest_bannerf.jpg);
+  background-size: cover;
+  display: flex;
+  width: 100%;
+  background-position: center;
+  color: beige;
+  align-items: last baseline;
+  justify-content: center;
+}
+
+/* member login chunk */
+#login {
+  padding: 5px;
+  background-color: rgb(43, 23, 23);
+  color: wheat;
+}
+
+/* for adding a little space between banner and announcements */
+.spacer {
+  background-color: beige;
+  height: 20px;
+}
+
+/* making sure the font of the text in cards is black */
+.content {
+  color: black;
+}
+
+#announcements {
+  background-color: beige;
+  border-bottom: 4px solid rgb(69, 40, 40);
+  padding-bottom: 30px;
+}
+
+/* this is specifically the announcements title text */
+#ann {
+  display: flex;
+  justify-content: center;
+  font-size: 300%;
+  color: black;
+}
+
+/* at the moment this just applies to the cards in announcements */
+/* wrap so that it fits phone and smaller screens #adaptive design */
+.columns {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* flex thing helps make cards responsive + px is the base size for them */
+.card {
+  flex: 1 1 300px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+/* holds google calendar */
+#calendar {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
+#cal_title {
+  color: white;
+  font-size: 250%;
+}
+
+/* tiles for extra stuff + info elsewhere */
+#tiles {
+  background-color: rgb(43, 23, 23);
+  padding-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tile_card {
+  background-color: rgb(138, 108, 108);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.card-content {
+  color: white;
+}
+
+#footer {
+  background: black;
+  padding: 20px;
+  height: 150px;
+  border-top: 8px solid rgb(34, 16, 16);
+  color: beige;
+}

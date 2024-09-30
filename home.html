@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badger Hunting Club</title>
+
+    <link rel="icon" href="images/bhc_logo.jpg" type="image/x-icon" />
+    <!-- BULMA -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <nav id="navbar" class="navbar is-fixed-top">
+      <div class="navbar-brand is-flex-wrap-wrap">
+        <img
+          src="images/bhc_logo.jpg"
+          alt="Badger Hunting Club logo"
+          style="height: 100px"
+          class="is-hidden-mobile"
+        />
+
+        <div class="navbar-item">
+          <a id="home" class="title has-text-black p-4 is-size-4-mobile"
+            >Badger Hunting Club</a
+          >
+        </div>
+        <button
+          class="navbar-burger has-text-white"
+          style="height: 100px"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarMenu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div
+        id="navbarMenu"
+        class="navbar-menu has-text-white navbar-end is-flex-wrap-wrap p-4"
+        style="height: 100px"
+      >
+        <a class="navbar-item has-text-black" href="#">Home</a>
+        <a class="navbar-item has-text-black" href="#">About Us</a>
+        <a class="navbar-item has-text-black" href="#">Resources</a>
+        <a class="navbar-item has-text-black" href="#">Our Team</a>
+        <a class="navbar-item has-text-black" href="#">Contact Us</a>
+      </div>
+    </nav>
+
+    <!-- BANNER CHUNK -->
+    <div id="webpage_banner" class="p-5">
+      <h1 style="background-color: rgb(0, 0, 0, 0.5)" class="m-1">
+        Our Mission: To unite the hunting community at UW-Madison, to promote
+        and create new hunters, and to engage UW students in the importance and
+        benefits of hunting.
+      </h1>
+    </div>
+
+    <!-- MEMBER LOGIN CHUNK -->
+    <div id="login" class="">Member Login here</div>
+
+    <!-- ANNOUNCEMENTS CHUNK -->
+    <div id="announcements">
+      <div id="ann">
+        <p>Announcements</p>
+      </div>
+      <div class="columns">
+        <div class="card column">
+          <div class="card-content">
+            <p class="title">Hunter Safety Workshop</p>
+            <p class="subtitle">Topic: Event, Sep. 21st, 2024</p>
+            <div class="content">
+              We will be meeting in the Humanities building 000 Rm to overview
+              hunter safety rules, demo gear, and just generally get to know
+              each other
+            </div>
+          </div>
+        </div>
+        <div class="card column">
+          <div class="card-content">
+            <p class="title">Welcome New Members!</p>
+            <p class="subtitle">Topic: Reminder</p>
+            <div class="content">
+              Welcome to all the new members that have joined our club! Reminder
+              that we will have more planned for the future and also keep an eye
+              out for future meetings and events
+            </div>
+          </div>
+        </div>
+        <div class="card column mr-3">
+          <div class="card-content">
+            <p class="title">Accepting Applications</p>
+            <p class="subtitle">Topic: Recruiting, due Oct. 4, 2024</p>
+            <div class="content">
+              We have open positions on our exec board, follow this link to
+              apply, we are low-commitment and this is a great chance to
+              demonstrate leadership skills
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALENDAR CHUNK -->
+    <div id="calendar" class="is-flex">
+      <h1 id="cal_title">Schedule and Events</h1>
+      <iframe
+        src="https://calendar.google.com/calendar/embed?src=vinnierv23%40gmail.com&ctz=America%2FLos_Angeles"
+        style="border: 0"
+        width="95%"
+        height="600"
+        frameborder="0"
+        scrolling="no"
+      ></iframe>
+    </div>
+
+    <!-- EXTRA INFO TILES -->
+    <div id="tiles" class="is-flex">
+      <div class="tile_card card">
+        <div class="card-content title has-text-centered m-0">
+          Nearby Land for Hunting
+        </div>
+        <div class="card-image">
+          <a
+            href="https://countyofdane.maps.arcgis.com/apps/webappviewer/index.html?id=1b732cc3c0394b7cb610f620f6a67965"
+          >
+            <img src="images/land.png" alt=""
+          /></a>
+        </div>
+      </div>
+
+      <div class="tile_card card"></div>
+      <div class="tile_card card"></div>
+      <div class="tile_card card"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer">
+      <footer>
+        <p>Small Contact Info</p>
+      </footer>
+    </div>
+
+    <!-- LINK TO JAVASCRIPT -->
+    <script src="home.js"></script>
+  </body>
+</html>
