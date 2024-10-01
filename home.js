@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //NAVBAR DISAPPEARING AND REAPPEARING BASED OFF SCROLL
+// ---inspired by Actuarial Club's navbar
 let lastScroll = 0;
 const navbar = document.getElementById("navbar");
 
