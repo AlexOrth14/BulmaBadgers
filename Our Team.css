@@ -1,7 +1,7 @@
 /* height is at 2000px so that I could mess with navbar scrolling, font open to change */
 body {
   height: 1200px;
-  background-color: white (138, 108, 108);
+  background-color: beige;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
@@ -13,9 +13,9 @@ body {
   border-bottom: 2px solid rgb(69, 40, 40);
   background-color: rgb(92, 117, 74);
 }
-
+/* 
 #footer {
-  background: #b1ab6e;
+  background: beige;
   padding: 20px;
   height: 150px;
   color: white;
@@ -24,4 +24,12 @@ body {
   align-items: center;
   text-align: center;
   font-size: 1.5rem;
+} */
+
+#footer {
+  background: black;
+  padding: 20px;
+  height: 150px;
+  border-top: 8px solid rgb(34, 16, 16);
+  color: beige;
 }

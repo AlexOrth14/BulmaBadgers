@@ -1,18 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BHC Learn To Hunt</title>
+    <!-- BULMA -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="learntohunt.css" />
-</head>
-<body>
-    <Section id="title">
-        <H1>Learn to Hunt very MVP</H1>
+  </head>
+  <body>
+    <nav id="navbar" class="navbar is-fixed-top">
+      <div class="navbar-brand is-flex-wrap-wrap">
+        <img
+          src="images/bhc_logo.jpg"
+          alt="Badger Hunting Club logo"
+          style="height: 100px"
+          class="is-hidden-mobile"
+        />
 
-    </Section>
-    
+        <div class="navbar-item">
+          <a id="home" class="title has-text-black p-4 is-size-4-mobile"
+            >Badger Hunting Club</a
+          >
+        </div>
+        <button
+          class="navbar-burger has-text-white"
+          style="height: 100px"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarMenu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
 
-    
-</body>
+      <div
+        id="navbarMenu"
+        class="navbar-menu has-text-white navbar-end is-flex-wrap-wrap p-4"
+        style="height: 100px"
+      >
+        <a class="navbar-item has-text-black" href="home.html">Home</a>
+        <a class="navbar-item has-text-black" href="#">About Us</a>
+        <a class="navbar-item has-text-black" href="learntohunt.html"
+          >Resources</a
+        >
+        <a class="navbar-item has-text-black" href="Our Team.html">Our Team</a>
+        <a class="navbar-item has-text-black" href="contactUs.html"
+          >Contact Us</a
+        >
+      </div>
+    </nav>
+    <div style="height: 100px"></div>
+    <section id="title" style="height: 1500px">
+      <h1>Learn to Hunt very MVP</h1>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer" class="footer">
+      <footer>
+        <p>Small Contact Info</p>
+      </footer>
+    </div>
+
+    <!-- LINK TO JAVASCRIPT -->
+    <script src="home.js"></script>
+  </body>
 </html>
