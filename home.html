@@ -70,7 +70,41 @@
 
     <!-- MEMBER LOGIN CHUNK -->
     <div id="login" class="">
-      <div id="login_button" class="p-1">Member login</div>
+      <button id="login_button">Member login</button>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal" id="signin_modal">
+      <div class="modal-background" id="signin_modalbg"></div>
+      <div class="modal-content p-3">
+        <h1 class="is-size-3 title">Member Login</h1>
+        <form id="signin_form">
+          <!-- Email -->
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input type="email" id="email_" />
+            </div>
+          </div>
+          <!-- Password -->
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input type="password" id="password_" />
+            </div>
+          </div>
+
+          <!-- submit -->
+          <div class="field">
+            <div class="control">
+              <button class="m-3 button">Submit</button>
+            </div>
+          </div>
+
+          <!-- div error -->
+          <div id="signin_error" class="error has-text-danger"></div>
+        </form>
+      </div>
     </div>
 
     <!-- ANNOUNCEMENTS CHUNK -->

@@ -38,6 +38,19 @@ body {
   padding: 5px;
   background-color: rgb(43, 23, 23);
   color: wheat;
+  height: 32px;
+}
+
+#login_button {
+  /* border: 2px solid beige; */
+  /* border-radius: 10px; */
+  background-color: beige;
+  float: right;
+}
+
+.modal-content {
+  background-color: beige;
+  width: 600px;
 }
 
 /* for adding a little space between banner and announcements */
@@ -122,12 +135,6 @@ body {
 .card-content {
   color: white;
   font-size: 25px;
-}
-
-#login_button {
-  border: 2px solid beige;
-  border-radius: 30px;
-  width: fit-content;
 }
 
 #footer {

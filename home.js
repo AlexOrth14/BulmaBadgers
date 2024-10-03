@@ -29,3 +29,11 @@ window.addEventListener("scroll", function () {
 
   lastScroll = currentScroll <= 0 ? 0 : currentScroll;
 });
+
+let login_button = document.querySelector("#login_button");
+login_button.addEventListener("click", () => {
+  signin_modal.classList.add("is-active");
+});
+signin_modalbg.addEventListener("click", () => {
+  signin_modal.classList.remove("is-active");
+});
