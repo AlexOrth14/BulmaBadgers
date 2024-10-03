@@ -108,16 +108,20 @@ body {
 
 .tile_card {
   background-color: rgb(138, 108, 108);
+  height: 300px;
+  overflow: hidden;
 }
 
 .card img {
   width: 100%;
   height: auto;
   overflow: hidden;
+  border-top: 3px solid rgb(43, 23, 23);
 }
 
 .card-content {
   color: white;
+  font-size: 25px;
 }
 
 #footer {
