@@ -48,10 +48,15 @@ body {
   float: right;
 }
 
+/* Modal Styles */
 .modal-content {
   background-color: beige;
   width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 /* for adding a little space between banner and announcements */
 .spacer {
