@@ -1,4 +1,3 @@
-
 // HEY THERE BUDDY!.... ONLY PLACE CONTENT THAT APPLIES TO ALL PAGES HERE
 
 /* Pro tip, link this app.js to your page in addition to your custom .js file*/
@@ -6,13 +5,13 @@
 // MOBILE NAVBAR CODE
 // had to add this for fitting navbar better on mobile
 document.addEventListener("DOMContentLoaded", () => {
-    const burger = document.querySelector(".navbar-burger");
-    const menu = document.getElementById("navbarMenu");
+  const burger = document.querySelector(".navbar-burger");
+  const menu = document.getElementById("navbarMenu");
 
-    burger.addEventListener("click", () => {
-        burger.classList.toggle("is-active");
-        menu.classList.toggle("is-active");
-    });
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("is-active");
+    menu.classList.toggle("is-active");
+  });
 });
 
 //NAVBAR DISAPPEARING AND REAPPEARING BASED OFF SCROLL
@@ -35,6 +34,7 @@ window.addEventListener("scroll", function () {
   lastScroll = currentScroll <= 0 ? 0 : currentScroll;
 });
 
+// Login modal activation
 let login_button = document.querySelector("#login_button");
 login_button.addEventListener("click", () => {
   signin_modal.classList.add("is-active");
