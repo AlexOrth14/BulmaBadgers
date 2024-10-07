@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Gallery Page for Badger Hunting Club</title>
     <style>
       body {
         background-color: #b1ab6e;
@@ -18,7 +18,7 @@
         margin: 20px auto;
         font-size: 32px;
       }
-      img {
+      .body img {
         height: 100mm;
         width: 100mm;
         margin: 20px;
@@ -27,38 +27,95 @@
         text-align: center;
       }
     </style>
+    <!-- BULMA -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="icon" href="images/bhc_logo.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="app.css" />
   </head>
   <body>
-    <h1>Gallery</h1>
-    <button>Explore Our Past Events!</button>
-    <div id="gun photo">
-      <img
-        src="https://i0.wp.com/www.nationalreview.com/wp-content/uploads/2018/08/hunting-082718.jpg?fit=4800%2C3200&ssl=1https://i0.wp.com/www.nationalreview.com/wp-content/uploads/2018/08/hunting-082718.jpg?fit=4800%2C3200&ssl=1"
-        alt="gun photo"
-      />
+    <nav id="navbar" class="navbar is-fixed-top">
+      <div class="navbar-brand is-flex-wrap-wrap">
+        <img
+          src="images/bhc_logo.jpg"
+          alt="Badger Hunting Club logo"
+          style="height: 100px"
+          class="is-hidden-mobile"
+        />
+
+        <div class="navbar-item">
+          <a id="home" class="title has-text-black p-4 is-size-4-mobile"
+            >Badger Hunting Club</a
+          >
+        </div>
+        <button
+          class="navbar-burger has-text-white"
+          style="height: 100px"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarMenu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div
+        id="navbarMenu"
+        class="navbar-menu has-text-white navbar-end is-flex-wrap-wrap p-4"
+        style="height: 100px"
+      >
+        <a class="navbar-item has-text-black" href="home.html">Home</a>
+        <a class="navbar-item has-text-black" href="aboutus.html">About Us</a>
+        <a class="navbar-item has-text-black" href="learntohunt.html"
+          >Resources</a
+        >
+        <a class="navbar-item has-text-black" href="gallery.html">Gallery</a>
+        <a class="navbar-item has-text-black" href="Our Team.html">Our Team</a>
+        <a class="navbar-item has-text-black" href="contactUs.html"
+          >Contact Us</a
+        >
+      </div>
+    </nav>
+    <!-- spacer -->
+    <div style="height: 100px"></div>
+
+    <div class="body">
+      <h1 class="title">Gallery</h1>
+      <button>Explore Our Past Events!</button>
+      <div id="gun photo">
+        <img
+          src="https://i0.wp.com/www.nationalreview.com/wp-content/uploads/2018/08/hunting-082718.jpg?fit=4800%2C3200&ssl=1https://i0.wp.com/www.nationalreview.com/wp-content/uploads/2018/08/hunting-082718.jpg?fit=4800%2C3200&ssl=1"
+          alt="gun photo"
+        />
+      </div>
+      <div id="deer photo">
+        <img
+          src="https://cdn.theatlantic.com/media/mt/food/HuntingDeer-SS-Post.jpg"
+          alt="deer photo"
+        />
+      </div>
+      <div id="duck photo">
+        <img
+        src=https://images.ctfassets.net/pujs1b1v0165/Hs4HiXw57wPqjVXC83RvZ/72d8234e42b3358f0ed27ffd01b83f57/04192022_Duckmade_Casey_Idaho-36.jpg?w=1200&fit=fill
+        alt="duck photo" />
+      </div>
+      <div id="shooting photo">
+        <img
+          src="https://npr.brightspotcdn.com/81/97/805a228f4cff84ff6b12733d1ad5/33-336206-terminology-shows-a-stereotypical-pheasant-hunting.jpg"
+          alt="shooting photo"
+        />
+      </div>
+      <div id="bow picture">
+        <img
+          src="https://www.outdoorlife.com/wp-content/uploads/2021/11/08/FB_IMG_1635968141716.jpg"
+          alt="bow picture "
+        />
+      </div>
     </div>
-    <div id="deer photo">
-      <img
-        src="https://cdn.theatlantic.com/media/mt/food/HuntingDeer-SS-Post.jpg"
-        alt="deer photo"
-      />
-    </div>
-    <div id="duck photo">
-      <img
-      src=https://images.ctfassets.net/pujs1b1v0165/Hs4HiXw57wPqjVXC83RvZ/72d8234e42b3358f0ed27ffd01b83f57/04192022_Duckmade_Casey_Idaho-36.jpg?w=1200&fit=fill
-      alt="duck photo" />
-    </div>
-    <div id="shooting photo">
-      <img
-        src="https://npr.brightspotcdn.com/81/97/805a228f4cff84ff6b12733d1ad5/33-336206-terminology-shows-a-stereotypical-pheasant-hunting.jpg"
-        alt="shooting photo"
-      />
-    </div>
-    <div id="bow picture">
-      <img
-        src="https://www.outdoorlife.com/wp-content/uploads/2021/11/08/FB_IMG_1635968141716.jpg"
-        alt="bow picture "
-      />
-    </div>
+    <script src="app.js"></script>
   </body>
 </html>
