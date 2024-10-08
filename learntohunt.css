@@ -1,35 +1,224 @@
-/* General Page Styles */
+/* General Styles */
 body {
   background-color: beige;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #333;
 }
 
-#webpage_banner {
-  background-image: url('images/forest_bannerf.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
+/* Navbar Styles */
+.navbar {
+  background-color: #3b5323;
+  transition: background-color 0.3s ease-in-out;
+  border-bottom: 2px solid rgb(69, 40, 40);
 }
 
-/* Hero Banner */
+.navbar-brand .navbar-item,
+.navbar-burger span {
+  color: beige;
+}
+
+.navbar-item:hover {
+  background-color: rgb(43, 23, 23);
+  color: wheat;
+}
+
+.navbar-burger.is-active span {
+  background-color: wheat;
+}
+
+/* Navbar Adjustments */
+.navbar-menu {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.navbar-end {
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+}
+
+.navbar-brand {
+  margin-left: 1rem;
+}
+
+/* Hero Banner Styles */
 .hero-body {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem; /* Further reduced top and overall padding */
 }
 
-.hero .title, .hero .subtitle {
+.hero .title,
+.hero .subtitle {
   color: white;
 }
 
+/* Section Styles */
 .section {
-  background-color: beige;
+  padding: 1.5rem 1rem; /* Reduced padding for a more compact layout */
 }
 
-.learntohuntparag {
-  padding-left: 100px;  /* Controls the left padding */
-  padding-right: 100px; /* Add right padding for balance */
-  padding-top: 10px;    /* Add top padding */
-  padding-bottom: 10px; /* Add bottom padding */
-  line-height: 1.4;     /* Reduce line height to make text more compact */
+.has-background-light {
+  background-color: #f4f4f4 !important;
+}
+
+/* Feature Card Styles */
+.feature-card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-content {
+  padding: 1rem; /* Reduced padding */
+  background-color: #f4f4f4;
+}
+
+.button.is-warning {
+  background-color: wheat;
+  border: 2px solid wheat;
+  color: #333;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.button.is-warning:hover {
+  background-color: #5c754a;
+  color: white;
+  transform: scale(1.05);
+}
+
+.button.is-warning.is-outlined {
+  background-color: transparent;
+  border-color: #f0ad4e;
+  color: #f0ad4e;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button.is-warning.is-outlined:hover {
+  background-color: #f0ad4e;
+  color: #333;
+}
+
+/* Testimonial Box Styles */
+.box {
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer Styles */
+.footer {
+  padding: 2rem 1.5rem;
+  background-color: black;
+  color: beige;
+}
+
+.footer a {
+  color: wheat;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #f0ad4e;
+}
+
+.footer .title {
+  color: beige;
+}
+
+/* Resource Content Section */
+.content {
+  padding-top: 1rem;
+}
+
+.content ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+/* Modal Styles */
+.modal-card {
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-card-head {
+  background-color: #3b5323;
+  color: beige;
+  border-bottom: 1px solid wheat;
+}
+
+.modal-card-foot {
+  background-color: #f4f4f4;
+}
+
+.button.is-success {
+  background-color: #5c754a;
+  border: none;
+  color: white;
+}
+
+.button.is-success:hover {
+  background-color: #3e4e2d;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar-menu {
+    background-color: #3b5323;
+    padding: 0.5rem;
+  }
+
+  .navbar-end {
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .footer {
+    text-align: center;
+  }
+
+  .hero-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .feature-card {
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+}
+
+/* Main Image Styling */
+.main-hunt-image {
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Hover Effect */
+.image img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
