@@ -3,185 +3,325 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BHC Learn To Hunt</title>
-    <!-- BULMA -->
+    <title>Badger Hunting Club - Learn to Hunt</title>
+    <!-- Bulma CSS Framework -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gill+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="learntohunt.css" />
-    <link rel="stylesheet" href="app.css" />
     <link rel="icon" href="images/bhc_logo.jpg" type="image/x-icon" />
   </head>
   <body>
     <!-- NAVBAR -->
-    <nav id="navbar" class="navbar is-fixed-top">
-      <div class="navbar-brand is-flex-wrap-wrap">
-        <img
-          src="images/bhc_logo.jpg"
-          alt="Badger Hunting Club logo"
-          style="height: 100px"
-          class="is-hidden-mobile"
-        />
-        <div class="navbar-item">
-          <a id="home" class="title has-text-black p-4 is-size-4-mobile"
-            >Badger Hunting Club</a
-          >
-        </div>
-        <button
-          class="navbar-burger has-text-white"
-          style="height: 100px"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarMenu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
+    <nav class="navbar is-fixed-top pt-4" style="background-color: #3b5323; border-bottom: 2px solid rgb(69, 40, 40)">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img
+            src="images/bhc_logo.jpg"
+            alt="Badger Hunting Club Logo"
+            style="height: 60px; margin-right: 10px;"
+          />
+          <span class="has-text-light has-text-weight-semibold">
+            Badger Hunting Club
+          </span>
+        </a>
+        <span class="navbar-burger" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
       </div>
-
-      <div
-        id="navbarMenu"
-        class="navbar-menu has-text-white navbar-end is-flex-wrap-wrap p-4"
-        style="height: 100px"
-      >
-        <a class="navbar-item has-text-black" href="home.html">Home</a>
-        <a class="navbar-item has-text-black" href="aboutus.html">About Us</a>
-        <a class="navbar-item has-text-black" href="learntohunt.html"
-          >Resources</a
-        >
-        <a class="navbar-item has-text-black" href="gallery.html">Gallery</a>
-
-        <a class="navbar-item has-text-black" href="Our Team.html">Our Team</a>
-        <a class="navbar-item has-text-black" href="contactUs.html"
-          >Contact Us</a
-        >
+      <div id="navMenu" class="navbar-menu" style="padding: 0;">
+        <div class="navbar-end" style="flex-grow: 1; justify-content: flex-end;">
+          <a href="home.html" class="navbar-item has-text-light">Home</a>
+          <a href="aboutus.html" class="navbar-item has-text-light">About Us</a>
+          <a href="learntohunt copy.html" class="navbar-item has-text-light">Learn To Hunt</a>
+          <a href="gallery.html" class="navbar-item has-text-light">Gallery</a>
+          <a href="Our Team.html" class="navbar-item has-text-light">Our Team</a>
+          <a href="contactUs.html" class="navbar-item has-text-light">Contact</a>
+          <a href="#" id="login_button" class="navbar-item button is-warning is-rounded ml-3">Member Login</a>
+        </div>
       </div>
     </nav>
+    
 
-    <!-- HERO BANNER -->
-    <section class="hero is-medium is-bold" id="webpage_banner">
-      <div class="hero-body">
+    <!-- HERO SECTION -->
+    <section
+      class="hero is-medium hero-banner"
+      style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('images/backgroundphoto.jpg') center/cover"
+    >
+      <div class="hero-body has-text-centered">
         <div class="container">
-          <h1 class="title">Learn to Hunt</h1>
-          <h2 class="subtitle">Everything you need to know to get started!</h2>
+          <h1
+            class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+          >
+            Learn to Hunt
+          </h1>
+          <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+            A guide to make your hunting journey safe, successful, and enjoyable.
+          </h2>
         </div>
       </div>
     </section>
 
-    <!-- MEMBER LOGIN CHUNK -->
-    <div id="login">
-      <button id="login_button">Member login</button>
-    </div>
+    <!-- LEARN TO HUNT CONTENT SECTION -->
+    <section class="section">
+      <div class="container">
+        <!-- LEARN TO HUNT PROGRAM SECTION WITH IMAGES -->
+        
+        <div class="container">
+          <div class="content mt-2">
+            <h2 class="title is-3 has-text-dark">Learn to Hunt Program</h2>
+            <p>
+              In partnership with the Department of Natural Resources (DNR), the "Learn to Hunt" program offers beginner hunters an opportunity to learn from experienced mentors in a safe, controlled environment. Whether you’re interested in hunting deer, turkey, or small game, our program ensures you understand:
+            </p>
+            <ul>
+              <li>The basics of firearm safety and hunting regulations</li>
+              <li>How to scout and track wildlife</li>
+              <li>Field dressing and processing techniques</li>
+            </ul>
+            <p>
+              This program is perfect for those who are new to hunting or want to improve their skills with the guidance of seasoned experts. To join the next session, please visit our <a href="https://dnr.wisconsin.gov/topic/Hunt" target="_blank" class="has-text-danger">Learn to Hunt page at the Wisconsin DNR</a>.
+            </p>
+          </div>
+
+          <!-- Image Section -->
+          <div class="columns is-centered is-variable is-8 mt-6">
+            <!-- Main Image - Group of People -->
+            <div class="column is-full">
+              <figure class="image is-3by1">
+                <img src="images/maxresdefault.jpg" alt="Group of people learning to hunt" class="main-hunt-image">
+              </figure>
+            </div>
+          </div>
+
+          <!-- Surrounding Images -->
+          <div class="columns is-variable is-8 is-multiline is-centered mt-6">
+            <div class="column is-one-quarter">
+              <figure class="image is-4by3">
+                <img src="images/60ab94_3b2f23faaa7e4e92965c1bec635b70a0~mv2.jpg" alt="Tracking wildlife">
+              </figure>
+            </div>
+            <div class="column is-one-quarter">
+              <figure class="image is-4by3">
+                <img src="images/60ab94_cf3c63b7f421484884a6a262a3c14add~mv2.jpg" alt="Hunting gear and equipment">
+              </figure>
+            </div>
+            <div class="column is-one-quarter">
+              <figure class="image is-4by3">
+                <img src="images/firearm_safety.jpg" alt="Firearm safety training">
+              </figure>
+            </div>
+            <div class="column is-one-quarter">
+              <figure class="image is-4by3">
+                <img src="images/field_dressing.jpg" alt="Field dressing a deer">
+              </figure>
+            </div>
+          </div>
+        </div>
+      
+
+
+        <div class="columns is-variable is-8 is-multiline">
+          <!-- Hunting Basics -->
+          <div class="column is-one-third">
+            <div
+              class="card feature-card"
+              style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
+            >
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="images/hunter.jpg" alt="Hunting Basics" />
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <h3 class="title is-5 has-text-dark">Hunting Basics</h3>
+                <p class="has-text-grey-dark">
+                  Learn about the essential rules, safety protocols, and ethics that every hunter should know before going into the field.
+                </p>
+                <a
+                  href="#"
+                  class="button is-warning is-outlined is-rounded mt-3"
+                  style="transition: transform 0.3s"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Choosing Your Gear -->
+          <div class="column is-one-third">
+            <div
+              class="card feature-card"
+              style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
+            >
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="images/land.png" alt="Gear Essentials" />
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <h3 class="title is-5 has-text-dark">Choosing Your Gear</h3>
+                <p class="has-text-grey-dark">
+                  Equip yourself with the right gear—from clothing and weapons to accessories—tailored to the type of hunt and terrain.
+                </p>
+                <a
+                  href="#"
+                  class="button is-warning is-outlined is-rounded mt-3"
+                  style="transition: transform 0.3s"
+                  >Explore Gear</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Hunting Seasons & Licenses -->
+          <div class="column is-one-third">
+            <div
+              class="card feature-card"
+              style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
+            >
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="images/midwest.jpg" alt="Hunting Seasons & Licenses" />
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <h3 class="title is-5 has-text-dark">Hunting Seasons & Licenses</h3>
+                <p class="has-text-grey-dark">
+                  Learn when and where to hunt different game species, and understand the importance of acquiring the right permits.
+                </p>
+                <a
+                  href="#"
+                  class="button is-warning is-outlined is-rounded mt-3"
+                  style="transition: transform 0.3s"
+                  >Get Licenses</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="content mt-6">
+          <h2 class="title is-3 has-text-dark">Resources & Education</h2>
+          <p>
+            Whether you’re new to hunting or looking to expand your skills, the Badger Hunting Club has a range of resources to help you succeed. From courses on gun safety to detailed guides on wildlife identification and field dressing techniques, we strive to make sure you feel confident and prepared.
+          </p>
+          <ul>
+            <li>Guided beginner hunting workshops</li>
+            <li>Wildlife tracking and identification classes</li>
+            <li>Field dressing and meat processing seminars</li>
+            <li>Conservation and wildlife management education</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL SECTION -->
+    <section class="section has-background-light">
+      <div class="container">
+        <h2
+          class="title has-text-centered is-uppercase has-text-dark is-size-3 has-text-weight-bold"
+        >
+          What Our Members Are Saying
+        </h2>
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="box">
+              <p class="has-text-dark">
+                "The mentorship and resources provided by the Badger Hunting Club were exactly what I needed to start hunting confidently. Their Learn to Hunt program is fantastic!"
+                <br /><strong>- Mark J.</strong>
+              </p>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="box">
+              <p class="has-text-dark">
+                "The workshops on tracking and field dressing were super informative. I'm ready for my next hunting trip thanks to BHC!"
+                <br /><strong>- Sarah P.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- LOGIN MODAL -->
     <div class="modal" id="signin_modal">
-      <div class="modal-background" id="signin_modalbg"></div>
-      <div class="modal-content p-3">
-        <h1 class="is-size-3 title">Member Login</h1>
-        <form id="signin_form">
-          <!-- Email -->
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control">
-              <input type="email" id="email_" class="input" />
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Member Login</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form id="signin_form">
+            <!-- Email -->
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input type="email" class="input" id="email_" placeholder="Enter your email" required />
+              </div>
             </div>
-          </div>
-          <!-- Password -->
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <input type="password" id="password_" class="input" />
+            <!-- Password -->
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input type="password" class="input" id="password_" placeholder="Enter your password" required />
+              </div>
             </div>
-          </div>
-          <!-- Submit -->
-          <div class="field">
-            <div class="control">
-              <button class="button is-success">Submit</button>
-            </div>
-          </div>
-
-          <!-- sign in error -->
-          <div id="signin_error" class="has-text-danger"></div>
-        </form>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="submit_login">Login</button>
+          <button class="button" id="close_modal">Cancel</button>
+        </footer>
       </div>
-      <button class="modal-close is-large" aria-label="close"></button>
     </div>
-
-    <!-- CONTENT SECTIONS -->
-    <section class="section">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-one-quarter">
-            <div class="card">
-              <div class="card-content">
-                <h3 class="title">Getting Started</h3>
-                <p>Learn the basics of hunting and how to get started.</p>
-              </div>
-            </div>
-          </div>
-          <div class="column is-one-quarter">
-            <div class="card">
-              <div class="card-content">
-                <h3 class="title">Essential Gear</h3>
-                <p>Find out what equipment you need for your first hunt.</p>
-              </div>
-            </div>
-          </div>
-          <div class="column is-one-quarter">
-            <div class="card">
-              <div class="card-content">
-                <h3 class="title">Licenses and Regulations</h3>
-                <p>
-                  Understand the rules and how to apply for your hunting
-                  license.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="column is-one-quarter">
-            <div class="card">
-              <div class="card-content">
-                <h3 class="title">Learn to Hunt Programs</h3>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Deleniti, repellat?
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="learntohuntparag">
-          <p>
-            Want to learn how to hunt deer, pheasant, turkey, rabbit, or
-            something else? You've found the right spot! With the help of the
-            DNR and local professionals, Badger Hunting Club members are welcome
-            to do mentored LTH programs during certain times of the year. Check
-            back for updated information or contact us directly!
-          </p>
-        </div>
-      </div>
-    </section>
 
     <!-- FOOTER -->
-    <div id="footer">
-      <footer>
-        <p>Join our community for updates on hunting events and resources!</p>
-        <p>
-          <a href="#">Facebook</a> | <a href="#">Instagram</a> |
-          <a href="#">Contact Us</a>
-        </p>
-      </footer>
-    </div>
+    <footer class="footer has-background-dark has-text-white-ter">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Connect With Us</h3>
+            <p>Follow us on social media to stay updated on events and news.</p>
+            <p>
+              <a href="#" class="has-text-warning mr-3"
+                ><i class="fab fa-facebook-square fa-2x"></i
+              ></a>
+              <a href="#" class="has-text-warning mr-3"
+                ><i class="fab fa-instagram-square fa-2x"></i
+              ></a>
+              <a href="#" class="has-text-warning"><i class="fab fa-twitter-square fa-2x"></i></a>
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Quick Links</h3>
+            <ul>
+              <li><a href="home.html" class="has-text-grey-lighter">Home</a></li>
+              <li><a href="aboutus.html" class="has-text-grey-lighter">About Us</a></li>
+              <li><a href="learntohunt.html" class="has-text-grey-lighter">Resources</a></li>
+              <li><a href="gallery.html" class="has-text-grey-lighter">Resources</a></li>
+              <li><a href="Our Team.html" class="has-text-grey-lighter">Our Team</a></li>
+              <li><a href="contactUs.html" class="has-text-grey-lighter">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-    <!-- LINK TO JAVASCRIPT -->
+    <!-- JavaScript for Navbar Toggle and Modal -->
     <script src="learntohunt.js"></script>
-    <script src="app.js"></script>
   </body>
 </html>
