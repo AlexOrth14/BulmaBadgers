@@ -104,3 +104,41 @@ contact_button.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
 });
+
+// JS for Resources page
+// Smooth Scroll for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+});
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll(".faq-item");
+faqItems.forEach((item) => {
+  item.querySelector(".faq-question").addEventListener("click", () => {
+    item.classList.toggle("is-active");
+    const answer = item.querySelector(".faq-answer");
+    if (item.classList.contains("is-active")) {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    } else {
+      answer.style.maxHeight = "0px";
+    }
+  });
+});
+
+// Show More Button for Extra Content
+const showMoreBtn = document.getElementById("show_more_btn");
+const hiddenContent = document.querySelectorAll(".hidden-content");
+
+if (showMoreBtn) {
+  showMoreBtn.addEventListener("click", () => {
+    hiddenContent.forEach((content) => {
+      content.classList.remove("hidden-content");
+    });
+    showMoreBtn.style.display = "none"; // Hide the button after clicking
+  });
+}

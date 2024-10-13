@@ -6,7 +6,7 @@
 
 body {
   height: 1500px;
-  background-color: rgb(138, 108, 108);
+  background-color: beige;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
@@ -201,4 +201,145 @@ footer {
 #home .card-content {
   color: white;
   font-size: 25px;
+}
+
+/* RESOURCES SPECIFIC CSS */
+/* Hero Banner Styles */
+#resources .hero-body {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem; /* Further reduced top and overall padding */
+}
+
+#resources .hero-banner {
+  height: 362px;
+}
+
+#resources .hero .title,
+.hero .subtitle {
+  color: white;
+}
+
+/* Section Styles */
+#resources .section {
+  padding: 1.5rem 1rem; /* Reduced padding for a more compact layout */
+}
+
+#resources .has-background-light {
+  background-color: #f4f4f4 !important;
+}
+
+/* Feature Card Styles */
+#resources .feature-card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#resources .feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+#resources .card-content {
+  padding: 1rem; /* Reduced padding */
+  background-color: #f4f4f4;
+}
+
+/* Testimonial Box Styles */
+#resources .box {
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#resources .box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Resource Content Section */
+#resources .content {
+  padding-top: 1rem;
+}
+
+#resources .content ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+/* Modal Styles */
+#resources .modal-card {
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#resources .modal-card-head {
+  background-color: #3b5323;
+  color: beige;
+  border-bottom: 1px solid wheat;
+}
+
+#resources .modal-card-foot {
+  background-color: #f4f4f4;
+}
+
+#resources .button.is-success {
+  background-color: #5c754a;
+  border: none;
+  color: white;
+}
+
+#resources .button.is-success:hover {
+  background-color: #3e4e2d;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #resources .navbar-menu {
+    background-color: #3b5323;
+    padding: 0.5rem;
+  }
+
+  #resources .navbar-end {
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  #resources .footer {
+    text-align: center;
+  }
+
+  #resources .hero-body {
+    padding: 1.5rem 1rem;
+  }
+
+  #resources .feature-card {
+    margin-bottom: 2rem;
+  }
+
+  #resources .content {
+    padding: 1rem;
+  }
+}
+
+/* Main Image Styling */
+#resources .main-hunt-image {
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Hover Effect */
+#resources .image img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#resources .image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
