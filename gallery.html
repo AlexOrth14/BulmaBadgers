@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gallery Page for Badger Hunting Club</title>
+    <link rel="icon" href="images/bhc_logo.jpg" type="image/x-icon" />
+
     <style>
       body {
         background-color: #b1ab6e;
@@ -18,6 +20,10 @@
         margin: 20px auto;
         font-size: 32px;
       }
+      .button_container {
+        display: flex;
+        justify-content: center;
+      }
       .body img {
         height: 100mm;
         width: 100mm;
@@ -26,13 +32,22 @@
       h1 {
         text-align: center;
       }
+      .gallery-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Space between images */
+        margin-bottom: 20px;
+      }
+      .gallery-row img {
+        height: 200px; /* Ensures all images are the same height */
+        width: auto; /* Keeps the aspect ratio */
+      }
     </style>
     <!-- BULMA -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    <link rel="icon" href="images/bhc_logo.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="app.css" />
   </head>
   <body>
@@ -85,34 +100,34 @@
 
     <div class="body">
       <h1 class="title">Gallery</h1>
-      <button>Explore Our Past Events!</button>
-      <div id="gun photo">
+      <div class="button_container">
+        <button>Explore Our Past Events!</button>
+      </div>
+      <!-- First row of images -->
+      <div class="gallery-row">
         <img
           src="https://i0.wp.com/www.nationalreview.com/wp-content/uploads/2018/08/hunting-082718.jpg?fit=4800%2C3200&ssl=1https://i0.wp.com/www.nationalreview.com/wp-content/uploads/2018/08/hunting-082718.jpg?fit=4800%2C3200&ssl=1"
           alt="gun photo"
         />
-      </div>
-      <div id="deer photo">
         <img
           src="https://cdn.theatlantic.com/media/mt/food/HuntingDeer-SS-Post.jpg"
           alt="deer photo"
         />
-      </div>
-      <div id="duck photo">
         <img
-        src=https://images.ctfassets.net/pujs1b1v0165/Hs4HiXw57wPqjVXC83RvZ/72d8234e42b3358f0ed27ffd01b83f57/04192022_Duckmade_Casey_Idaho-36.jpg?w=1200&fit=fill
-        alt="duck photo" />
+          src="https://images.ctfassets.net/pujs1b1v0165/Hs4HiXw57wPqjVXC83RvZ/72d8234e42b3358f0ed27ffd01b83f57/04192022_Duckmade_Casey_Idaho-36.jpg?w=1200&fit=fill"
+          alt="duck photo"
+        />
       </div>
-      <div id="shooting photo">
+
+      <!-- Second row of images -->
+      <div class="gallery-row">
         <img
           src="https://npr.brightspotcdn.com/81/97/805a228f4cff84ff6b12733d1ad5/33-336206-terminology-shows-a-stereotypical-pheasant-hunting.jpg"
           alt="shooting photo"
         />
-      </div>
-      <div id="bow picture">
         <img
           src="https://www.outdoorlife.com/wp-content/uploads/2021/11/08/FB_IMG_1635968141716.jpg"
-          alt="bow picture "
+          alt="bow picture"
         />
       </div>
     </div>
