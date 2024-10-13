@@ -38,6 +38,10 @@ const resources = document.getElementById("resources");
 const resources_button = document.getElementById("resources_button");
 const about_us = document.getElementById("about_us");
 const about_button = document.getElementById("about_button");
+const gallery = document.getElementById("gallery");
+const gallery_button = document.getElementById("gallery_button");
+const team = document.getElementById("team");
+const team_button = document.getElementById("team_button");
 const contact_us = document.getElementById("contact_us");
 const contact_button = document.getElementById("contact_button");
 
@@ -47,6 +51,8 @@ home_button.addEventListener("click", () => {
   resources.classList.add("is-hidden");
   about_us.classList.add("is-hidden");
   contact_us.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
 });
 
 // JS FOR RESOURCES
@@ -55,6 +61,8 @@ resources_button.addEventListener("click", () => {
   home.classList.add("is-hidden");
   about_us.classList.add("is-hidden");
   contact_us.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
 });
 
 // JS FOR ABOUT US
@@ -63,11 +71,36 @@ about_button.addEventListener("click", () => {
   resources.classList.add("is-hidden");
   home.classList.add("is-hidden");
   contact_us.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
 });
 
+// JS FOR GALLERY
+gallery_button.addEventListener("click", () => {
+  gallery.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  contact_us.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+});
+
+// JS FOR OUR TEAM
+team_button.addEventListener("click", () => {
+  team.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  contact_us.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+});
+
+// JS FOR CONTACT US
 contact_button.addEventListener("click", () => {
   contact_us.classList.remove("is-hidden");
   resources.classList.add("is-hidden");
   about_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
 });
