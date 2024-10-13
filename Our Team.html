@@ -10,110 +10,219 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="Our Team.css" />
+    <!-- font awesome -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- swapping to resources.css -->
+    <!-- <link rel="stylesheet" href="Our Team.css" /> -->
+    <link rel="stylesheet" href="resources.css" />
   </head>
   <body>
-    <nav id="navbar" class="navbar is-fixed-top">
-      <div class="navbar-brand is-flex-wrap-wrap">
-        <img
-          src="images/bhc_logo.jpg"
-          alt="Badger Hunting Club logo"
-          style="height: 100px"
-          class="is-hidden-mobile"
-        />
-
-        <div class="navbar-item">
-          <a id="home" class="title has-text-black p-4 is-size-4-mobile"
-            >Badger Hunting Club</a
+    <!-- NAVBAR -->
+    <nav
+      class="navbar is-fixed-top pt-4"
+      style="
+        background-color: #3b5323;
+        border-bottom: 2px solid rgb(69, 40, 40);
+      "
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img
+            src="images/bhc_logo.jpg"
+            alt="Badger Hunting Club Logo"
+            style="height: 60px; margin-right: 10px"
+          />
+          <span class="has-text-light has-text-weight-semibold">
+            Badger Hunting Club
+          </span>
+        </a>
+        <span class="navbar-burger" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navMenu" class="navbar-menu" style="padding: 0">
+        <div class="navbar-end" style="flex-grow: 1; justify-content: flex-end">
+          <a href="home.html" class="navbar-item has-text-light">Home</a>
+          <a href="aboutus.html" class="navbar-item has-text-light">About Us</a>
+          <a href="resources.html" class="navbar-item has-text-light"
+            >Resources</a
+          >
+          <a href="gallery.html" class="navbar-item has-text-light">Gallery</a>
+          <a href="Our Team.html" class="navbar-item has-text-light"
+            >Our Team</a
+          >
+          <a href="contactUs.html" class="navbar-item has-text-light"
+            >Contact</a
+          >
+          <a
+            href="#"
+            id="login_button"
+            class="navbar-item button is-warning is-rounded ml-3"
+            >Member Login</a
           >
         </div>
-        <button
-          class="navbar-burger has-text-white"
-          style="height: 100px"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarMenu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-
-      <div
-        id="navbarMenu"
-        class="navbar-menu has-text-white navbar-end is-flex-wrap-wrap p-4"
-        style="height: 100px"
-      >
-        <a class="navbar-item has-text-black" href="home.html">Home</a>
-        <a class="navbar-item has-text-black" href="aboutus.html">About Us</a>
-        <a class="navbar-item has-text-black" href="resources.html"
-          >Resources</a
-        >
-        <a class="navbar-item has-text-black" href="Our Team.html">Our Team</a>
-        <a class="navbar-item has-text-black" href="contactUs.html"
-          >Contact Us</a
-        >
       </div>
     </nav>
-    <div style="color: rgb(69, 40, 40); padding-top: 150px">
-      <div style="text-align: center">
+    <!-- <div style="color: rgb(69, 40, 40); padding-top: 150px"> -->
+    <!-- <div style="text-align: center">
         <h1 class="title is-size-1">Our Team</h1>
-      </div>
-      <div class="columns" style="margin-top: 200px">
-        <!-- Increased margin-top for more spacing -->
-        <!-- Left Column -->
-        <div class="column is-half" style="margin-left: 175px">
-          <!-- Increased margin-left for significant spacing from page edge -->
-          <h2 style="margin-bottom: 15px; padding-left: 40px">Name:</h2>
-          <!-- Added margin-bottom -->
-          <h2 style="margin-bottom: 15px; padding-left: 40px">Role:</h2>
-          <!-- Added margin-bottom -->
-          <h2 style="margin-bottom: 15px; padding-left: 40px">
-            Objectives/Goals
+      </div> -->
+
+    <!-- HERO SECTION -->
+    <!-- copied from learntohunt -->
+    <section
+      class="hero is-medium hero-banner"
+      style="
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url('images/forest_banner.jpg') center/cover;
+      "
+    >
+      <div class="hero-body has-text-centered">
+        <div class="container">
+          <h1
+            class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+          >
+            Our Team
+          </h1>
+          <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+            Learn more about our officers!
           </h2>
         </div>
+      </div>
+    </section>
 
-        <!-- Right Column -->
-        <div class="column is-half" style="margin-right: 20px">
-          <h2 style="margin-bottom: 15px">Name:</h2>
-          <!-- Added margin-bottom -->
-          <h2 style="margin-bottom: 15px">Role:</h2>
-          <!-- Added margin-bottom -->
-          <h2 style="margin-bottom: 15px">Objectives/Goals::</h2>
+    <!-- got rid of old body -->
+    <div
+      class="columns is-multiline is-centered is-vcentered"
+      style="min-height: 100vh"
+    >
+      <!-- Card for each club officer -->
+      <div class="column is-half-tablet is-one-third-desktop">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="images/Achal_Gowda.jpeg" alt="Club Officer Headshot" />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">Achal Gowda</p>
+                <p class="subtitle is-6">President</p>
+              </div>
+            </div>
+            <div class="content">
+              <p>
+                Email:
+                <a href="mailto:example@example.com">agowda2@wisc.edu</a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="columns" style="margin-top: 350px">
-        <!-- Increased margin-top for more spacing -->
-        <!-- Left Column -->
-        <div class="column is-half" style="margin-left: 175px">
-          <!-- Increased margin-left for significant spacing from page edge -->
-          <h2 style="margin-bottom: 15px; padding-left: 40px">Name:</h2>
-          <!-- Added margin-bottom -->
-          <h2 style="margin-bottom: 15px; padding-left: 40px">Role:</h2>
-          <!-- Added margin-bottom -->
-          <h2 style="margin-bottom: 15px; padding-left: 40px">
-            Objectives/Goals
-          </h2>
-        </div>
 
-        <!-- Right Column -->
-        <div class="column is-half" style="margin-right: 20px">
-          <h2 style="margin-bottom: 15px">Name:</h2>
-          <!-- Added margin-bottom -->
-          <h2 style="margin-bottom: 15px">Role:</h2>
-          <!-- Added margin-bottom -->
-          <h2 style="margin-bottom: 15px">Objectives/Goals:</h2>
+      <!-- Duplicate the above card block for each additional club officer -->
+      <div class="column is-half-tablet is-one-third-desktop">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="images/Austin_Wiedemeier.jpeg"
+                alt="Club Officer Headshot"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">Austin Wiedemeier</p>
+                <p class="subtitle is-6">VP and Treasurer</p>
+              </div>
+            </div>
+            <div class="content">
+              <p>
+                Email:
+                <a href="mailto:example@example.com">awiedemeier@wisc.edu</a>
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- spacer -->
-      <div style="height: 200px; background-color: beige"></div>
-      <div id="footer">
-        <footer>
-          <p>Contact Us</p>
-        </footer>
       </div>
     </div>
-    <script src="Our Team app.js"></script>
+
+    <!-- spacer -->
+    <!-- <div style="height: 200px; background-color: beige"></div> -->
+    <!-- <div id="footer"> -->
+    <!-- <footer>
+          <p>Contact Us</p>
+        </footer> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- FOOTER -->
+    <!-- copied from learntohunt footer -->
+    <footer class="footer has-background-dark has-text-white-ter">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Connect With Us</h3>
+            <p>Follow us on social media to stay updated on events and news.</p>
+            <p>
+              <a
+                href="https://www.facebook.com/bhcwisc"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/bhcwisc/?hl=en"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-instagram-square fa-2x"></i>
+              </a>
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Quick Links</h3>
+            <ul>
+              <li>
+                <a href="home.html" class="has-text-grey-lighter">Home</a>
+              </li>
+              <li>
+                <a href="aboutus.html" class="has-text-grey-lighter"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="resources.html" class="has-text-grey-lighter"
+                  >Resources</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html" class="has-text-grey-lighter">Gallery</a>
+              </li>
+              <li>
+                <a href="Our Team.html" class="has-text-grey-lighter"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="contactUs.html" class="has-text-grey-lighter"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- old javascript -->
+    <!-- <script src="Our Team app.js"></script> -->
+    <script src="resources.js"></script>
   </body>
 </html>
