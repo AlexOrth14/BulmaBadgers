@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// MODALTOGGLE
 const loginButton = document.getElementById("login_button");
 const loginModal = document.getElementById("signin_modal");
 const closeModal = document.querySelectorAll(".delete, #close_modal");
@@ -29,3 +30,6 @@ closeModal.forEach((el) => {
     loginModal.classList.remove("is-active");
   });
 });
+
+// WEBPAGE
+const home = document.getElementById("homepage");
