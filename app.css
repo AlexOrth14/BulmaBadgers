@@ -12,17 +12,38 @@ body {
 
 /* transition affects how long it takes for thing to slide on and off screen, position sticks it to top of screen */
 .navbar {
-  position: fixed;
-  height: auto;
-  border-top: 2px solid rgb(69, 40, 40);
+  background-color: #3b5323;
   border-bottom: 2px solid rgb(69, 40, 40);
-  background-color: rgb(92, 117, 74);
-  transition: transform 0.8s;
 }
 
-/* this is for the navbar to disappear, was inspired by actuarial club's navbar sliding offscreen */
-.hidden {
-  transform: translateY(-100%);
+.navbar-brand .navbar-item,
+.navbar-burger span {
+  color: beige;
+}
+
+.navbar-item:hover {
+  background-color: rgb(43, 23, 23);
+  color: wheat;
+}
+
+.navbar-burger.is-active span {
+  background-color: wheat;
+}
+
+/* Navbar Adjustments */
+.navbar-menu {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.navbar-end {
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+}
+
+.navbar-brand {
+  margin-left: 1rem;
 }
 
 /* member login chunk */

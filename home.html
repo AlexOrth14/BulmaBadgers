@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- testing pull with git -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,48 +15,45 @@
     <link rel="stylesheet" href="app.css" />
   </head>
   <body>
-    <nav id="navbar" class="navbar is-fixed-top">
-      <div class="navbar-brand is-flex-wrap-wrap">
-        <img
-          src="images/bhc_logo.jpg"
-          alt="Badger Hunting Club logo"
-          style="height: 100px"
-          class="is-hidden-mobile"
-        />
-
-        <div class="navbar-item">
-          <a id="home" class="title has-text-black p-4 is-size-4-mobile"
-            >Badger Hunting Club</a
+    <nav class="navbar is-fixed-top pt-4">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img
+            src="images/bhc_logo.jpg"
+            alt="Badger Hunting Club Logo"
+            style="height: 60px; margin-right: 10px"
+          />
+          <span class="has-text-light has-text-weight-semibold">
+            Badger Hunting Club
+          </span>
+        </a>
+        <span class="navbar-burger" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navMenu" class="navbar-menu" style="padding: 0">
+        <div class="navbar-end" style="flex-grow: 1; justify-content: flex-end">
+          <a href="home.html" class="navbar-item has-text-light">Home</a>
+          <a href="aboutus.html" class="navbar-item has-text-light">About Us</a>
+          <a href="learntohunt.html" class="navbar-item has-text-light"
+            >Learn To Hunt</a
+          >
+          <a href="gallery.html" class="navbar-item has-text-light">Gallery</a>
+          <a href="Our Team.html" class="navbar-item has-text-light"
+            >Our Team</a
+          >
+          <a href="contactUs.html" class="navbar-item has-text-light"
+            >Contact</a
+          >
+          <a
+            href="#"
+            id="login_button"
+            class="navbar-item button is-warning is-rounded ml-3"
+            >Member Login</a
           >
         </div>
-        <button
-          class="navbar-burger has-text-white"
-          style="height: 100px"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarMenu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-
-      <div
-        id="navbarMenu"
-        class="navbar-menu has-text-white navbar-end is-flex-wrap-wrap p-4"
-        style="height: 100px"
-      >
-        <a class="navbar-item has-text-black" href="home.html">Home</a>
-        <a class="navbar-item has-text-black" href="aboutus.html">About Us</a>
-        <a class="navbar-item has-text-black" href="learntohunt.html"
-          >Resources</a
-        >
-        <a class="navbar-item has-text-black" href="gallery.html">Gallery</a>
-        <a class="navbar-item has-text-black" href="Our Team.html">Our Team</a>
-        <a class="navbar-item has-text-black" href="contactUs.html"
-          >Contact Us</a
-        >
       </div>
     </nav>
 
@@ -70,43 +66,49 @@
       </h1>
     </div>
 
-    <!-- MEMBER LOGIN CHUNK -->
-    <div id="login" class="">
-      <button id="login_button">Member login</button>
-    </div>
-
     <!-- LOGIN MODAL -->
     <div class="modal" id="signin_modal">
-      <div class="modal-background" id="signin_modalbg"></div>
-      <div class="modal-content p-3">
-        <h1 class="is-size-3 title">Member Login</h1>
-        <form id="signin_form">
-          <!-- Email -->
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control">
-              <input type="email" id="email_" class="input" />
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Member Login</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form id="signin_form">
+            <!-- Email -->
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input
+                  type="email"
+                  class="input"
+                  id="email_"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
             </div>
-          </div>
-          <!-- Password -->
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <input type="password" id="password_" class="input" />
+            <!-- Password -->
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  type="password"
+                  class="input"
+                  id="password_"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
             </div>
-          </div>
-          <!-- Submit -->
-          <div class="field">
-            <div class="control">
-              <button class="button is-success">Submit</button>
-            </div>
-          </div>
-
-          <!-- sign in error -->
-          <div id="signin_error" class="has-text-danger"></div>
-        </form>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="submit_login">Login</button>
+          <button class="button" id="close_modal">Cancel</button>
+        </footer>
       </div>
-      <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <!-- ANNOUNCEMENTS CHUNK -->
@@ -200,7 +202,6 @@
     </div>
 
     <!-- LINK TO JAVASCRIPT -->
-    <script src="home.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -1,25 +1,3 @@
-/* height is at 2000px so that I could mess with navbar scrolling, font open to change */
-body {
-  height: 2000px;
-  background-color: rgb(138, 108, 108);
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-/* transition affects how long it takes for thing to slide on and off screen, position sticks it to top of screen */
-.navbar {
-  position: fixed;
-  height: auto;
-  border-top: 2px solid rgb(69, 40, 40);
-  border-bottom: 2px solid rgb(69, 40, 40);
-  background-color: rgb(92, 117, 74);
-  transition: transform 0.8s;
-}
-
-/* this is for the navbar to disappear, was inspired by actuarial club's navbar sliding offscreen */
-.hidden {
-  transform: translateY(-100%);
-}
-
 /* alignment items on bottom are for the overlay text, needs to be flex so that the centering works */
 #webpage_banner {
   height: 500px;
@@ -42,8 +20,6 @@ body {
 }
 
 #login_button {
-  /* border: 2px solid beige; */
-  /* border-radius: 10px; */
   background-color: beige;
   float: right;
 }
@@ -140,11 +116,3 @@ body {
   color: white;
   font-size: 25px;
 }
-/* 
-#footer {
-  background: black;
-  padding: 20px;
-  height: 150px;
-  border-top: 8px solid rgb(34, 16, 16);
-  color: beige;
-} */

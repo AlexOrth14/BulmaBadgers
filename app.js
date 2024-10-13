@@ -14,31 +14,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//NAVBAR DISAPPEARING AND REAPPEARING BASED OFF SCROLL
-// ---inspired by Actuarial Club's navbar
-let lastScroll = 0;
-const navbar = document.getElementById("navbar");
+const loginButton = document.getElementById("login_button");
+const loginModal = document.getElementById("signin_modal");
+const closeModal = document.querySelectorAll(".delete, #close_modal");
 
-window.addEventListener("scroll", function () {
-  const currentScroll =
-    window.pageYOffset || document.documentElement.scrollTop;
+if (loginButton && loginModal) {
+  loginButton.addEventListener("click", () => {
+    loginModal.classList.add("is-active");
+  });
+}
 
-  if (currentScroll > lastScroll && currentScroll > 100) {
-    // Scroll down
-    navbar.classList.add("hidden");
-  } else {
-    // Scroll up
-    navbar.classList.remove("hidden");
-  }
-
-  lastScroll = currentScroll <= 0 ? 0 : currentScroll;
-});
-
-// Login modal activation
-let login_button = document.querySelector("#login_button");
-login_button.addEventListener("click", () => {
-  signin_modal.classList.add("is-active");
-});
-signin_modalbg.addEventListener("click", () => {
-  signin_modal.classList.remove("is-active");
+closeModal.forEach((el) => {
+  el.addEventListener("click", () => {
+    loginModal.classList.remove("is-active");
+  });
 });
