@@ -31,5 +31,18 @@ closeModal.forEach((el) => {
   });
 });
 
-// WEBPAGE
-const home = document.getElementById("homepage");
+// WEBPAGE JAVASCRIPT
+const home = document.getElementById("home");
+const resources = document.getElementById("resources");
+const about_us = document.getElementById("about_us");
+const contact_us = document.getElementById("contact_us");
+
+// JS FOR WHEN HOME IS CLICKED
+home.addEventListener("click", () => {
+  home.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  contact_us.classList.add("is-hidden");
+});
+
+// FILL IN BASED OFF WHICH IS CLICKED
