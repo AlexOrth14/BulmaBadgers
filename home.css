@@ -11,19 +11,6 @@
   justify-content: center;
 }
 
-/* member login chunk */
-#login {
-  padding: 5px;
-  background-color: rgb(43, 23, 23);
-  color: wheat;
-  height: 32px;
-}
-
-#login_button {
-  background-color: beige;
-  float: right;
-}
-
 /* Modal Styles */
 .modal-content {
   background-color: beige;
@@ -60,7 +47,7 @@
 
 /* at the moment this just applies to the cards in announcements */
 /* wrap so that it fits phone and smaller screens #adaptive design */
-.columns {
+#columns {
   display: flex;
   align-items: stretch;
   flex-wrap: wrap;
@@ -84,6 +71,7 @@
   align-items: center;
   padding: 10px;
   padding-bottom: 20px;
+  background-color: rgb(138, 108, 108);
 }
 
 #cal_title {

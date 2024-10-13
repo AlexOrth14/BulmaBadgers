@@ -11,6 +11,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="home.css" />
     <link rel="stylesheet" href="app.css" />
   </head>
@@ -116,7 +121,7 @@
       <div id="ann">
         <p>Announcements</p>
       </div>
-      <div class="columns">
+      <div id="columns" class="columns ml-6 mr-6">
         <div class="card column">
           <div class="card-content">
             <p class="title">Hunter Safety Workshop</p>
@@ -187,19 +192,74 @@
           </a>
         </div>
       </div>
-      <div class="tile_card card"></div>
+
+      <div class="tile_card card">
+        <div class="card-content has-text-centered m-0">Become a Member</div>
+        <div class="card-image">
+          <a href="https://win.wisc.edu/organization/bhc">
+            <img src="images/stock.jpg" alt="" />
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- FOOTER -->
-    <div id="footer">
-      <footer>
-        <p>Join our community for updates on hunting events and resources!</p>
-        <p>
-          <a href="#">Facebook</a> | <a href="#">Instagram</a> |
-          <a href="#">Contact Us</a>
-        </p>
-      </footer>
-    </div>
+    <!-- copied from learntohunt footer -->
+    <footer class="footer has-background-dark has-text-white-ter">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Connect With Us</h3>
+            <p>Follow us on social media to stay updated on events and news.</p>
+            <p>
+              <a
+                href="https://www.facebook.com/bhcwisc"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/bhcwisc/?hl=en"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-instagram-square fa-2x"></i>
+              </a>
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Quick Links</h3>
+            <ul>
+              <li>
+                <a href="home.html" class="has-text-grey-lighter">Home</a>
+              </li>
+              <li>
+                <a href="aboutus.html" class="has-text-grey-lighter"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="learntohunt.html" class="has-text-grey-lighter"
+                  >Resources</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html" class="has-text-grey-lighter">Gallery</a>
+              </li>
+              <li>
+                <a href="Our Team.html" class="has-text-grey-lighter"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="contactUs.html" class="has-text-grey-lighter"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- LINK TO JAVASCRIPT -->
     <script src="app.js"></script>
