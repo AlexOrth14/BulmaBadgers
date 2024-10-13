@@ -9,70 +9,102 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="learntohuntOLD.css" />
-    <link rel="stylesheet" href="app.css" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gill+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- changing link to CSS to new learntohunt css file -->
+    <!-- <link rel="stylesheet" href="learntohuntOLD.css" /> -->
+    <link rel="stylesheet" href="learntohunt.css" />
+    <!-- unsure what app.css is for here -->
+    <!-- <link rel="stylesheet" href="app.css" /> -->
     <link rel="icon" href="images/bhc_logo.jpg" type="image/x-icon" />
   </head>
   <body>
     <!-- NAVBAR -->
-    <nav id="navbar" class="navbar is-fixed-top">
-      <div class="navbar-brand is-flex-wrap-wrap">
-        <img
-          src="images/bhc_logo.jpg"
-          alt="Badger Hunting Club logo"
-          style="height: 100px"
-          class="is-hidden-mobile"
-        />
-        <div class="navbar-item">
+    <!-- copying over navbar from learntohunt (resources) page for
+      consistent styling  -->
+    <nav
+      class="navbar is-fixed-top pt-4"
+      style="
+        background-color: #3b5323;
+        border-bottom: 2px solid rgb(69, 40, 40);
+      "
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img
+            src="images/bhc_logo.jpg"
+            alt="Badger Hunting Club Logo"
+            style="height: 60px; margin-right: 10px"
+          />
+          <span class="has-text-light has-text-weight-semibold">
+            Badger Hunting Club
+          </span>
+        </a>
+        <span class="navbar-burger" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navMenu" class="navbar-menu" style="padding: 0">
+        <div class="navbar-end" style="flex-grow: 1; justify-content: flex-end">
+          <a href="home.html" class="navbar-item has-text-light">Home</a>
+          <a href="aboutus.html" class="navbar-item has-text-light">About Us</a>
+          <a href="learntohunt copy.html" class="navbar-item has-text-light"
+            >Learn To Hunt</a
+          >
+          <a href="gallery.html" class="navbar-item has-text-light">Gallery</a>
+          <a href="Our Team.html" class="navbar-item has-text-light"
+            >Our Team</a
+          >
+          <a href="contactUs.html" class="navbar-item has-text-light"
+            >Contact</a
+          >
           <a
-            id="home"
-            class="title has-text-black p-4 is-size-4-mobile"
-            href="home.html"
-            >Badger Hunting Club</a
+            href="#"
+            id="login_button"
+            class="navbar-item button is-warning is-rounded ml-3"
+            >Member Login</a
           >
         </div>
-        <button
-          class="navbar-burger has-text-white"
-          style="height: 100px"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarMenu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-
-      <div
-        id="navbarMenu"
-        class="navbar-menu has-text-white navbar-end is-flex-wrap-wrap p-4"
-        style="height: 100px"
-      >
-        <a class="navbar-item has-text-black" href="home.html">Home</a>
-        <a class="navbar-item has-text-black" href="aboutus.html">About Us</a>
-        <a class="navbar-item has-text-black" href="learntohunt.html"
-          >Resources</a
-        >
-        <a class="navbar-item has-text-black" href="Our Team.html">Our Team</a>
-        <a class="navbar-item has-text-black" href="contactUs.html"
-          >Contact Us</a
-        >
       </div>
     </nav>
 
     <!-- HERO BANNER -->
-    <section class="hero is-medium is-bold" id="webpage_banner">
-      <div class="hero-body">
+    <!-- copying over new section inner styling -->
+
+    <section
+      class="hero is-medium hero-banner"
+      style="
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url('images/bhc_sunrise.jpg') center/cover;
+      "
+    >
+      <div class="hero-body has-text-centered">
         <div class="container">
-          <h1 class="title">About Us</h1>
-          <h2 class="subtitle">Our Purpose and Mission</h2>
+          <h1
+            class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+          >
+            About Us
+          </h1>
+          <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+            Our Purpose and Mission
+          </h2>
         </div>
       </div>
     </section>
 
     <!-- ABOUT US CONTENT -->
-    <section class="section" id="about-us">
+    <!-- <section class="section" id="about-us"> -->
+    <section class="section">
       <div class="container">
         <h1 class="title has-text-centered">Who we are</h1>
         <div class="content">
@@ -107,19 +139,114 @@
         </div>
       </div>
     </section>
+    <!-- end of about us section -->
+    <!-- LOGIN MODAL -->
+    <!-- copied from learntohunt -->
+    <div class="modal" id="signin_modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Member Login</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form id="signin_form">
+            <!-- Email -->
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input
+                  type="email"
+                  class="input"
+                  id="email_"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  type="password"
+                  class="input"
+                  id="password_"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+            </div>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="submit_login">Login</button>
+          <button class="button" id="close_modal">Cancel</button>
+        </footer>
+      </div>
+    </div>
 
     <!-- FOOTER -->
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>Join our community for updates on hunting events and resources!</p>
-        <p>
-          <a href="#">Facebook</a> | <a href="#">Instagram</a> |
-          <a href="contactUs.html">Contact Us</a>
-        </p>
+    <!-- updating the footer -->
+    <!-- literally just copied this from contactUs -->
+    <footer class="footer has-background-dark has-text-white-ter">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Connect With Us</h3>
+            <p>Follow us on social media to stay updated on events and news.</p>
+            <p>
+              <a
+                href="https://www.facebook.com/bhcwisc"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/bhcwisc/?hl=en"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-instagram-square fa-2x"></i>
+              </a>
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Quick Links</h3>
+            <ul>
+              <li>
+                <a href="home.html" class="has-text-grey-lighter">Home</a>
+              </li>
+              <li>
+                <a href="aboutus.html" class="has-text-grey-lighter"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="learntohunt.html" class="has-text-grey-lighter"
+                  >Resources</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html" class="has-text-grey-lighter">Gallery</a>
+              </li>
+              <li>
+                <a href="Our Team.html" class="has-text-grey-lighter"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="contactUs.html" class="has-text-grey-lighter"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </footer>
-
     <!-- LINK TO JAVASCRIPT -->
-    <script src="learntohuntOLD.js"></script>
+    <!-- replacing this with learntohunt.js -->
+    <!-- <script src="learntohuntOLD.js"></script> -->
+    <script src="learntohunt.js"></script>
   </body>
 </html>
