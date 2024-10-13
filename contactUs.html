@@ -1,97 +1,267 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Badger Hunting Club of UW-Madison</title>
+    <title>Badger Hunting Club Contact Us</title>
     <!-- BULMA -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gill+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- font awesome -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
     <link rel="icon" href="images/bhc_logo.jpg" type="image/x-icon" />
-    <link rel="stylesheet" href="contactUsStyle.css" />
+    <!-- Swapping over to the learntohunt CSS for now since that's the style we are going with -->
+    <!-- <link rel="stylesheet" href="contactUsStyle.css" /> -->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="learntohunt.css" />
   </head>
   <body>
-    <header>
-      <nav id="navbar" class="navbar is-fixed-top">
-        <div class="navbar-brand is-flex-wrap-wrap">
+    <!-- NAVBAR -->
+    <nav
+      class="navbar is-fixed-top pt-4"
+      style="
+        background-color: #3b5323;
+        border-bottom: 2px solid rgb(69, 40, 40);
+      "
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
           <img
             src="images/bhc_logo.jpg"
-            alt="Badger Hunting Club logo"
-            style="height: 100px"
-            class="is-hidden-mobile"
+            alt="Badger Hunting Club Logo"
+            style="height: 60px; margin-right: 10px"
           />
-
-          <div class="navbar-item">
-            <a id="home" class="title has-text-black p-4 is-size-4-mobile"
-              >Badger Hunting Club</a
-            >
-          </div>
-          <button
-            class="navbar-burger has-text-white"
-            style="height: 100px"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarMenu"
+          <span class="has-text-light has-text-weight-semibold">
+            Badger Hunting Club
+          </span>
+        </a>
+        <span class="navbar-burger" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navMenu" class="navbar-menu" style="padding: 0">
+        <div class="navbar-end" style="flex-grow: 1; justify-content: flex-end">
+          <a href="home.html" class="navbar-item has-text-light">Home</a>
+          <a href="aboutus.html" class="navbar-item has-text-light">About Us</a>
+          <a href="learntohunt copy.html" class="navbar-item has-text-light"
+            >Learn To Hunt</a
           >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </button>
-        </div>
-
-        <div
-          id="navbarMenu"
-          class="navbar-menu has-text-white navbar-end is-flex-wrap-wrap p-4"
-          style="height: 100px"
-        >
-          <a class="navbar-item has-text-black" href="home.html">Home</a>
-          <a class="navbar-item has-text-black" href="aboutus.html">About Us</a>
-          <a class="navbar-item has-text-black" href="learntohunt.html"
-            >Resources</a
-          >
-          <a class="navbar-item has-text-black" href="Our Team.html"
+          <a href="gallery.html" class="navbar-item has-text-light">Gallery</a>
+          <a href="Our Team.html" class="navbar-item has-text-light"
             >Our Team</a
           >
-          <a class="navbar-item has-text-black" href="contactUs.html"
-            >Contact Us</a
+          <a href="contactUs.html" class="navbar-item has-text-light"
+            >Contact</a
+          >
+          <a
+            href="#"
+            id="login_button"
+            class="navbar-item button is-warning is-rounded ml-3"
+            >Member Login</a
           >
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
 
-    <main>
-      <!-- spacer -->
-      <div style="height: 100px"></div>
-      <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Links to our socials:</p>
-        <ul class="social-links">
-          <li>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </li>
-        </ul>
+    <!-- HERO SECTION -->
+    <!-- copied from learntohunt -->
+    <section
+      class="hero is-medium hero-banner"
+      style="
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url('images/60ab94_3b2f23faaa7e4e92965c1bec635b70a0~mv2.jpg')
+            center/cover;
+      "
+    >
+      <div class="hero-body has-text-centered">
+        <div class="container">
+          <h1
+            class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+          >
+            Contact Us
+          </h1>
+          <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+            Looking to learn more? Reach out to us via email or socials.
+          </h2>
+        </div>
+      </div>
+    </section>
+    <!-- The goofy ahh email form -->
 
+    <!-- Will probably have to not allow submission if email and body aren't filled in and such -->
+    <section class="section">
+      <div class="container">
         <form>
-          <label for="email">Your email (required):</label>
-          <input type="email" id="email" name="email" required />
+          <!-- Email field -->
+          <div class="field">
+            <label class="label">Your Email</label>
+            <div class="control">
+              <input
+                class="input"
+                type="email"
+                placeholder="Enter your email address"
+                required
+              />
+            </div>
+          </div>
 
-          <label for="message">Your message:</label>
-          <textarea id="message" name="message"></textarea>
+          <!-- Subject field -->
+          <div class="field">
+            <label class="label">Subject</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Enter the subject"
+                required
+              />
+            </div>
+          </div>
 
-          <button type="submit">Send</button>
+          <!-- Message field -->
+          <div class="field">
+            <label class="label">Your Message</label>
+            <div class="control">
+              <textarea
+                class="textarea"
+                placeholder="Write your message here"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">Submit</button>
+            </div>
+          </div>
         </form>
-      </section>
-    </main>
+      </div>
+    </section>
+    <!-- END OF EMAIL FORM -->
 
-    <footer>
-      <p>&copy; 2023 by Badger Hunting Club of UW-Madison</p>
+    <!-- LOGIN MODAL -->
+    <!-- copied from learntohunt -->
+    <div class="modal" id="signin_modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Member Login</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form id="signin_form">
+            <!-- Email -->
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input
+                  type="email"
+                  class="input"
+                  id="email_"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  type="password"
+                  class="input"
+                  id="password_"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+            </div>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="submit_login">Login</button>
+          <button class="button" id="close_modal">Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <!-- copied from learntohunt footer -->
+    <footer class="footer has-background-dark has-text-white-ter">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Connect With Us</h3>
+            <p>Follow us on social media to stay updated on events and news.</p>
+            <p>
+              <a
+                href="https://www.facebook.com/bhcwisc"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/bhcwisc/?hl=en"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-instagram-square fa-2x"></i>
+              </a>
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Quick Links</h3>
+            <ul>
+              <li>
+                <a href="home.html" class="has-text-grey-lighter">Home</a>
+              </li>
+              <li>
+                <a href="aboutus.html" class="has-text-grey-lighter"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="learntohunt.html" class="has-text-grey-lighter"
+                  >Resources</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html" class="has-text-grey-lighter">Gallery</a>
+              </li>
+              <li>
+                <a href="Our Team.html" class="has-text-grey-lighter"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="contactUs.html" class="has-text-grey-lighter"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
-    <script src="home.js"></script>
+    <!-- old javascript -->
+    <!-- <script src="home.js"></script> -->
+
+    <!-- JavaScript for Navbar Toggle and Modal -->
+    <!-- copied from learntohunt -->
+    <script src="learntohunt.js"></script>
   </body>
 </html>
