@@ -6,7 +6,7 @@
 // had to add this for fitting navbar better on mobile
 document.addEventListener("DOMContentLoaded", () => {
   const burger = document.querySelector(".navbar-burger");
-  const menu = document.getElementById("navbarMenu");
+  const menu = document.getElementById("navMenu");
 
   burger.addEventListener("click", () => {
     burger.classList.toggle("is-active");

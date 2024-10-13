@@ -30,6 +30,10 @@ body {
   background-color: wheat;
 }
 
+#navMenu {
+  background-color: #3b5323;
+}
+
 /* Navbar Adjustments */
 .navbar-menu {
   padding-right: 0 !important;
