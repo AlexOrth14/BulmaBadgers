@@ -105,3 +105,96 @@ footer {
 .footer .title {
   color: beige;
 }
+
+/* HOME PAGE SPECIFIC STYLING FOR SINGLE PAGE APP PURPOSES */
+/* alignment items on bottom are for the overlay text, needs to be flex so that the centering works */
+#home #webpage_banner {
+  height: 500px;
+  background-image: url(images/forest_bannerf.jpg);
+  background-size: cover;
+  display: flex;
+  width: 100%;
+  background-position: center;
+  color: beige;
+  align-items: last baseline;
+  justify-content: center;
+}
+
+/* making sure the font of the text in cards is black */
+#home .content {
+  color: black;
+}
+
+#home #announcements {
+  background-color: beige;
+  border-bottom: 4px solid rgb(69, 40, 40);
+  padding-bottom: 30px;
+}
+
+/* this is specifically the announcements title text */
+#home #ann {
+  display: flex;
+  justify-content: center;
+  font-size: 300%;
+  color: black;
+}
+
+/* at the moment this just applies to the cards in announcements */
+/* wrap so that it fits phone and smaller screens #adaptive design */
+#home #columns {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* flex thing helps make cards responsive + px is the base size for them */
+#home .card {
+  flex: 1 1 300px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+/* holds google calendar */
+#home #calendar {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 20px;
+  background-color: rgb(138, 108, 108);
+}
+
+#home #cal_title {
+  color: white;
+  font-size: 250%;
+}
+
+/* tiles for extra stuff + info elsewhere */
+#home #tiles {
+  background-color: rgb(43, 23, 23);
+  padding-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#home .tile_card {
+  background-color: rgb(138, 108, 108);
+  height: 300px;
+  overflow: hidden;
+}
+
+#home .card img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-top: 3px solid rgb(43, 23, 23);
+}
+
+#home .card-content {
+  color: white;
+  font-size: 25px;
+}
