@@ -54,6 +54,12 @@ home_button.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
 });
+home_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
 
 // JS FOR RESOURCES
 resources_button.addEventListener("click", () => {
@@ -64,6 +70,12 @@ resources_button.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
 });
+resources_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
 
 // JS FOR ABOUT US
 about_button.addEventListener("click", () => {
@@ -74,6 +86,12 @@ about_button.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
 });
+about_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
 
 // JS FOR GALLERY
 gallery_button.addEventListener("click", () => {
@@ -84,6 +102,12 @@ gallery_button.addEventListener("click", () => {
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
 });
+gallery_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
 
 // JS FOR OUR TEAM
 team_button.addEventListener("click", () => {
@@ -94,6 +118,12 @@ team_button.addEventListener("click", () => {
   home.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
 });
+team_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
 
 // JS FOR CONTACT US
 contact_button.addEventListener("click", () => {
@@ -104,6 +134,12 @@ contact_button.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
 });
+contact_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
 
 // JS for Resources page
 // Smooth Scroll for Anchor Links
