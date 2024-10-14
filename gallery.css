@@ -1,0 +1,72 @@
+body {
+  background-color: #b1ab6e;
+  height: auto;
+}
+button {
+  padding: 10px 20px;
+  display: block;
+  color: white;
+  border-color: #44553a;
+  background-color: #44553a;
+  margin: 20px auto;
+  font-size: 32px;
+}
+.button_container {
+  display: flex;
+  justify-content: center;
+}
+.body img {
+  height: 100mm;
+  width: 100mm;
+  margin: 20px;
+}
+h1 {
+  text-align: center;
+}
+.gallery-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between images */
+  margin-bottom: 20px;
+}
+.gallery-row img {
+  height: 200px; /* Ensures all images are the same height */
+  width: auto; /* Keeps the aspect ratio */
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #3b5323;
+  transition: background-color 0.3s ease-in-out;
+  border-bottom: 2px solid rgb(69, 40, 40);
+}
+
+.navbar-brand .navbar-item,
+.navbar-burger span {
+  color: beige;
+}
+
+.navbar-item:hover {
+  background-color: rgb(43, 23, 23);
+  color: wheat;
+}
+
+.navbar-burger.is-active span {
+  background-color: wheat;
+}
+
+/* Navbar Adjustments */
+.navbar-menu {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.navbar-end {
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+}
+
+.navbar-brand {
+  margin-left: 1rem;
+}
