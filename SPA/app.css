@@ -5,7 +5,6 @@
 /* colors biege, black, wheat*/
 
 body {
-  height: 1500px;
   background-color: beige;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -82,12 +81,6 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-footer {
-  background: black;
-  border-top: 8px solid rgb(34, 16, 16);
-  color: beige;
 }
 
 /* Footer Styles */
@@ -205,7 +198,7 @@ footer {
 
 /* RESOURCES SPECIFIC CSS */
 /* Hero Banner Styles */
-#resources .hero-body {
+.hero-body {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 0.5rem 1.5rem 1.5rem 1.5rem; /* Further reduced top and overall padding */
@@ -215,13 +208,13 @@ footer {
   height: 294px;
 }
 
-#resources .hero .title,
+.hero .title,
 .hero .subtitle {
   color: white;
 }
 
 /* Section Styles */
-#resources .section {
+.section {
   padding: 1.5rem 1rem; /* Reduced padding for a more compact layout */
 }
 
@@ -262,11 +255,11 @@ footer {
 }
 
 /* Resource Content Section */
-#resources .content {
+.content {
   padding-top: 1rem;
 }
 
-#resources .content ul {
+.content ul {
   padding-left: 20px;
   list-style-type: disc;
 }
@@ -342,4 +335,37 @@ footer {
 #resources .image img:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+#gallery button {
+  padding: 10px 20px;
+  display: block;
+  color: white;
+  border-color: #44553a;
+  background-color: #44553a;
+  margin: 20px auto;
+  font-size: 32px;
+}
+
+#gallery .button_container {
+  display: flex;
+  justify-content: center;
+}
+#gallery .body img {
+  height: 100mm;
+  width: 100mm;
+  margin: 20px;
+}
+#gallery h1 {
+  text-align: center;
+}
+#gallery .gallery-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between images */
+  margin-bottom: 20px;
+}
+#gallery .gallery-row img {
+  height: 200px; /* Ensures all images are the same height */
+  width: auto; /* Keeps the aspect ratio */
 }
