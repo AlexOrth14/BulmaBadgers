@@ -74,15 +74,6 @@ body {
   color: #333;
 }
 
-/* Modal Styles */
-.modal-content {
-  background-color: beige;
-  width: 600px;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 /* Footer Styles */
 .footer {
   padding: 2rem 1.5rem;
@@ -265,18 +256,26 @@ body {
 }
 
 /* Modal Styles */
-#resources .modal-card {
+.modal-content {
+  background-color: beige;
+  width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-card {
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-#resources .modal-card-head {
+.modal-card-head {
   background-color: #3b5323;
   color: beige;
   border-bottom: 1px solid wheat;
 }
 
-#resources .modal-card-foot {
+.modal-card-foot {
   background-color: #f4f4f4;
 }
 
