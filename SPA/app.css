@@ -279,13 +279,13 @@ body {
   background-color: #f4f4f4;
 }
 
-#resources .button.is-success {
+.button.is-success {
   background-color: #5c754a;
   border: none;
   color: white;
 }
 
-#resources .button.is-success:hover {
+.button.is-success:hover {
   background-color: #3e4e2d;
 }
 
