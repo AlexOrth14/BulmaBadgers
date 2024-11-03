@@ -1,89 +1,845 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badger Hunting Club</title>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.0.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.0.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.0.1/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <link rel="icon" href="images/bhc_logo.jpg" type="image/jpeg" />
+    <!-- BULMA -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <!-- GOOGLE FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gill+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
+    <!-- CSS LINKS -->
+    <link rel="stylesheet" href="app.css" />
   </head>
+
   <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    <!-- NAVBAR - UNIVERSAL FOR EACH PAGE                                                                NAVBAR -->
+    <nav class="navbar is-fixed-top pt-4">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img
+            src="images/bhc_logo.jpg"
+            alt="Badger Hunting Club Logo"
+            style="height: 60px; margin-right: 10px"
+          />
+          <span class="has-text-light has-text-weight-semibold">
+            Badger Hunting Club
+          </span>
+        </a>
+        <span class="navbar-burger" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navMenu" class="navbar-menu" style="padding: 0">
+        <div class="navbar-end" style="flex-grow: 1; justify-content: flex-end">
+          <a href="#" id="home_button" class="navbar-item has-text-light"
+            >Home</a
+          >
+          <a href="#" id="about_button" class="navbar-item has-text-light"
+            >About Us</a
+          >
+          <a href="#" id="resources_button" class="navbar-item has-text-light"
+            >Resources</a
+          >
+          <a href="#" id="gallery_button" class="navbar-item has-text-light"
+            >Gallery</a
+          >
+          <a href="#" id="team_button" class="navbar-item has-text-light"
+            >Our Team</a
+          >
+          <a href="#" id="contact_button" class="navbar-item has-text-light"
+            >Contact</a
+          >
+          <a
+            href="#"
+            id="login_button"
+            class="navbar-item button is-warning is-rounded ml-3"
+            >Member Login</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- LOGIN MODAL - UNIVERSAL FOR EACH PAGE                                                        LOGIN MODAL-->
+    <div class="modal" id="signin_modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Member Login</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form id="signin_form">
+            <!-- Email -->
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input
+                  type="email"
+                  class="input"
+                  id="email_"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  type="password"
+                  class="input"
+                  id="password_"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+            </div>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="submit_login">Login</button>
+          <button class="button" id="close_modal">Cancel</button>
+        </footer>
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
+    <!-- HOME PAGE - TOGGLES FROM NAVBAR                                                            HOME PAGE -->
+    <section id="home" class="">
+      <!-- CONTAINER SECTION FOR SINGLE PAGE -->
+
+      <!-- BANNER CHUNK -->
+      <div id="webpage_banner" class="p-5">
+        <h1 style="background-color: rgb(0, 0, 0, 0.5)" class="m-1">
+          Our Mission: To unite the hunting community at UW-Madison, to promote
+          and create new hunters, and to engage UW students in the importance
+          and benefits of hunting.
+        </h1>
+      </div>
+
+      <!-- ANNOUNCEMENTS CHUNK -->
+      <div id="announcements">
+        <div id="ann">
+          <p>Announcements</p>
+        </div>
+        <div id="columns" class="columns ml-6 mr-6">
+          <div class="card column">
+            <div class="card-content">
+              <p class="title">Hunter Safety Workshop</p>
+              <p class="subtitle">Topic: Event, Sep. 21st, 2024</p>
+              <div class="content">
+                We will be meeting in the Humanities building 000 Rm to overview
+                hunter safety rules, demo gear, and just generally get to know
+                each other
+              </div>
+            </div>
+          </div>
+          <div class="card column">
+            <div class="card-content">
+              <p class="title">Welcome New Members!</p>
+              <p class="subtitle">Topic: Reminder</p>
+              <div class="content">
+                Welcome to all the new members that have joined our club!
+                Reminder that we will have more planned for the future and also
+                keep an eye out for future meetings and events
+              </div>
+            </div>
+          </div>
+          <div class="card column mr-3">
+            <div class="card-content">
+              <p class="title">Accepting Applications</p>
+              <p class="subtitle">Topic: Recruiting, due Oct. 4, 2024</p>
+              <div class="content">
+                We have open positions on our exec board, follow this link to
+                apply, we are low-commitment and this is a great chance to
+                demonstrate leadership skills
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALENDAR CHUNK -->
+      <div id="calendar" class="is-flex">
+        <h1 id="cal_title">Schedule and Events</h1>
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=vinnierv23%40gmail.com&ctz=America%2FLos_Angeles"
+          style="border: 0"
+          width="95%"
+          height="600"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+      </div>
+
+      <!-- EXTRA INFO TILES -->
+      <div id="tiles" class="is-flex">
+        <div class="tile_card card">
+          <div class="card-content has-text-centered m-0">
+            Public Hunting Land
+          </div>
+          <div class="card-image">
+            <a
+              href="https://countyofdane.maps.arcgis.com/apps/webappviewer/index.html?id=1b732cc3c0394b7cb610f620f6a67965"
+            >
+              <img src="images/land.png" alt=""
+            /></a>
+          </div>
+        </div>
+
+        <div class="tile_card card">
+          <div class="card-content has-text-centered m-0">DNR Programs</div>
+          <div class="card-image">
+            <a href="https://dnr.wisconsin.gov/Education/OutdoorSkills/lth">
+              <img src="images/hunter.jpg" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <div class="tile_card card">
+          <div class="card-content has-text-centered m-0">Become a Member</div>
+          <div class="card-image">
+            <a href="https://win.wisc.edu/organization/bhc">
+              <img src="images/stock.jpg" alt="" />
+            </a>
+          </div>
+        </div>
+        <div class="tile_card card">
+          <div class="card-content has-text-centered m-0">Read Our Bylaws</div>
+          <div class="card-image">
+            <a
+              href="https://drive.google.com/file/d/1vrrX1M202Rg6vHtddav8CL8CHB6xTBkI/view?usp=drive_link"
+            >
+              <img src="images/bylaws.jpg" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  ABOUT US SECTION                                                                          ABOUT US -->
+    <section id="about_us" class="is-hidden">
+      <section
+        class="hero is-medium hero-banner"
+        style="
+          background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('images/bhc_sunrise.jpg') center/cover;
+        "
+      >
+        <div class="hero-body has-text-centered">
+          <div class="container">
+            <h1
+              class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+            >
+              About Us
+            </h1>
+            <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+              Our Purpose and Mission
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT US CONTENT -->
+      <!-- <section class="section" id="about-us"> -->
+      <section class="section">
+        <div class="container">
+          <h1 class="title has-text-centered" style="margin-bottom: 0.5rem">
+            Who we are
+          </h1>
+          <div
+            class="content is-flex is-justify-content-center is-align-items-center"
+            style="flex-direction: column; text-align: center"
+          >
+            <p>
+              The Badger Hunting Club was founded in 2006 to unite hunters at
+              the University of Wisconsin-Madison. Our mission is to unite the
+              hunting community, promote and create new hunters, and to engage
+              UW students in the importance and benefits of hunting.
+            </p>
+          </div>
+          <h1 class="title has-text-centered" style="margin-bottom: 0.5rem">
+            What we offer
+          </h1>
+          <div
+            class="content is-flex is-justify-content-center is-align-items-center"
+            style="flex-direction: column; text-align: center"
+          >
+            <p>
+              We educate members on hunting opportunities in the area, including
+              available lands, regulations, as well as host speakers to inform
+              us about hunting tips and tricks.
+            </p>
+            <p>
+              Aside from offering great opportunities for our members, we do our
+              best to preserve the hunting heritage of America and specifically
+              of Wisconsin. We are active in promoting and sponsoring the Learn
+              to Hunt program for novice hunters, teaching hunter safety
+              classes, and exposing non-hunters to the joys and benefits of
+              hunting. We try to portray hunting in a different light, in order
+              to break down some of the stereotypes people have about hunting by
+              being active in habitat conservation, as well as viewing hunting
+              as a means of acquiring sustainable and organic meat.
+            </p>
+            <p>
+              The club offers permissions from some land owners in the area to
+              hunt, a place to get to know fellow hunters, gear for member use,
+              as well as events of different purposes.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- end of about us section -->
+    </section>
+
+    <!-- RESOURCES SECTION                                                                          RESOURCES -->
+    <section id="resources" class="is-hidden">
+      <div style="height: 68px"></div>
+      <!-- HERO SECTION -->
+      <section
+        class="hero is-medium hero-banner"
+        style="
+          background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('images/backgroundphoto.jpg') center/cover;
+        "
+      >
+        <div class="hero-body has-text-centered pt-6">
+          <div class="container pt-5">
+            <h1
+              class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+            >
+              Learn to Hunt
+            </h1>
+            <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+              A guide to make your hunting journey safe, successful, and
+              enjoyable.
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- LEARN TO HUNT CONTENT SECTION -->
+      <section class="section">
+        <div class="container">
+          <!-- LEARN TO HUNT PROGRAM SECTION WITH IMAGES -->
+
+          <div class="container">
+            <div class="content mt-2">
+              <h2 class="title is-3 has-text-dark">Learn to Hunt Program</h2>
+              <p>
+                In partnership with the Department of Natural Resources (DNR),
+                the "Learn to Hunt" program offers beginner hunters an
+                opportunity to learn from experienced mentors in a safe,
+                controlled environment. Whether you’re interested in hunting
+                deer, turkey, or small game, our program ensures you understand:
+              </p>
+              <ul>
+                <li>The basics of firearm safety and hunting regulations</li>
+                <li>How to scout and track wildlife</li>
+                <li>Field dressing and processing techniques</li>
+              </ul>
+              <p>
+                This program is perfect for those who are new to hunting or want
+                to improve their skills with the guidance of seasoned experts.
+                To join the next session, please visit our
+                <a
+                  href="https://dnr.wisconsin.gov/topic/Hunt"
+                  target="_blank"
+                  class="has-text-danger"
+                  >Learn to Hunt page at the Wisconsin DNR</a
+                >.
+              </p>
+            </div>
+
+            <!-- Image Section -->
+            <div class="columns is-centered is-variable is-8 mt-6">
+              <!-- Main Image - Group of People -->
+              <div class="column is-full">
+                <figure class="image is-3by1">
+                  <img
+                    src="images/maxresdefault.jpg"
+                    alt="Group of people learning to hunt"
+                    class="main-hunt-image"
+                  />
+                </figure>
+              </div>
+            </div>
+
+            <!-- Surrounding Images -->
+            <div class="columns is-variable is-8 is-multiline is-centered mt-6">
+              <div class="column is-one-quarter">
+                <figure class="image is-4by3">
+                  <img
+                    src="images/60ab94_3b2f23faaa7e4e92965c1bec635b70a0~mv2.jpg"
+                    alt="Tracking wildlife"
+                  />
+                </figure>
+              </div>
+              <div class="column is-one-quarter">
+                <figure class="image is-4by3">
+                  <img
+                    src="images/60ab94_cf3c63b7f421484884a6a262a3c14add~mv2.jpg"
+                    alt="Hunting gear and equipment"
+                  />
+                </figure>
+              </div>
+              <div class="column is-one-quarter">
+                <figure class="image is-4by3">
+                  <img
+                    src="images/firearm_safety.jpg"
+                    alt="Firearm safety training"
+                  />
+                </figure>
+              </div>
+              <div class="column is-one-quarter">
+                <figure class="image is-4by3">
+                  <img
+                    src="images/field_dressing.jpg"
+                    alt="Field dressing a deer"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-variable is-8 is-multiline">
+            <!-- Hunting Basics -->
+            <div class="column is-one-third">
+              <div
+                class="card feature-card"
+                style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
+              >
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="images/hunter.jpg" alt="Hunting Basics" />
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <h3 class="title is-5 has-text-dark">Hunting Basics</h3>
+                  <p class="has-text-grey-dark">
+                    Learn about the essential rules, safety protocols, and
+                    ethics that every hunter should know before going into the
+                    field.
+                  </p>
+                  <a
+                    href="#"
+                    class="button is-warning is-outlined is-rounded mt-3"
+                    style="transition: transform 0.3s"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Choosing Your Gear -->
+            <div class="column is-one-third">
+              <div
+                class="card feature-card"
+                style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
+              >
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="images/land.png" alt="Gear Essentials" />
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <h3 class="title is-5 has-text-dark">Choosing Your Gear</h3>
+                  <p class="has-text-grey-dark">
+                    Equip yourself with the right gear—from clothing and weapons
+                    to accessories—tailored to the type of hunt and terrain.
+                  </p>
+                  <a
+                    href="#"
+                    class="button is-warning is-outlined is-rounded mt-3"
+                    style="transition: transform 0.3s"
+                    >Explore Gear</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Hunting Seasons & Licenses -->
+            <div class="column is-one-third">
+              <div
+                class="card feature-card"
+                style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
+              >
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img
+                      src="images/midwest.jpg"
+                      alt="Hunting Seasons & Licenses"
+                    />
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <h3 class="title is-5 has-text-dark">
+                    Hunting Seasons & Licenses
+                  </h3>
+                  <p class="has-text-grey-dark">
+                    Learn when and where to hunt different game species, and
+                    understand the importance of acquiring the right permits.
+                  </p>
+                  <a
+                    href="#"
+                    class="button is-warning is-outlined is-rounded mt-3"
+                    style="transition: transform 0.3s"
+                    >Get Licenses</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content mt-6">
+            <h2 class="title is-3 has-text-dark">Resources & Education</h2>
+            <p>
+              Whether you’re new to hunting or looking to expand your skills,
+              the Badger Hunting Club has a range of resources to help you
+              succeed. From courses on gun safety to detailed guides on wildlife
+              identification and field dressing techniques, we strive to make
+              sure you feel confident and prepared.
+            </p>
+            <ul>
+              <li>Guided beginner hunting workshops</li>
+              <li>Wildlife tracking and identification classes</li>
+              <li>Field dressing and meat processing seminars</li>
+              <li>Conservation and wildlife management education</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIAL SECTION -->
+      <section class="section has-background-light">
+        <div class="container">
+          <h2
+            class="title has-text-centered is-uppercase has-text-dark is-size-3 has-text-weight-bold"
+          >
+            What Our Members Are Saying
+          </h2>
+          <div class="columns is-multiline">
+            <div class="column is-half">
+              <div class="box">
+                <p class="has-text-dark">
+                  "The mentorship and resources provided by the Badger Hunting
+                  Club were exactly what I needed to start hunting confidently.
+                  Their Learn to Hunt program is fantastic!"
+                  <br /><strong>- Mark J.</strong>
+                </p>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="box">
+                <p class="has-text-dark">
+                  "The workshops on tracking and field dressing were super
+                  informative. I'm ready for my next hunting trip thanks to
+                  BHC!"
+                  <br /><strong>- Sarah P.</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- GALLERY SECTION                                                                           GALLERY -->
+    <section id="gallery" class="is-hidden">
+      <div class="body">
+        <h1 class="title">Gallery</h1>
+        <div class="button_container">
+          <button>
+            <a
+              href="https://www.instagram.com/bhcwisc/?hl=en"
+              class="has-text-white"
+            >
+              Explore Our Past Events!</a
+            >
+          </button>
+        </div>
+        <!-- First row of images -->
+        <div class="gallery-row">
+          <img
+            src="https://i0.wp.com/www.nationalreview.com/wp-content/uploads/2018/08/hunting-082718.jpg?fit=4800%2C3200&ssl=1https://i0.wp.com/www.nationalreview.com/wp-content/uploads/2018/08/hunting-082718.jpg?fit=4800%2C3200&ssl=1"
+            alt="gun photo"
+          />
+          <img
+            src="https://cdn.theatlantic.com/media/mt/food/HuntingDeer-SS-Post.jpg"
+            alt="deer photo"
+          />
+          <img
+            src="https://images.ctfassets.net/pujs1b1v0165/Hs4HiXw57wPqjVXC83RvZ/72d8234e42b3358f0ed27ffd01b83f57/04192022_Duckmade_Casey_Idaho-36.jpg?w=1200&fit=fill"
+            alt="duck photo"
+          />
+        </div>
+
+        <!-- Second row of images -->
+        <div class="gallery-row">
+          <img
+            src="https://npr.brightspotcdn.com/81/97/805a228f4cff84ff6b12733d1ad5/33-336206-terminology-shows-a-stereotypical-pheasant-hunting.jpg"
+            alt="shooting photo"
+          />
+          <img
+            src="https://www.outdoorlife.com/wp-content/uploads/2021/11/08/FB_IMG_1635968141716.jpg"
+            alt="bow picture"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR TEAM SECTION                                                                           OUR TEAM -->
+    <section id="team" class="is-hidden">
+      <!-- HERO SECTION -->
+      <!-- copied from learntohunt -->
+      <section
+        class="hero is-medium hero-banner"
+        style="
+          background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('images/forest_banner.jpg') center/cover;
+        "
+      >
+        <div class="hero-body has-text-centered">
+          <div class="container">
+            <h1
+              class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+            >
+              Our Team
+            </h1>
+            <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+              Learn more about our officers!
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- got rid of old body -->
+      <div
+        class="columns is-multiline is-centered is-vcentered"
+        style="min-height: 100vh"
+      >
+        <!-- Card for each club officer -->
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  src="images/Achal_Gowda.jpeg"
+                  alt="Club Officer Headshot"
+                />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">Achal Gowda</p>
+                  <p class="subtitle is-6">President</p>
+                </div>
+              </div>
+              <div class="content">
+                <p>
+                  Email:
+                  <a href="mailto:example@example.com">agowda2@wisc.edu</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate the above card block for each additional club officer -->
+        <div class="column is-half-tablet is-one-third-desktop">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  src="images/Austin_Wiedemeier.jpeg"
+                  alt="Club Officer Headshot"
+                />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">Austin Wiedemeier</p>
+                  <p class="subtitle is-6">VP and Treasurer</p>
+                </div>
+              </div>
+              <div class="content">
+                <p>
+                  Email:
+                  <a href="mailto:example@example.com">awiedemeier@wisc.edu</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT US SECTION                                                                         CONTACT US -->
+    <section id="contact_us" class="is-hidden">
+      <section
+        class="hero is-medium hero-banner"
+        style="
+          background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('images/60ab94_3b2f23faaa7e4e92965c1bec635b70a0~mv2.jpg')
+              center/cover;
+        "
+      >
+        <div class="hero-body has-text-centered">
+          <div class="container">
+            <h1
+              class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+            >
+              Contact Us
+            </h1>
+            <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+              Looking to learn more? Reach out to us via email or socials.
+            </h2>
+          </div>
+        </div>
+      </section>
+      <!-- The goofy ahh email form -->
+
+      <!-- Will probably have to not allow submission if email and body aren't filled in and such -->
+      <section class="section">
+        <div class="container">
+          <form>
+            <!-- Email field -->
+            <div class="field">
+              <label class="label">Your Email</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="email"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Subject field -->
+            <div class="field">
+              <label class="label">Subject</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Enter the subject"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Message field -->
+            <div class="field">
+              <label class="label">Your Message</label>
+              <div class="control">
+                <textarea
+                  class="textarea"
+                  placeholder="Write your message here"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary" type="submit">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- END OF EMAIL FORM -->
+    </section>
+
+    <!--  FOOTER - UNIVERSAL FOR EACH PAGE                                                           FOOTER -->
+    <footer class="footer has-background-dark has-text-white-ter">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Connect With Us</h3>
+            <p>Follow us on social media to stay updated on events and news.</p>
+            <p>
+              <a
+                href="https://www.facebook.com/bhcwisc"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-facebook-square fa-2x"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/bhcwisc/?hl=en"
+                class="has-text-warning mr-3"
+              >
+                <i class="fab fa-instagram-square fa-2x"></i>
+              </a>
+            </p>
+          </div>
+          <div class="column">
+            <h3 class="title is-4 has-text-white">Quick Links</h3>
+            <ul>
+              <li>
+                <a href="home.html" class="has-text-grey-lighter">Home</a>
+              </li>
+              <li>
+                <a href="aboutus.html" class="has-text-grey-lighter"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="resources.html" class="has-text-grey-lighter"
+                  >Resources</a
+                >
+              </li>
+              <li>
+                <a href="gallery.html" class="has-text-grey-lighter">Gallery</a>
+              </li>
+              <li>
+                <a href="Our Team.html" class="has-text-grey-lighter"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="contactUs.html" class="has-text-grey-lighter"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- LINK TO JAVASCRIPT -->
+    <script src="app.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyABl7tfz2siTbIw2zuHB_OZbMi6k_FQS_w",
+        authDomain: "bhc-test-129a0.firebaseapp.com",
+        projectId: "bhc-test-129a0",
+        storageBucket: "bhc-test-129a0.firebasestorage.app",
+        messagingSenderId: "266494051969",
+        appId: "1:266494051969:web:1c8051d177cea70f63af80",
+      };
     </script>
   </body>
 </html>
