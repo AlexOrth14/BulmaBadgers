@@ -140,7 +140,7 @@
           <p>Announcements</p>
         </div>
         <div id="columns" class="columns ml-6 mr-6">
-          <div class="card column">
+          <!-- <div class="card column">
             <div class="card-content">
               <p class="title">Hunter Safety Workshop</p>
               <p class="subtitle">Topic: Event, Sep. 21st, 2024</p>
@@ -172,8 +172,18 @@
                 demonstrate leadership skills
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
+      </div>
+
+      <div id="admin_ann" class="is-center">
+        <h1 class="title">
+          Add an Announcement - Will be Configured w Admin Viewing L8R
+        </h1>
+        <p>Title: <input type="text" id="ann_title" /></p>
+        <p>Topic: <input type="text" id="ann_topic" /></p>
+        <p>Content: <input type="text" id="ann_content" /></p>
+        <button id="ann_submit">Submit</button>
       </div>
 
       <!-- CALENDAR CHUNK -->
@@ -832,10 +842,20 @@
         </div>
       </div>
     </footer>
-    <!-- LINK TO JAVASCRIPT -->
-    <script src="app.js"></script>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
     <script>
-      // Your web app's Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyABl7tfz2siTbIw2zuHB_OZbMi6k_FQS_w",
         authDomain: "bhc-test-129a0.firebaseapp.com",
@@ -844,6 +864,18 @@
         messagingSenderId: "266494051969",
         appId: "1:266494051969:web:1c8051d177cea70f63af80",
       };
+      // Your web app's Firebase configuration
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      // define authentication variable
+      let auth = firebase.auth();
+      let db = firebase.firestore();
+
+      // define a storage reference
+      let ref = firebase.storage().ref();
     </script>
+    <!-- LINK TO JAVASCRIPT -->
+    <script src="app.js"></script>
   </body>
 </html>

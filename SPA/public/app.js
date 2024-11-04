@@ -59,6 +59,7 @@ home_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  show_announcements();
 });
 home_button.onclick = function () {
   window.scrollTo({
@@ -74,6 +75,7 @@ quick_home.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  show_announcements();
 });
 quick_home.onclick = function () {
   window.scrollTo({
@@ -274,3 +276,82 @@ if (showMoreBtn) {
     showMoreBtn.style.display = "none"; // Hide the button after clicking
   });
 }
+
+function del_doc(id) {
+  db.collection("announcements")
+    .doc(id)
+    .delete()
+    .then(() => {
+      alert("announcement deleted");
+      show_announcements();
+    });
+}
+
+const ann_submit = document.querySelector("#ann_submit");
+
+ann_submit.addEventListener("click", () => {
+  let title = document.querySelector("#ann_title").value;
+  let topic = document.querySelector("#ann_topic").value;
+  let content = document.querySelector("#ann_content").value;
+
+  console.log(title);
+
+  let announcement = {
+    title: title,
+    topic: topic,
+    content: content,
+  };
+
+  console.log(announcement);
+
+  db.collection("announcements")
+    .add(announcement)
+    .then(() => {
+      alert("announcement added");
+      show_announcements();
+    });
+
+  document.querySelector("#ann_title").value = "";
+  document.querySelector("#ann_topic").value = "";
+  document.querySelector("#ann_content").value = "";
+});
+
+function show_announcements() {
+  db.collection("announcements")
+    .get()
+    .then((mydata) => {
+      let docs = mydata.docs;
+
+      let html = ``;
+
+      docs.forEach((d) => {
+        html += `<div class="card column">
+            <div class="card-content">
+              <p class="title">${
+                d.data().title
+              } <button class="is-pulled-right" onclick="del_doc('${
+          d.id
+        }')">Delete</button></p>
+              <p class="subtitle">${d.data().topic}</p>
+              <div class="content">
+                ${d.data().content}
+               
+              </div>
+            </div>
+          </div>`;
+      });
+
+      document.querySelector("#columns").innerHTML = html;
+      if (docs.length == 0) {
+        document.querySelector(
+          "#columns"
+        ).innerHTML = `<div class="card column">
+            <div class="card-content">
+              <p class="title">No Announcements</p>
+            </div>
+          </div>`;
+      }
+    });
+}
+
+show_announcements();

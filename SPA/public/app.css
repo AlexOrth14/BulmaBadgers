@@ -140,8 +140,10 @@ body {
 }
 
 /* flex thing helps make cards responsive + px is the base size for them */
+
+/* note for later, apply this for gallery formatting */
 #home .card {
-  flex: 1 1 300px;
+  flex: 1 1 400px;
   margin: 10px;
   border-radius: 10px;
 }
