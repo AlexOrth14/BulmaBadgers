@@ -44,6 +44,12 @@ const team = document.getElementById("team");
 const team_button = document.getElementById("team_button");
 const contact_us = document.getElementById("contact_us");
 const contact_button = document.getElementById("contact_button");
+const quick_home = document.getElementById("quick_home");
+const quick_resources = document.getElementById("quick_resources");
+const quick_about = document.getElementById("quick_about");
+const quick_contact = document.getElementById("quick_contact");
+const quick_gallery = document.getElementById("quick_gallery");
+const quick_team = document.getElementById("quick_team");
 
 // JS FOR WHEN HOME IS CLICKED
 home_button.addEventListener("click", () => {
@@ -55,6 +61,21 @@ home_button.addEventListener("click", () => {
   gallery.classList.add("is-hidden");
 });
 home_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
+
+quick_home.addEventListener("click", () => {
+  home.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  contact_us.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+});
+quick_home.onclick = function () {
   window.scrollTo({
     top: 0,
     behavior: "smooth", // Smooth scroll animation
@@ -77,6 +98,21 @@ resources_button.onclick = function () {
   });
 };
 
+quick_resources.addEventListener("click", () => {
+  resources.classList.remove("is-hidden");
+  home.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  contact_us.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+});
+quick_resources.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
+
 // JS FOR ABOUT US
 about_button.addEventListener("click", () => {
   about_us.classList.remove("is-hidden");
@@ -87,6 +123,21 @@ about_button.addEventListener("click", () => {
   gallery.classList.add("is-hidden");
 });
 about_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
+
+quick_about.addEventListener("click", () => {
+  about_us.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  contact_us.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+});
+quick_about.onclick = function () {
   window.scrollTo({
     top: 0,
     behavior: "smooth", // Smooth scroll animation
@@ -109,6 +160,21 @@ gallery_button.onclick = function () {
   });
 };
 
+quick_gallery.addEventListener("click", () => {
+  gallery.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  contact_us.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+});
+quick_gallery.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
+
 // JS FOR OUR TEAM
 team_button.addEventListener("click", () => {
   team.classList.remove("is-hidden");
@@ -125,6 +191,21 @@ team_button.onclick = function () {
   });
 };
 
+quick_team.addEventListener("click", () => {
+  team.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  contact_us.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+});
+quick_team.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
+
 // JS FOR CONTACT US
 contact_button.addEventListener("click", () => {
   contact_us.classList.remove("is-hidden");
@@ -135,6 +216,21 @@ contact_button.addEventListener("click", () => {
   gallery.classList.add("is-hidden");
 });
 contact_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
+
+quick_contact.addEventListener("click", () => {
+  contact_us.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+});
+quick_contact.onclick = function () {
   window.scrollTo({
     top: 0,
     behavior: "smooth", // Smooth scroll animation
