@@ -358,13 +358,13 @@ body {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-#gallery button {
+#gal_title {
   padding: 10px 20px;
   display: block;
   color: white;
   border-color: #44553a;
   background-color: #44553a;
-  margin: 20px auto;
+  margin: auto;
   font-size: 32px;
 }
 

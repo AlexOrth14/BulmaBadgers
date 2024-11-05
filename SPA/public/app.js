@@ -291,6 +291,39 @@ function configure_msg_bar(msg) {
   }, 3000);
 }
 
+const gallery_submit = document.querySelector("#gal_submit");
+
+gallery_submit.addEventListener("click", async () => {
+  //construct a Gallery object
+  let file = document.querySelector("#gal_image").files[0];
+
+  let image = new Date() + "_" + file.name;
+
+  const task = ref.child(image).put(file);
+
+  try {
+    const snapshot = await task;
+    const url = await snapshot.ref.getDownloadURL();
+
+    let gallery_image = {
+      // author: auth.currentUser.email,
+      url: url,
+      // desc: document.querySelector("gal_desc").value,
+    };
+
+    console.log(gallery_image);
+
+    await db.collection("gallery").add(gallery_image);
+    configure_msg_bar("You've added a gallery photo!");
+
+    // Clear the form after successful submission   ADD DESC LATER
+    document.querySelector("#gal_image").value = "";
+  } catch (error) {
+    // Handle any errors that occurred during the upload or form submission
+    alert(console.error("Error:", error));
+  }
+});
+
 function del_doc(id) {
   db.collection("announcements")
     .doc(id)

@@ -579,19 +579,36 @@
     </section>
 
     <!-- GALLERY SECTION                                                                           GALLERY -->
+    <div style="height: 100px"></div>
+
     <section id="gallery" class="is-hidden">
       <div class="body">
         <h1 class="title">Gallery</h1>
         <div class="button_container">
-          <button>
-            <a
-              href="https://www.instagram.com/bhcwisc/?hl=en"
-              class="has-text-white"
-            >
-              Explore Our Past Events!</a
-            >
-          </button>
+          <a
+            id="gal_title"
+            href="https://www.instagram.com/bhcwisc/?hl=en"
+            class="has-text-white"
+          >
+            Explore Our Past Events!</a
+          >
         </div>
+
+        <!-- IMAGE UPLOAD FIELD -->
+        <div class="field">
+          <label class="label">Image</label>
+          <div class="control">
+            <input
+              class="input"
+              type="file"
+              id="gal_image"
+              placeholder="Choose Image"
+            />
+          </div>
+          <button id="gal_submit">Submit</button>
+        </div>
+
+        <div id="gallery_collection" class="is-flex"></div>
         <!-- First row of images -->
         <div class="gallery-row">
           <img
@@ -878,8 +895,6 @@
       // define authentication variable
       let auth = firebase.auth();
       let db = firebase.firestore();
-
-      // define a storage reference
       let ref = firebase.storage().ref();
     </script>
     <!-- LINK TO JAVASCRIPT -->
