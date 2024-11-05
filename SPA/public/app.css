@@ -148,6 +148,10 @@ body {
   border-radius: 10px;
 }
 
+#home #admin_ann {
+  border: solid 2px rgb(43, 23, 23);
+}
+
 #home #tiles .card {
   flex: 1 1 300px;
   margin: 10px;
