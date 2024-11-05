@@ -277,12 +277,26 @@ if (showMoreBtn) {
   });
 }
 
+const msg_bar = document.querySelector("#message_bar");
+
+function configure_msg_bar(msg) {
+  // display message
+  msg_bar.innerHTML = msg;
+  msg_bar.classList.remove("is-hidden");
+
+  // hide after 3 seconds
+  setTimeout(() => {
+    msg_bar.classList.add("is-hidden");
+    msg_bar.innerHTML = "";
+  }, 3000);
+}
+
 function del_doc(id) {
   db.collection("announcements")
     .doc(id)
     .delete()
     .then(() => {
-      alert("announcement deleted");
+      configure_msg_bar("announcement deleted!");
       show_announcements();
     });
 }
@@ -294,20 +308,16 @@ ann_submit.addEventListener("click", () => {
   let topic = document.querySelector("#ann_topic").value;
   let content = document.querySelector("#ann_content").value;
 
-  console.log(title);
-
   let announcement = {
     title: title,
     topic: topic,
     content: content,
   };
 
-  console.log(announcement);
-
   db.collection("announcements")
     .add(announcement)
     .then(() => {
-      alert("announcement added");
+      configure_msg_bar("announcement added!");
       show_announcements();
     });
 

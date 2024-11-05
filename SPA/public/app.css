@@ -13,6 +13,16 @@ body {
 .navbar {
   background-color: #3b5323;
   border-bottom: 2px solid rgb(69, 40, 40);
+  z-index: 10;
+}
+
+#message_bar {
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  z-index: 9;
+  background-color: whitesmoke;
+  height: fit-content;
 }
 
 .navbar-brand .navbar-item,
