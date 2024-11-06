@@ -299,11 +299,17 @@ gallery_submit.addEventListener("click", async () => {
 
   let image = new Date() + "_" + file.name;
 
+  console.log(image);
+
   const task = ref.child(image).put(file);
+
+  console.log(task);
 
   try {
     const snapshot = await task;
     const url = await snapshot.ref.getDownloadURL();
+
+    console.log(url);
 
     let gallery_image = {
       // author: auth.currentUser.email,
@@ -320,7 +326,8 @@ gallery_submit.addEventListener("click", async () => {
     document.querySelector("#gal_image").value = "";
   } catch (error) {
     // Handle any errors that occurred during the upload or form submission
-    alert(console.error("Error:", error));
+    console.error("Error:", error);
+    alert("error");
   }
 });
 
