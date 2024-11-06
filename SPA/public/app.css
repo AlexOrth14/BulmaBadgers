@@ -368,25 +368,34 @@ body {
   font-size: 32px;
 }
 
+/* at the moment this just applies to the cards in announcements */
+/* wrap so that it fits phone and smaller screens #adaptive design */
+#gallery .columns {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+#gallery .gallery_card {
+  flex: 1 1 300px;
+  overflow: hidden;
+  height: 100mm;
+  margin: 5px;
+}
+
 #gallery .button_container {
   display: flex;
   justify-content: center;
 }
 #gallery .body img {
-  height: 100mm;
-  width: 100mm;
-  margin: 20px;
+  min-height: 100mm;
+  max-height: 120mm;
+  width: 100%;
 }
 #gallery h1 {
   text-align: center;
-}
-#gallery .gallery-row {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between images */
-  margin-bottom: 20px;
-}
-#gallery .gallery-row img {
-  height: 200px; /* Ensures all images are the same height */
-  width: auto; /* Keeps the aspect ratio */
 }
