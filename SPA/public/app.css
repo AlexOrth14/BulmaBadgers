@@ -153,9 +153,15 @@ body {
 
 /* note for later, apply this for gallery formatting */
 #home #announcements .card {
-  flex: 1 1 400px;
+  flex: 1 1 auto;
   margin: 10px;
   border-radius: 10px;
+}
+
+#home #announcements .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #home #admin_ann {
@@ -204,7 +210,7 @@ body {
   border-top: 3px solid rgb(43, 23, 23);
 }
 
-#home .card-content {
+#home #tiles .card-content {
   color: white;
   font-size: 25px;
 }
@@ -393,6 +399,13 @@ body {
 #gallery .card-image {
   display: inline-block;
   justify-content: center;
+  position: relative;
+}
+
+#gallery .overlay-button {
+  padding: 10px 20px;
+  position: absolute;
+  transform: translate(-100%, 795%);
 }
 
 #gallery .button_container {

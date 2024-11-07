@@ -346,6 +346,16 @@ function del_doc(id) {
     });
 }
 
+function gal_del_doc(id) {
+  db.collection("gallery")
+    .doc(id)
+    .delete()
+    .then(() => {
+      configure_msg_bar("Image deleted!");
+      show_gallery();
+    });
+}
+
 const ann_submit = document.querySelector("#ann_submit");
 
 ann_submit.addEventListener("click", () => {
@@ -421,7 +431,13 @@ function show_gallery() {
         html += `<div class="gallery_card column">
       <div class="card-image">
         <a> <img src="${d.data().url}" /></a>
+        
       </div>
+    
+      <button class="overlay-button" style="" onclick="gal_del_doc('${
+        d.id
+      }')">Delete</button>
+    
     </div>`;
       });
       document.querySelector("#gallery_collection").innerHTML = html;
