@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .add(message)
         .then(() => {
           alert("Message sent!");
-          document.querySelector("form").reset();
+          document.getElementById("contact_form").reset();
           console.log("Message sent successfully");
         })
         .catch((error) => {
