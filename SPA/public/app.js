@@ -285,11 +285,11 @@ function configure_msg_bar(msg, type = "success") {
   msg_bar.classList.remove("is-hidden");
 
   if (type === "error") {
-    msg_bar.classList.add("is-danger");
-    msg_bar.classList.remove("is-success");
+    msg_bar.classList.add("has-background-danger");
+    msg_bar.classList.remove("has-background-success");
   } else {
-    msg_bar.classList.add("is-success");
-    msg_bar.classList.remove("is-danger");
+    msg_bar.classList.add("has-background-success");
+    msg_bar.classList.remove("has-background-danger");
   }
   // hide after 3 seconds
   setTimeout(() => {
