@@ -1,7 +1,7 @@
 // HEY THERE BUDDY!.... ONLY PLACE CONTENT THAT APPLIES TO ALL PAGES HERE
 
 /* Pro tip, link this app.js to your page in addition to your custom .js file*/
-
+//console.log(firebase);
 // MOBILE NAVBAR CODE
 // had to add this for fitting navbar better on mobile
 document.addEventListener("DOMContentLoaded", () => {
@@ -405,3 +405,44 @@ function show_announcements() {
 }
 
 show_announcements();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const submitButton = document.querySelector("#submit_btn");
+
+  if (submitButton) {
+    submitButton.addEventListener("click", function () {
+      const contact_email = document.querySelector("#contact_email").value;
+      const subject = document.querySelector("#subject").value;
+      const message_body = document.querySelector("#message_body").value;
+
+      // Validation
+      if (!contact_email || !subject || !message_body) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      const message = {
+        contact_email: contact_email,
+        subject: subject,
+        message_body: message_body,
+      };
+
+      // Add console.log to debug
+      console.log("Attempting to send message:", message);
+
+      db.collection("messages")
+        .add(message)
+        .then(() => {
+          alert("Message sent!");
+          document.querySelector("form").reset();
+          console.log("Message sent successfully");
+        })
+        .catch((error) => {
+          console.error("Error writing to database:", error);
+          alert("Error sending message: " + error.message);
+        });
+    });
+  } else {
+    console.error("Submit button not found");
+  }
+});

@@ -779,49 +779,39 @@
       <!-- Will probably have to not allow submission if email and body aren't filled in and such -->
       <section class="section">
         <div class="container">
-          <form>
-            <!-- Email field -->
+          <form onsubmit="return false;">
+            <!-- Add this onsubmit -->
             <div class="field">
               <label class="label">Your Email</label>
               <div class="control">
-                <input
-                  class="input"
-                  type="email"
-                  placeholder="Enter your email address"
-                  required
-                />
+                <input class="input" type="email" id="contact_email" required />
               </div>
             </div>
 
-            <!-- Subject field -->
             <div class="field">
               <label class="label">Subject</label>
               <div class="control">
-                <input
-                  class="input"
-                  type="text"
-                  placeholder="Enter the subject"
-                  required
-                />
+                <input class="input" type="text" id="subject" required />
               </div>
             </div>
 
-            <!-- Message field -->
             <div class="field">
               <label class="label">Your Message</label>
               <div class="control">
                 <textarea
                   class="textarea"
-                  placeholder="Write your message here"
+                  id="message_body"
                   required
                 ></textarea>
               </div>
             </div>
 
-            <!-- Submit button -->
             <div class="field">
               <div class="control">
-                <button class="button is-primary" type="submit">Submit</button>
+                <!-- Change type to "button" -->
+                <button class="button is-primary" type="button" id="submit_btn">
+                  Submit
+                </button>
               </div>
             </div>
           </form>
