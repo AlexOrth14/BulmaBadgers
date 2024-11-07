@@ -279,11 +279,18 @@ if (showMoreBtn) {
 
 const msg_bar = document.querySelector("#message_bar");
 
-function configure_msg_bar(msg) {
+function configure_msg_bar(msg, type = "success") {
   // display message
   msg_bar.innerHTML = msg;
   msg_bar.classList.remove("is-hidden");
 
+  if (type === "error") {
+    msg_bar.classList.add("is-danger");
+    msg_bar.classList.remove("is-success");
+  } else {
+    msg_bar.classList.add("is-success");
+    msg_bar.classList.remove("is-danger");
+  }
   // hide after 3 seconds
   setTimeout(() => {
     msg_bar.classList.add("is-hidden");
@@ -417,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Validation
       if (!contact_email || !subject || !message_body) {
-        alert("Please fill in all fields");
+        configure_msg_bar("Please fill in all fields!", "error");
         return;
       }
 
@@ -433,13 +440,13 @@ document.addEventListener("DOMContentLoaded", function () {
       db.collection("messages")
         .add(message)
         .then(() => {
-          alert("Message sent!");
+          configure_msg_bar("Message sent!", "success");
           document.getElementById("contact_form").reset();
           console.log("Message sent successfully");
         })
         .catch((error) => {
           console.error("Error writing to database:", error);
-          alert("Error sending message: " + error.message);
+          configure_msg_bar("Error sending message: " + error.message, "error");
         });
     });
   } else {
