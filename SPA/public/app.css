@@ -372,19 +372,27 @@ body {
 /* wrap so that it fits phone and smaller screens #adaptive design */
 #gallery .columns {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   flex-wrap: wrap;
   margin-right: 20px;
   margin-left: 20px;
   padding-top: 5px;
   padding-bottom: 20px;
+  justify-content: center;
 }
 
 #gallery .gallery_card {
-  flex: 1 1 300px;
   overflow: hidden;
   height: 100mm;
   margin: 5px;
+  display: inline-block;
+  max-width: 500px;
+  flex: 1 1 350px;
+}
+
+#gallery .card-image {
+  display: inline-block;
+  justify-content: center;
 }
 
 #gallery .button_container {
@@ -392,6 +400,7 @@ body {
   justify-content: center;
 }
 #gallery .body img {
+  display: block;
   min-height: 100mm;
   max-height: 120mm;
   width: 100%;

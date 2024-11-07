@@ -324,17 +324,15 @@ gallery_submit.addEventListener("click", async () => {
       // desc: document.querySelector("gal_desc").value,
     };
 
-    console.log(gallery_image);
-
     await db.collection("gallery").add(gallery_image);
     configure_msg_bar("You've added a gallery photo!");
+    show_gallery();
 
     // Clear the form after successful submission   ADD DESC LATER
     document.querySelector("#gal_image").value = "";
   } catch (error) {
     // Handle any errors that occurred during the upload or form submission
     console.error("Error:", error);
-    alert("error");
   }
 });
 
@@ -411,7 +409,27 @@ function show_announcements() {
     });
 }
 
+function show_gallery() {
+  db.collection("gallery")
+    .get()
+    .then((mydata) => {
+      let docs = mydata.docs;
+
+      let html = ``;
+
+      docs.forEach((d) => {
+        html += `<div class="gallery_card column">
+      <div class="card-image">
+        <a> <img src="${d.data().url}" /></a>
+      </div>
+    </div>`;
+      });
+      document.querySelector("#gallery_collection").innerHTML = html;
+    });
+}
+
 show_announcements();
+show_gallery();
 
 document.addEventListener("DOMContentLoaded", function () {
   const submitButton = document.querySelector("#submit_btn");
