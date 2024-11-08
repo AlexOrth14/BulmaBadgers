@@ -34,7 +34,7 @@ closeModal.forEach((el) => {
 // LOGIN MODALTOGGLE
 const loginButton = document.getElementById("login_button");
 const loginModal = document.getElementById("signin_modal");
-// const closeModal = document.querySelectorAll(".delete, #close_modal");
+const login_closeModal = document.querySelectorAll(".delete, #close_modal");
 
 if (loginButton && loginModal) {
   loginButton.addEventListener("click", () => {
@@ -42,7 +42,7 @@ if (loginButton && loginModal) {
   });
 }
 
-closeModal.forEach((el) => {
+login_closeModal.forEach((el) => {
   el.addEventListener("click", () => {
     loginModal.classList.remove("is-active");
   });
@@ -514,59 +514,128 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-//sign up code
+let admin_view = document.querySelectorAll(".admin");
 
-document.addEventListener("DOMContentLoaded", function () {
-  const signupButton = document.querySelector("#submit_signup");
+const signupForm = document.getElementById("signup_form");
+const signup_button = document.getElementById("signup_button");
+const login_button = document.getElementById("login_button");
+const logout_button = document.getElementById("logout_button");
 
-  if (signupButton) {
-    signupButton.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevent the form from submitting normally
+// SIGNUP
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-      const signup_email = document.querySelector("#signup_email").value;
-      const signup_password = document.querySelector("#signup_password").value;
+  let signup_email = document.querySelector("#signup_email").value;
+  let signup_pass = document.querySelector("#signup_password").value;
 
-      // Firebase Authentication to create a new user
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(signup_email, signup_password)
-        .then((userCredential) => {
-          // User successfully signed up
-          const user = userCredential.user;
-          alert("User created successfully!");
-          console.log("Signed up user:", user);
+  // Firebase Authentication to create a new user
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(signup_email, signup_pass)
+    .then((userCredential) => {
+      // User successfully signed up
+      const user = userCredential.user;
+      configure_msg_bar(`User ${signup_email} created successfully!`);
 
-          // Here you might want to close the modal after signup
-          closeSignupModal();
+      // close the modal after signup
+      closeSignupModal();
 
-          // You can also add additional code to save more user info to Firestore
-          const userInfo = {
-            email: signup_email,
-            createdAt: new Date(),
-          };
+      // You can also add additional code to save more user info to Firestore
+      const userInfo = {
+        email: signup_email,
+        admin: 0,
+        createdAt: new Date(),
+      };
 
-          return firebase.firestore().collection("users").add(userInfo);
-        })
-        .then(() => {
-          console.log("User info saved to Firestore.");
-        })
-        .catch((error) => {
-          // Handle errors here
-          const errorMessage = error.message;
-          alert("Error: " + errorMessage);
-        });
+      return firebase
+        .firestore()
+        .collection("users")
+        .doc(signup_email)
+        .set(userInfo);
+    })
+    .then(() => {
+      console.log("User info saved to Firestore.");
+    })
+    .catch((error) => {
+      // Handle errors here
+      const errorMessage = error.message;
+      alert("Error: " + errorMessage);
     });
-  }
+});
 
-  // Function to close the modal
-  function closeSignupModal() {
-    const modal = document.querySelector("#signup_modal");
-    modal.classList.remove("is-active"); // Adjust according to your Bulma modal styling
-  }
+// SIGNIN
+signin_form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-  // Event listener for modal close button
-  const closeModalButton = document.querySelector("#close_modal");
-  if (closeModalButton) {
-    closeModalButton.addEventListener("click", closeSignupModal);
+  let email = document.querySelector("#signin_email").value;
+  let pass = document.querySelector("#signin_password").value;
+
+  auth.signInWithEmailAndPassword(email, pass).then((userCredential) => {
+    const user = userCredential.user;
+    configure_msg_bar(`User ${email} signed in!`);
+    document.querySelector("#signin_modal").classList.remove("is-active");
+  });
+});
+
+// LOGOUT
+
+logout_button.addEventListener("click", () => {
+  auth.signOut().then(() => {
+    // display a message that user signed out
+    document.querySelector("#signin_modal").classList.remove("is-active");
+    configure_msg_bar("You are now signed out!");
+  });
+});
+
+// Function to close the modal
+function closeSignupModal() {
+  const modal = document.querySelector("#signup_modal");
+  modal.classList.remove("is-active"); // Adjust according to your Bulma modal styling
+}
+
+// Event listener for modal close button
+const closeModalButton = document.querySelector("#close_modal");
+if (closeModalButton) {
+  closeModalButton.addEventListener("click", closeSignupModal);
+}
+
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    document.querySelector(
+      "#view_user"
+    ).innerHTML += `&nbsp; user: ${user.email}`;
+    login_button.classList.add("is-hidden");
+    signup_button.classList.add("is-hidden");
+    logout_button.classList.remove("is-hidden");
+
+    db.collection("users")
+      .doc(user.email)
+      .get()
+      .then((d) => {
+        // admin value of 1 means admin user. a value of 0 means no admin
+        let admin = d.data().admin;
+        console.log(admin);
+
+        if (admin == 1) {
+          // admin can see admin editing boxes
+          admin_view.forEach((a) => {
+            a.classList.remove("is-hidden");
+          });
+        } else {
+          // a signed-in admin user can view and edit user roles
+          admin_view.forEach((a) => {
+            a.classList.add("is-hidden");
+          });
+        }
+      });
+  } else {
+    login_button.classList.remove("is-hidden");
+    signup_button.classList.remove("is-hidden");
+    logout_button.classList.add("is-hidden");
+    document.querySelector("#view_user").innerHTML = "";
+
+    admin_view.forEach((a) => {
+      a.classList.add("is-hidden");
+    });
   }
 });
