@@ -14,10 +14,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// MODALTOGGLE
+// sign up MODALTOGGLE
+const signupButton = document.getElementById("signup_button");
+const signupModal = document.getElementById("signup_modal");
+const closeModal = document.querySelectorAll(".delete, #close_modal");
+
+if (signupButton && signupModal) {
+  signupButton.addEventListener("click", () => {
+    signupModal.classList.add("is-active");
+  });
+}
+
+closeModal.forEach((el) => {
+  el.addEventListener("click", () => {
+    signupModal.classList.remove("is-active");
+  });
+});
+
+// LOGIN MODALTOGGLE
 const loginButton = document.getElementById("login_button");
 const loginModal = document.getElementById("signin_modal");
-const closeModal = document.querySelectorAll(".delete, #close_modal");
+// const closeModal = document.querySelectorAll(".delete, #close_modal");
 
 if (loginButton && loginModal) {
   loginButton.addEventListener("click", () => {

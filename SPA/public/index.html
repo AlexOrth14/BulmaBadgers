@@ -70,7 +70,13 @@
             href="#"
             id="login_button"
             class="navbar-item button is-warning is-rounded ml-3"
-            >Member Login</a
+            >Login</a
+          >
+          <a
+            href="#"
+            id="signup_button"
+            class="navbar-item button is-warning is-rounded ml-3"
+            >Sign Up</a
           >
         </div>
       </div>
@@ -81,12 +87,57 @@
       class="navbar-divider has-text-centered p-1 is-hidden"
     ></div>
 
+    <!-- Sign Up MODAL - UNIVERSAL FOR EACH PAGE                                                        LOGIN MODAL-->
+    <div class="modal" id="signup_modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Sign Up</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form id="signup_form">
+            <!-- Email -->
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input
+                  type="email"
+                  class="input"
+                  id="email_"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  type="password"
+                  class="input"
+                  id="password_"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+            </div>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="submit_signup">Sign Up</button>
+          <button class="button" id="close_modal">Cancel</button>
+        </footer>
+      </div>
+    </div>
+    
     <!-- LOGIN MODAL - UNIVERSAL FOR EACH PAGE                                                        LOGIN MODAL-->
     <div class="modal" id="signin_modal">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Member Login</p>
+          <p class="modal-card-title">Login</p>
           <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
