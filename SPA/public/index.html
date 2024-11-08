@@ -78,6 +78,12 @@
             class="navbar-item button is-warning is-rounded ml-3"
             >Sign Up</a
           >
+          <a
+            href="#"
+            id="logout_button"
+            class="navbar-item button is-warning is-rounded ml-3 is-hidden"
+            >Logout</a
+          >
         </div>
       </div>
     </nav>
@@ -168,12 +174,14 @@
                 />
               </div>
             </div>
+            <!-- submit -->
+            <div class="field">
+              <div class="control">
+                <button class="m-3 button is-link">Submit</button>
+              </div>
+            </div>
           </form>
         </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success" id="submit_login">Login</button>
-          <button class="button" id="close_modal">Cancel</button>
-        </footer>
       </div>
     </div>
 
@@ -191,7 +199,7 @@
       </div>
 
       <!-- ADMIN ANNOUNCEMENTS ADD -->
-      <div id="admin_ann" class="is-center p-3 has-background-white">
+      <div id="admin_ann" class="is-center p-3 has-background-white admin">
         <h3 class="title">Add an Announcement</h3>
         <p>
           Title: <input type="text" id="ann_title" /><span>
@@ -612,7 +620,7 @@
         </div>
 
         <!-- IMAGE UPLOAD FIELD -->
-        <div class="field">
+        <div class="field admin">
           <label class="label">Image</label>
           <div class="control">
             <input
