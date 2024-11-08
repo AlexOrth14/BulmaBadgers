@@ -472,6 +472,7 @@ function show_gallery() {
 show_announcements();
 show_gallery();
 
+//submitting a message on contact us
 document.addEventListener("DOMContentLoaded", function () {
   const submitButton = document.querySelector("#submit_btn");
 
@@ -510,5 +511,62 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   } else {
     console.error("Submit button not found");
+  }
+});
+
+//sign up code
+
+document.addEventListener("DOMContentLoaded", function () {
+  const signupButton = document.querySelector("#submit_signup");
+
+  if (signupButton) {
+    signupButton.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      const signup_email = document.querySelector("#signup_email").value;
+      const signup_password = document.querySelector("#signup_password").value;
+
+      // Firebase Authentication to create a new user
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(signup_email, signup_password)
+        .then((userCredential) => {
+          // User successfully signed up
+          const user = userCredential.user;
+          alert("User created successfully!");
+          console.log("Signed up user:", user);
+
+          // Here you might want to close the modal after signup
+          closeSignupModal();
+
+          // You can also add additional code to save more user info to Firestore
+          const userInfo = {
+            email: signup_email,
+            createdAt: new Date(),
+          };
+
+          return firebase.firestore().collection("users").add(userInfo);
+        })
+        .then(() => {
+          console.log("User info saved to Firestore.");
+        })
+        .catch((error) => {
+          // Handle errors here
+          const errorMessage = error.message;
+          alert("Error: " + errorMessage);
+        });
+    });
+  }
+
+  // Function to close the modal
+  function closeSignupModal() {
+    const modal = document.querySelector("#signup_modal");
+    modal.classList.remove("is-active"); // Adjust according to your Bulma modal styling
+  }
+
+  // Event listener for modal close button
+  const closeModalButton = document.querySelector("#close_modal");
+  if (closeModalButton) {
+    closeModalButton.addEventListener("click", closeSignupModal);
   }
 });
