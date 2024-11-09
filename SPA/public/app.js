@@ -635,6 +635,7 @@ signupForm.addEventListener("submit", (e) => {
 
   let signup_email = document.querySelector("#signup_email").value;
   let signup_pass = document.querySelector("#signup_password").value;
+  let signup_name = document.querySelector("#full_name").value; 
 
   // Firebase Authentication to create a new user
   firebase
@@ -651,6 +652,7 @@ signupForm.addEventListener("submit", (e) => {
       // You can also add additional code to save more user info to Firestore
       const userInfo = {
         email: signup_email,
+        name: signup_name,
         admin: 0,
         createdAt: new Date(),
       };
@@ -786,7 +788,6 @@ auth.onAuthStateChanged((user) => {
 //   showSlide(slideIndex);
 // });
 
-// Function to display all users and allow admin actions if applicable
 // gallery function v2
 const initGallery = () => {
   let slideIndex = 0;
@@ -831,6 +832,8 @@ const initGallery = () => {
 };
 
 initGallery();
+
+// Function to display all users and allow admin actions if applicable
 function all_users(mode) {
   // Fetch all users from Firestore
   db.collection("users")
@@ -843,9 +846,12 @@ function all_users(mode) {
         let userData = doc.data();
         let isAdmin = userData.admin === 1 ? "Admin" : "Non-Admin";
         let badgeClass = userData.admin === 1 ? "is-success" : "is-warning";
+        let userName = userData.name ? userData.name : "N/A"; // Use "N/A" if the name is not defined
+
 
         html += `
         <tr>
+          <td>${userName}</td>
           <td>${doc.id}</td>
           <td>
             <span class="tag ${badgeClass} is-light">${isAdmin}</span>
