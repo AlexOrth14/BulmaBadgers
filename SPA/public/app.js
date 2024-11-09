@@ -692,6 +692,7 @@ logout_button.addEventListener("click", () => {
     // display a message that user signed out
     document.querySelector("#signin_modal").classList.remove("is-active");
     configure_msg_bar("You are now signed out!");
+    home_button.click();
   });
 });
 
