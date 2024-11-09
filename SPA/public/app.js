@@ -77,7 +77,7 @@ home_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
   show_announcements();
 });
 home_button.onclick = function () {
@@ -94,7 +94,7 @@ quick_home.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
   show_announcements();
 });
 quick_home.onclick = function () {
@@ -112,7 +112,7 @@ resources_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 resources_button.onclick = function () {
   window.scrollTo({
@@ -128,7 +128,7 @@ quick_resources.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 quick_resources.onclick = function () {
   window.scrollTo({
@@ -145,7 +145,7 @@ about_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 about_button.onclick = function () {
   window.scrollTo({
@@ -161,7 +161,7 @@ quick_about.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 quick_about.onclick = function () {
   window.scrollTo({
@@ -178,7 +178,7 @@ gallery_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 gallery_button.onclick = function () {
   window.scrollTo({
@@ -194,7 +194,7 @@ quick_gallery.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 quick_gallery.onclick = function () {
   window.scrollTo({
@@ -211,7 +211,7 @@ team_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 team_button.onclick = function () {
   window.scrollTo({
@@ -227,7 +227,7 @@ quick_team.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 quick_team.onclick = function () {
   window.scrollTo({
@@ -244,7 +244,7 @@ contact_button.addEventListener("click", () => {
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.remove("is-hidden");
+  admin_page.classList.remove("is-hidden");
 });
 contact_button.onclick = function () {
   window.scrollTo({
@@ -260,7 +260,7 @@ quick_contact.addEventListener("click", () => {
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classlist.add("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 quick_contact.onclick = function () {
   window.scrollTo({
@@ -271,7 +271,7 @@ quick_contact.onclick = function () {
 
 // JS FOR ADMIN PAGE
 admin_button.addEventListener("click", () => {
-  admin_page.classlist.remove("is-hidden");
+  admin_page.classList.remove("is-hidden");
   contact_us.classList.add("is-hidden");
   resources.classList.add("is-hidden");
   about_us.classList.add("is-hidden");
