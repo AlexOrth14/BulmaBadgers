@@ -68,6 +68,7 @@ const quick_about = document.getElementById("quick_about");
 const quick_contact = document.getElementById("quick_contact");
 const quick_gallery = document.getElementById("quick_gallery");
 const quick_team = document.getElementById("quick_team");
+const quick_admin = document.getElementById("quick_admin");
 
 // JS FOR WHEN HOME IS CLICKED
 home_button.addEventListener("click", () => {
@@ -244,7 +245,7 @@ contact_button.addEventListener("click", () => {
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
-  admin_page.classList.remove("is-hidden");
+  admin_page.classList.add("is-hidden");
 });
 contact_button.onclick = function () {
   window.scrollTo({
@@ -287,7 +288,7 @@ admin_button.onclick = function () {
 };
 
 quick_admin.addEventListener("click", () => {
-  quick_admin.classList.remove("is-hidden");
+  admin_page.classList.remove("is-hidden");
   contact_us.classList.add("is-hidden");
   resources.classList.add("is-hidden");
   about_us.classList.add("is-hidden");
@@ -688,16 +689,16 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   let slideIndex = 0;
-  const slides = document.querySelectorAll('.rotating-gallery .slide');
-  const nextButton = document.getElementById('next');
-  const prevButton = document.getElementById('prev');
+  const slides = document.querySelectorAll(".rotating-gallery .slide");
+  const nextButton = document.getElementById("next");
+  const prevButton = document.getElementById("prev");
 
   // Function to show a particular slide
   function showSlide(index) {
     slides.forEach((slide, i) => {
-      slide.style.display = (i === index) ? 'block' : 'none';
+      slide.style.display = i === index ? "block" : "none";
     });
   }
 
@@ -714,8 +715,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Set up click event listeners for next and previous buttons
-  nextButton.addEventListener('click', nextSlide);
-  prevButton.addEventListener('click', prevSlide);
+  nextButton.addEventListener("click", nextSlide);
+  prevButton.addEventListener("click", prevSlide);
 
   // Set up autoplay to change slides every 3 seconds
   setInterval(nextSlide, 3000);

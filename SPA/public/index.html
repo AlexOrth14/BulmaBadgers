@@ -631,13 +631,23 @@
           >
         </div>
 
-          <!-- Rotating Gallery -->
+        <!-- Rotating Gallery -->
         <div class="rotating-gallery">
-          <div class="slide"><img src="images/bhc_logo.jpg" alt="Gallery Image 1"></div>
-          <div class="slide"><img src="images/hunter.jpg" alt="Gallery Image 2"></div>
-          <div class="slide"><img src="images/land.png" alt="Gallery Image 3"></div>
-          <div class="slide"><img src="images/stock.jpg" alt="Gallery Image 4"></div>
-          <div class="slide"><img src="images/forest_banner.jpg" alt="Gallery Image 5"></div>
+          <div class="slide">
+            <img src="images/bhc_logo.jpg" alt="Gallery Image 1" />
+          </div>
+          <div class="slide">
+            <img src="images/hunter.jpg" alt="Gallery Image 2" />
+          </div>
+          <div class="slide">
+            <img src="images/land.png" alt="Gallery Image 3" />
+          </div>
+          <div class="slide">
+            <img src="images/stock.jpg" alt="Gallery Image 4" />
+          </div>
+          <div class="slide">
+            <img src="images/forest_banner.jpg" alt="Gallery Image 5" />
+          </div>
         </div>
 
         <!-- Controls -->
@@ -819,10 +829,75 @@
       <!-- END OF EMAIL FORM -->
     </section>
     <!-- Beginning of Admin Page -->
-    <section class="section">
-      <div class="container is-hidden" id="admin_page">
-        <p>test paragraph</p>
-      </div>
+    <section id="admin_page" class="is-hidden">
+      <section
+        class="hero is-medium hero-banner"
+        style="
+          background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('images/istockphoto-1192884194-612x612.jpg') center/cover;
+        "
+      >
+        <div class="hero-body has-text-centered">
+          <div class="container">
+            <h1
+              class="title has-text-white is-uppercase is-size-2 has-text-weight-bold"
+            >
+              Admin Page
+            </h1>
+            <h2 class="subtitle has-text-white is-size-5 has-text-weight-light">
+              Manage Users and Access Levels
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- Admin Management Section -->
+      <section class="section">
+        <div class="container">
+          <div class="columns">
+            <!-- Non-admin users -->
+            <div class="column is-half">
+              <div class="box has-background-primary-dark">
+                <h1 class="title has-text-white">Non-Admin Users</h1>
+                <div id="registered_users">
+                  <!-- Placeholder for dynamic content -->
+                  <p class="has-text-white">
+                    List of non-admin users will appear here.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Admin users -->
+            <div class="column is-half">
+              <div class="box has-background-primary-light">
+                <h1 class="title">Admin Users</h1>
+                <div id="admin_users">
+                  <!-- Placeholder for dynamic content -->
+                  <p>List of admin users will appear here.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Action Buttons -->
+          <div class="columns">
+            <div class="column is-half">
+              <button class="button is-primary is-fullwidth" id="add_user_btn">
+                Add User
+              </button>
+            </div>
+            <div class="column is-half">
+              <button
+                class="button is-danger is-fullwidth"
+                id="remove_user_btn"
+              >
+                Remove User
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
     <!--  FOOTER - UNIVERSAL FOR EACH PAGE                                                           FOOTER -->
