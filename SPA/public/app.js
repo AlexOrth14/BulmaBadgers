@@ -1,18 +1,33 @@
 // HEY THERE BUDDY!.... ONLY PLACE CONTENT THAT APPLIES TO ALL PAGES HERE
 /* Pro tip, link this app.js to your page in addition to your custom .js file*/
 //console.log(firebase);
+
 // MOBILE NAVBAR CODE
 // had to add this for fitting navbar better on mobile
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
+//   const burger = document.querySelector(".navbar-burger");
+//   const menu = document.getElementById("navMenu");
+
+//   burger.addEventListener("click", () => {
+//     burger.classList.toggle("is-active");
+//     menu.classList.toggle("is-active");
+//   });
+// });
+
+// burger function no DOMContentLoaded
+const initNavbar = () => {
   const burger = document.querySelector(".navbar-burger");
   const menu = document.getElementById("navMenu");
 
-  burger.addEventListener("click", () => {
-    burger.classList.toggle("is-active");
-    menu.classList.toggle("is-active");
-  });
-});
+  if (burger && menu) {
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("is-active");
+      menu.classList.toggle("is-active");
+    });
+  }
+};
 
+initNavbar();
 // sign up MODALTOGGLE
 const signupButton = document.getElementById("signup_button");
 const signupModal = document.getElementById("signup_modal");
@@ -522,7 +537,49 @@ show_announcements();
 show_gallery();
 
 //submitting a message on contact us
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
+//   const submitButton = document.querySelector("#submit_btn");
+
+//   if (submitButton) {
+//     submitButton.addEventListener("click", function () {
+//       const contact_email = document.querySelector("#contact_email").value;
+//       const subject = document.querySelector("#subject").value;
+//       const message_body = document.querySelector("#message_body").value;
+
+//       // Validation
+//       if (!contact_email || !subject || !message_body) {
+//         configure_msg_bar("Please fill in all fields!", "error");
+//         return;
+//       }
+
+//       const message = {
+//         contact_email: contact_email,
+//         subject: subject,
+//         message_body: message_body,
+//       };
+
+//       // Add console.log to debug
+//       console.log("Attempting to send message:", message);
+
+//       db.collection("messages")
+//         .add(message)
+//         .then(() => {
+//           configure_msg_bar("Message sent!", "success");
+//           document.getElementById("contact_form").reset();
+//           console.log("Message sent successfully");
+//         })
+//         .catch((error) => {
+//           console.error("Error writing to database:", error);
+//           configure_msg_bar("Error sending message: " + error.message, "error");
+//         });
+//     });
+//   } else {
+//     console.error("Submit button not found");
+//   }
+// });
+
+// new message submit function
+const initContactForm = () => {
   const submitButton = document.querySelector("#submit_btn");
 
   if (submitButton) {
@@ -561,7 +618,9 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Submit button not found");
   }
-});
+};
+
+initContactForm();
 
 let admin_view = document.querySelectorAll(".admin");
 
@@ -689,11 +748,56 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+// gallery function v1
+// document.addEventListener("DOMContentLoaded", function () {
+//   let slideIndex = 0;
+//   const slides = document.querySelectorAll(".rotating-gallery .slide");
+//   const nextButton = document.getElementById("next");
+//   const prevButton = document.getElementById("prev");
+
+//   // Function to show a particular slide
+//   function showSlide(index) {
+//     slides.forEach((slide, i) => {
+//       slide.style.display = i === index ? "block" : "none";
+//     });
+//   }
+
+//   // Function to move to the next slide
+//   function nextSlide() {
+//     slideIndex = (slideIndex + 1) % slides.length; // Loop to the beginning if at the end
+//     showSlide(slideIndex);
+//   }
+
+//   // Function to move to the previous slide
+//   function prevSlide() {
+//     slideIndex = (slideIndex - 1 + slides.length) % slides.length; // Loop to the end if at the beginning
+//     showSlide(slideIndex);
+//   }
+
+//   // Set up click event listeners for next and previous buttons
+//   nextButton.addEventListener("click", nextSlide);
+//   prevButton.addEventListener("click", prevSlide);
+
+//   // Set up autoplay to change slides every 3 seconds
+//   setInterval(nextSlide, 3000);
+
+//   // Initial display of the first slide
+//   showSlide(slideIndex);
+// });
+
+// Function to display all users and allow admin actions if applicable
+// gallery function v2
+const initGallery = () => {
   let slideIndex = 0;
   const slides = document.querySelectorAll(".rotating-gallery .slide");
   const nextButton = document.getElementById("next");
   const prevButton = document.getElementById("prev");
+
+  // Check if required elements exist
+  if (!slides.length || !nextButton || !prevButton) {
+    console.error("Gallery elements not found");
+    return;
+  }
 
   // Function to show a particular slide
   function showSlide(index) {
@@ -723,71 +827,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial display of the first slide
   showSlide(slideIndex);
-});
+};
 
-// Function to display all users and allow admin actions if applicable
+initGallery();
 function all_users(mode) {
   // Fetch all users from Firestore
-  db.collection("users").get().then((data) => {
-    let mydocs = data.docs;
-    let html = ``;
+  db.collection("users")
+    .get()
+    .then((data) => {
+      let mydocs = data.docs;
+      let html = ``;
 
-    mydocs.forEach((doc) => {
-      let userData = doc.data();
-      let isAdmin = userData.admin === 1 ? "Admin" : "Non-Admin";
-      let badgeClass = userData.admin === 1 ? "is-success" : "is-warning";
+      mydocs.forEach((doc) => {
+        let userData = doc.data();
+        let isAdmin = userData.admin === 1 ? "Admin" : "Non-Admin";
+        let badgeClass = userData.admin === 1 ? "is-success" : "is-warning";
 
-      html += `
+        html += `
         <tr>
           <td>${doc.id}</td>
           <td>
             <span class="tag ${badgeClass} is-light">${isAdmin}</span>
           </td>
           <td>
-            ${mode === 'edit' && doc.id !== auth.currentUser.email
-              ? userData.admin === 0
-                ? `<button onclick="make_admin('${doc.id}')" class="button is-small is-link is-outlined">Make Admin</button>`
-                : `<button onclick="make_regular_user('${doc.id}')" class="button is-small is-danger is-outlined">Revoke Admin</button>`
-              : ''
+            ${
+              mode === "edit" && doc.id !== auth.currentUser.email
+                ? userData.admin === 0
+                  ? `<button onclick="make_admin('${doc.id}')" class="button is-small is-link is-outlined">Make Admin</button>`
+                  : `<button onclick="make_regular_user('${doc.id}')" class="button is-small is-danger is-outlined">Revoke Admin</button>`
+                : ""
             }
           </td>
         </tr>`;
-    });
+      });
 
-    document.querySelector("#all_users_list").innerHTML = html;
-  });
+      document.querySelector("#all_users_list").innerHTML = html;
+    });
 }
 
 // Function to promote a user to admin
 function make_admin(id) {
-  db.collection("users").doc(id).update({
-    admin: 1,
-  }).then(() => all_users('edit'));
+  db.collection("users")
+    .doc(id)
+    .update({
+      admin: 1,
+    })
+    .then(() => all_users("edit"));
 }
 
 // Function to demote an admin to a regular user
 function make_regular_user(id) {
-  db.collection("users").doc(id).update({
-    admin: 0,
-  }).then(() => all_users('edit'));
+  db.collection("users")
+    .doc(id)
+    .update({
+      admin: 0,
+    })
+    .then(() => all_users("edit"));
 }
 
 // Check if user is an admin and load appropriate user management functionality
 auth.onAuthStateChanged((user) => {
   if (user) {
-    db.collection("users").doc(user.email).get().then((d) => {
-      let admin = d.data().admin;
+    db.collection("users")
+      .doc(user.email)
+      .get()
+      .then((d) => {
+        let admin = d.data().admin;
 
-      if (admin == 0) {
-        // If a regular user, just display the users
-        all_users('view');
-      } else {
-        // If an admin, display users with edit options
-        all_users('edit');
-      }
+        if (admin == 0) {
+          // If a regular user, just display the users
+          all_users("view");
+        } else {
+          // If an admin, display users with edit options
+          all_users("edit");
+        }
 
-      update_status(1, admin, user.uid, user.email);
-    });
+        update_status(1, admin, user.uid, user.email);
+      });
   } else {
     // User not authenticated, hide user details
     all_users(0);
