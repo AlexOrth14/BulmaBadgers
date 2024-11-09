@@ -724,3 +724,73 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial display of the first slide
   showSlide(slideIndex);
 });
+
+// Function to display all users and allow admin actions if applicable
+function all_users(mode) {
+  // Fetch all users from Firestore
+  db.collection("users").get().then((data) => {
+    let mydocs = data.docs;
+    let html = ``;
+
+    mydocs.forEach((doc) => {
+      let userData = doc.data();
+      let isAdmin = userData.admin === 1 ? "Admin" : "Non-Admin";
+      let badgeClass = userData.admin === 1 ? "is-success" : "is-warning";
+
+      html += `
+        <tr>
+          <td>${doc.id}</td>
+          <td>
+            <span class="tag ${badgeClass} is-light">${isAdmin}</span>
+          </td>
+          <td>
+            ${mode === 'edit' && doc.id !== auth.currentUser.email
+              ? userData.admin === 0
+                ? `<button onclick="make_admin('${doc.id}')" class="button is-small is-link is-outlined">Make Admin</button>`
+                : `<button onclick="make_regular_user('${doc.id}')" class="button is-small is-danger is-outlined">Revoke Admin</button>`
+              : ''
+            }
+          </td>
+        </tr>`;
+    });
+
+    document.querySelector("#all_users_list").innerHTML = html;
+  });
+}
+
+// Function to promote a user to admin
+function make_admin(id) {
+  db.collection("users").doc(id).update({
+    admin: 1,
+  }).then(() => all_users('edit'));
+}
+
+// Function to demote an admin to a regular user
+function make_regular_user(id) {
+  db.collection("users").doc(id).update({
+    admin: 0,
+  }).then(() => all_users('edit'));
+}
+
+// Check if user is an admin and load appropriate user management functionality
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    db.collection("users").doc(user.email).get().then((d) => {
+      let admin = d.data().admin;
+
+      if (admin == 0) {
+        // If a regular user, just display the users
+        all_users('view');
+      } else {
+        // If an admin, display users with edit options
+        all_users('edit');
+      }
+
+      update_status(1, admin, user.uid, user.email);
+    });
+  } else {
+    // User not authenticated, hide user details
+    all_users(0);
+    update_status(0, "", "", "");
+  }
+});

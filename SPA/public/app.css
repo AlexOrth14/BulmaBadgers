@@ -474,3 +474,38 @@ body {
 .rotating-gallery .slide:first-child {
   display: block;
 }
+
+/* Enhanced Table Styling */
+.table-container {
+  margin-top: 2rem;
+}
+
+.table thead th {
+  background-color: #3b5323;
+  color: white;
+}
+
+.table tbody td {
+  vertical-align: middle;
+}
+
+/* General Container Improvements */
+.box {
+  padding: 2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Button Style Adjustments */
+.button.is-link.is-outlined {
+  border-color: #3298dc;
+}
+
+.button.is-danger.is-outlined {
+  border-color: #ff3860;
+}
+
+.button.is-link.is-outlined:hover,
+.button.is-danger.is-outlined:hover {
+  color: white;
+}

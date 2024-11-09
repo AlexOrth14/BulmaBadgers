@@ -851,54 +851,33 @@
         </div>
       </section>
 
-      <!-- Admin Management Section -->
+      <!-- Admin Page for Managing Users -->
       <section class="section">
-        <div class="container">
-          <div class="columns">
-            <!-- Non-admin users -->
-            <div class="column is-half">
-              <div class="box has-background-primary-dark">
-                <h1 class="title has-text-white">Non-Admin Users</h1>
-                <div id="registered_users">
-                  <!-- Placeholder for dynamic content -->
-                  <p class="has-text-white">
-                    List of non-admin users will appear here.
-                  </p>
-                </div>
-              </div>
-            </div>
+        <div class="container" id="admin_page">
+          <div class="box">
+            <h1 class="title has-text-centered is-3">Manage Users</h1>
+            <p class="has-text-centered mb-5">
+              Below you can see all users registered in the system Admins can promote or demote users as needed.
+            </p>
 
-            <!-- Admin users -->
-            <div class="column is-half">
-              <div class="box has-background-primary-light">
-                <h1 class="title">Admin Users</h1>
-                <div id="admin_users">
-                  <!-- Placeholder for dynamic content -->
-                  <p>List of admin users will appear here.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Admin Action Buttons -->
-          <div class="columns">
-            <div class="column is-half">
-              <button class="button is-primary is-fullwidth" id="add_user_btn">
-                Add User
-              </button>
-            </div>
-            <div class="column is-half">
-              <button
-                class="button is-danger is-fullwidth"
-                id="remove_user_btn"
-              >
-                Remove User
-              </button>
+            <!-- User List -->
+            <div class="table-container">
+              <table class="table is-fullwidth is-striped is-hoverable">
+                <thead>
+                  <tr>
+                    <th>User Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="all_users_list">
+                  <!-- Users will be populated here by JavaScript -->
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </section>
-    </section>
 
     <!--  FOOTER - UNIVERSAL FOR EACH PAGE                                                           FOOTER -->
     <footer class="footer has-background-dark has-text-white-ter">
