@@ -1,5 +1,4 @@
 // HEY THERE BUDDY!.... ONLY PLACE CONTENT THAT APPLIES TO ALL PAGES HERE
-
 /* Pro tip, link this app.js to your page in addition to your custom .js file*/
 //console.log(firebase);
 // MOBILE NAVBAR CODE
@@ -61,6 +60,8 @@ const team = document.getElementById("team");
 const team_button = document.getElementById("team_button");
 const contact_us = document.getElementById("contact_us");
 const contact_button = document.getElementById("contact_button");
+const admin_button = document.getElementById("admin_button");
+const admin_page = document.getElementById("admin_page");
 const quick_home = document.getElementById("quick_home");
 const quick_resources = document.getElementById("quick_resources");
 const quick_about = document.getElementById("quick_about");
@@ -76,6 +77,7 @@ home_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
   show_announcements();
 });
 home_button.onclick = function () {
@@ -92,6 +94,7 @@ quick_home.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
   show_announcements();
 });
 quick_home.onclick = function () {
@@ -109,6 +112,7 @@ resources_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 resources_button.onclick = function () {
   window.scrollTo({
@@ -124,6 +128,7 @@ quick_resources.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 quick_resources.onclick = function () {
   window.scrollTo({
@@ -140,6 +145,7 @@ about_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 about_button.onclick = function () {
   window.scrollTo({
@@ -155,6 +161,7 @@ quick_about.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 quick_about.onclick = function () {
   window.scrollTo({
@@ -171,6 +178,7 @@ gallery_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 gallery_button.onclick = function () {
   window.scrollTo({
@@ -186,6 +194,7 @@ quick_gallery.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 quick_gallery.onclick = function () {
   window.scrollTo({
@@ -202,6 +211,7 @@ team_button.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 team_button.onclick = function () {
   window.scrollTo({
@@ -217,6 +227,7 @@ quick_team.addEventListener("click", () => {
   contact_us.classList.add("is-hidden");
   home.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 quick_team.onclick = function () {
   window.scrollTo({
@@ -233,6 +244,7 @@ contact_button.addEventListener("click", () => {
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.remove("is-hidden");
 });
 contact_button.onclick = function () {
   window.scrollTo({
@@ -248,6 +260,7 @@ quick_contact.addEventListener("click", () => {
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_page.classlist.add("is-hidden");
 });
 quick_contact.onclick = function () {
   window.scrollTo({
@@ -255,6 +268,41 @@ quick_contact.onclick = function () {
     behavior: "smooth", // Smooth scroll animation
   });
 };
+
+// JS FOR ADMIN PAGE
+admin_button.addEventListener("click", () => {
+  admin_page.classlist.remove("is-hidden");
+  contact_us.classList.add("is-hidden");
+  resources.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+});
+admin_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
+
+quick_admin.addEventListener("click", () => {
+  quick_admin.classList.remove("is-hidden");
+  contact_us.classList.add("is-hidden");
+  resources.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+});
+quick_admin.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
+
+// JS for admin page
 
 // JS for Resources page
 // Smooth Scroll for Anchor Links
