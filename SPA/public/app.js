@@ -697,7 +697,7 @@ signupForm.addEventListener("submit", (e) => {
 
   let signup_email = document.querySelector("#signup_email").value;
   let signup_pass = document.querySelector("#signup_password").value;
-  // let signup_name = document.querySelector("#full_name").value;
+  let signup_name = document.querySelector("#full_name").value;
 
   // Firebase Authentication to create a new user
   firebase
@@ -714,7 +714,7 @@ signupForm.addEventListener("submit", (e) => {
       // You can also add additional code to save more user info to Firestore
       const userInfo = {
         email: signup_email,
-        // name: signup_name,
+        name: signup_name,
         admin: 0,
         createdAt: new Date(),
       };
