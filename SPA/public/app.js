@@ -987,6 +987,52 @@ function make_regular_user(id) {
 // Added show_announcements() call when user logs out
 // Removed the console error about update_status being undefined appeared to be leftover from samer's code
 
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     document.querySelector(
+//       "#view_user"
+//     ).innerHTML = `&nbsp; user: ${user.email}`;
+//     login_button.classList.add("is-hidden");
+//     signup_button.classList.add("is-hidden");
+//     logout_button.classList.remove("is-hidden");
+
+//     db.collection("users")
+//       .doc(user.email)
+//       .get()
+//       .then((d) => {
+//         let admin = d.data().admin;
+//         console.log(admin);
+
+//         if (admin == 1) {
+//           // admin can see admin editing boxes
+//           admin_view.forEach((a) => {
+//             a.classList.remove("is-hidden");
+//           });
+//           // Call all_users with edit mode for admins
+//           all_users("edit");
+//           show_announcements();
+//         } else {
+//           // a signed-in admin user can view and edit user roles
+//           admin_view.forEach((a) => {
+//             a.classList.add("is-hidden");
+//           });
+//           // Call all_users with view mode for regular users
+//           all_users("view");
+//           show_announcements();
+//         }
+//       });
+//   } else {
+//     login_button.classList.remove("is-hidden");
+//     signup_button.classList.remove("is-hidden");
+//     logout_button.classList.add("is-hidden");
+//     document.querySelector("#view_user").innerHTML = "";
+
+//     admin_view.forEach((a) => {
+//       a.classList.add("is-hidden");
+//     });
+//     show_announcements();
+//   }
+// });
 auth.onAuthStateChanged((user) => {
   if (user) {
     document.querySelector(
@@ -1000,26 +1046,24 @@ auth.onAuthStateChanged((user) => {
       .doc(user.email)
       .get()
       .then((d) => {
-        let admin = d.data().admin;
+        let admin = d.exists ? d.data().admin : 0; // Default to 0 if document doesn't exist
         console.log(admin);
 
         if (admin == 1) {
-          // admin can see admin editing boxes
           admin_view.forEach((a) => {
             a.classList.remove("is-hidden");
           });
-          // Call all_users with edit mode for admins
           all_users("edit");
-          show_announcements();
         } else {
-          // a signed-in admin user can view and edit user roles
           admin_view.forEach((a) => {
             a.classList.add("is-hidden");
           });
-          // Call all_users with view mode for regular users
           all_users("view");
-          show_announcements();
         }
+        show_announcements();
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
       });
   } else {
     login_button.classList.remove("is-hidden");
