@@ -470,42 +470,104 @@ ann_submit.addEventListener("click", () => {
   document.querySelector("#ann_content").value = "";
 });
 
+// show announcements V1
+// function show_announcements() {
+//   db.collection("announcements")
+//     .get()
+//     .then((mydata) => {
+//       let docs = mydata.docs;
+
+//       let html = ``;
+
+//       docs.forEach((d) => {
+//         html += `<div class="card column">
+//             <div class="card-content">
+//               <p class="title">${
+//                 d.data().title
+//               } <button class="is-pulled-right" onclick="del_doc('${
+//           d.id
+//         }')">Delete</button></p>
+//               <p class="subtitle">${d.data().topic}</p>
+//               <div class="content">
+//                 ${d.data().content}
+
+//               </div>
+//             </div>
+//           </div>`;
+//       });
+
+//       document.querySelector("#columns").innerHTML = html;
+//       if (docs.length == 0) {
+//         document.querySelector(
+//           "#columns"
+//         ).innerHTML = `<div class="card column">
+//             <div class="card-content">
+//               <p class="title">No Announcements</p>
+//             </div>
+//           </div>`;
+//       }
+//     });
+// }
+// Show announcements V2
 function show_announcements() {
-  db.collection("announcements")
-    .get()
-    .then((mydata) => {
-      let docs = mydata.docs;
+  // First get the current user's admin status
+  const currentUser = auth.currentUser;
+  let isAdmin = false;
 
-      let html = ``;
+  // Function to actually build and display the announcements
+  const displayAnnouncements = (isAdmin) => {
+    db.collection("announcements")
+      .get()
+      .then((mydata) => {
+        let docs = mydata.docs;
+        let html = ``;
 
-      docs.forEach((d) => {
-        html += `<div class="card column">
+        docs.forEach((d) => {
+          html += `<div class="card column">
             <div class="card-content">
-              <p class="title">${
-                d.data().title
-              } <button class="is-pulled-right" onclick="del_doc('${
-          d.id
-        }')">Delete</button></p>
+              <p class="title">${d.data().title} ${
+            isAdmin
+              ? `<button class="is-pulled-right" onclick="del_doc('${d.id}')">Delete</button>`
+              : ""
+          }</p>
               <p class="subtitle">${d.data().topic}</p>
               <div class="content">
                 ${d.data().content}
-               
               </div>
             </div>
           </div>`;
-      });
+        });
 
-      document.querySelector("#columns").innerHTML = html;
-      if (docs.length == 0) {
-        document.querySelector(
-          "#columns"
-        ).innerHTML = `<div class="card column">
-            <div class="card-content">
-              <p class="title">No Announcements</p>
-            </div>
-          </div>`;
-      }
-    });
+        document.querySelector("#columns").innerHTML = html;
+        if (docs.length == 0) {
+          document.querySelector("#columns").innerHTML = `
+            <div class="card column">
+              <div class="card-content">
+                <p class="title">No Announcements</p>
+              </div>
+            </div>`;
+        }
+      });
+  };
+
+  // Check if user is logged in
+  if (currentUser) {
+    // Get user's admin status from Firestore
+    db.collection("users")
+      .doc(currentUser.email)
+      .get()
+      .then((doc) => {
+        isAdmin = doc.data()?.admin === 1;
+        displayAnnouncements(isAdmin);
+      })
+      .catch((error) => {
+        console.error("Error checking admin status:", error);
+        displayAnnouncements(false);
+      });
+  } else {
+    // Not logged in, show announcements without delete button
+    displayAnnouncements(false);
+  }
 }
 
 function show_gallery() {
@@ -635,7 +697,7 @@ signupForm.addEventListener("submit", (e) => {
 
   let signup_email = document.querySelector("#signup_email").value;
   let signup_pass = document.querySelector("#signup_password").value;
-  let signup_name = document.querySelector("#full_name").value; 
+  // let signup_name = document.querySelector("#full_name").value;
 
   // Firebase Authentication to create a new user
   firebase
@@ -652,7 +714,7 @@ signupForm.addEventListener("submit", (e) => {
       // You can also add additional code to save more user info to Firestore
       const userInfo = {
         email: signup_email,
-        name: signup_name,
+        // name: signup_name,
         admin: 0,
         createdAt: new Date(),
       };
@@ -710,46 +772,48 @@ if (closeModalButton) {
   closeModalButton.addEventListener("click", closeSignupModal);
 }
 
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    document.querySelector(
-      "#view_user"
-    ).innerHTML += `&nbsp; user: ${user.email}`;
-    login_button.classList.add("is-hidden");
-    signup_button.classList.add("is-hidden");
-    logout_button.classList.remove("is-hidden");
+// commenting out there is already a onAuthStateChanged event listener below,
+// added functionality was doing referesh for when admin and reg user login and refreshing on logout
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     document.querySelector(
+//       "#view_user"
+//     ).innerHTML += `&nbsp; user: ${user.email}`;
+//     login_button.classList.add("is-hidden");
+//     signup_button.classList.add("is-hidden");
+//     logout_button.classList.remove("is-hidden");
 
-    db.collection("users")
-      .doc(user.email)
-      .get()
-      .then((d) => {
-        // admin value of 1 means admin user. a value of 0 means no admin
-        let admin = d.data().admin;
-        console.log(admin);
+//     db.collection("users")
+//       .doc(user.email)
+//       .get()
+//       .then((d) => {
+//         // admin value of 1 means admin user. a value of 0 means no admin
+//         let admin = d.data().admin;
+//         console.log(admin);
 
-        if (admin == 1) {
-          // admin can see admin editing boxes
-          admin_view.forEach((a) => {
-            a.classList.remove("is-hidden");
-          });
-        } else {
-          // a signed-in admin user can view and edit user roles
-          admin_view.forEach((a) => {
-            a.classList.add("is-hidden");
-          });
-        }
-      });
-  } else {
-    login_button.classList.remove("is-hidden");
-    signup_button.classList.remove("is-hidden");
-    logout_button.classList.add("is-hidden");
-    document.querySelector("#view_user").innerHTML = "";
+//         if (admin == 1) {
+//           // admin can see admin editing boxes
+//           admin_view.forEach((a) => {
+//             a.classList.remove("is-hidden");
+//           });
+//         } else {
+//           // a signed-in admin user can view and edit user roles
+//           admin_view.forEach((a) => {
+//             a.classList.add("is-hidden");
+//           });
+//         }
+//       });
+//   } else {
+//     login_button.classList.remove("is-hidden");
+//     signup_button.classList.remove("is-hidden");
+//     logout_button.classList.add("is-hidden");
+//     document.querySelector("#view_user").innerHTML = "";
 
-    admin_view.forEach((a) => {
-      a.classList.add("is-hidden");
-    });
-  }
-});
+//     admin_view.forEach((a) => {
+//       a.classList.add("is-hidden");
+//     });
+//   }
+// });
 
 // gallery function v1
 // document.addEventListener("DOMContentLoaded", function () {
@@ -848,7 +912,6 @@ function all_users(mode) {
         let badgeClass = userData.admin === 1 ? "is-success" : "is-warning";
         let userName = userData.name ? userData.name : "N/A"; // Use "N/A" if the name is not defined
 
-
         html += `
         <tr>
           <td>${userName}</td>
@@ -893,27 +956,80 @@ function make_regular_user(id) {
 }
 
 // Check if user is an admin and load appropriate user management functionality
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     db.collection("users")
+//       .doc(user.email)
+//       .get()
+//       .then((d) => {
+//         let admin = d.data().admin;
+
+//         if (admin == 0) {
+//           // If a regular user, just display the users
+//           all_users("view");
+//         } else {
+//           // If an admin, display users with edit options
+//           all_users("edit");
+//         }
+
+//         update_status(1, admin, user.uid, user.email);
+//       });
+//   } else {
+//     // User not authenticated, hide user details
+//     all_users(0);
+//     update_status(0, "", "", "");
+//   }
+// });
+
+// changes to onAuthStateChanged
+// Added show_announcements() call after checking admin status
+// Added show_announcements() call in the else block for non-admin users
+// Added show_announcements() call when user logs out
+// Removed the console error about update_status being undefined appeared to be leftover from samer's code
+
 auth.onAuthStateChanged((user) => {
   if (user) {
+    document.querySelector(
+      "#view_user"
+    ).innerHTML = `&nbsp; user: ${user.email}`;
+    login_button.classList.add("is-hidden");
+    signup_button.classList.add("is-hidden");
+    logout_button.classList.remove("is-hidden");
+
     db.collection("users")
       .doc(user.email)
       .get()
       .then((d) => {
         let admin = d.data().admin;
+        console.log(admin);
 
-        if (admin == 0) {
-          // If a regular user, just display the users
-          all_users("view");
-        } else {
-          // If an admin, display users with edit options
+        if (admin == 1) {
+          // admin can see admin editing boxes
+          admin_view.forEach((a) => {
+            a.classList.remove("is-hidden");
+          });
+          // Call all_users with edit mode for admins
           all_users("edit");
+          show_announcements();
+        } else {
+          // a signed-in admin user can view and edit user roles
+          admin_view.forEach((a) => {
+            a.classList.add("is-hidden");
+          });
+          // Call all_users with view mode for regular users
+          all_users("view");
+          show_announcements();
         }
-
-        update_status(1, admin, user.uid, user.email);
       });
   } else {
-    // User not authenticated, hide user details
-    all_users(0);
-    update_status(0, "", "", "");
+    login_button.classList.remove("is-hidden");
+    signup_button.classList.remove("is-hidden");
+    logout_button.classList.add("is-hidden");
+    document.querySelector("#view_user").innerHTML = "";
+
+    admin_view.forEach((a) => {
+      a.classList.add("is-hidden");
+    });
+    show_announcements();
   }
 });
