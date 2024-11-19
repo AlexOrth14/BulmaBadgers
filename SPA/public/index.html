@@ -40,7 +40,10 @@
             Badger Hunting Club
           </span>
 
-          <span id="view_user" class="has-text-grey-light"></span>
+          <span
+            id="view_user"
+            class="has-text-grey-light is-hidden-mobile"
+          ></span>
         </a>
         <span class="navbar-burger" data-target="navMenu">
           <span></span>
@@ -115,8 +118,14 @@
             <div class="field">
               <label class="label">Full Name</label>
               <div class="control">
-                <input type="text" class="input" id="full_name" placeholder="Enter your full name" required />
-              </div>  
+                <input
+                  type="text"
+                  class="input"
+                  id="full_name"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
             </div>
             <!-- Email -->
             <div class="field">
@@ -300,6 +309,8 @@
 
     <!--  ABOUT US SECTION                                                                          ABOUT US -->
     <section id="about_us" class="is-hidden">
+      <!-- spacer -->
+      <div style="height: 68px"></div>
       <section
         class="hero is-medium hero-banner"
         style="
@@ -642,28 +653,29 @@
         </div>
 
         <!-- Rotating Gallery -->
-        <div class="rotating-gallery">
-          <div class="slide">
-            <img src="images/bhc_logo.jpg" alt="Gallery Image 1" />
+        <div id="wheel_container" class="m-auto p-3">
+          <div class="rotating-gallery">
+            <div class="slide">
+              <img src="images/bhc_logo.jpg" alt="Gallery Image 1" />
+            </div>
+            <div class="slide">
+              <img src="images/hunter.jpg" alt="Gallery Image 2" />
+            </div>
+            <div class="slide">
+              <img src="images/land.png" alt="Gallery Image 3" />
+            </div>
+            <div class="slide">
+              <img src="images/stock.jpg" alt="Gallery Image 4" />
+            </div>
+            <div class="slide">
+              <img src="images/forest_banner.jpg" alt="Gallery Image 5" />
+            </div>
           </div>
-          <div class="slide">
-            <img src="images/hunter.jpg" alt="Gallery Image 2" />
-          </div>
-          <div class="slide">
-            <img src="images/land.png" alt="Gallery Image 3" />
-          </div>
-          <div class="slide">
-            <img src="images/stock.jpg" alt="Gallery Image 4" />
-          </div>
-          <div class="slide">
-            <img src="images/forest_banner.jpg" alt="Gallery Image 5" />
-          </div>
+
+          <!-- Controls -->
+          <button class="prev" id="prev">&#10094;</button>
+          <button class="next" id="next">&#10095;</button>
         </div>
-
-        <!-- Controls -->
-        <button class="prev" id="prev">&#10094;</button>
-        <button class="next" id="next">&#10095;</button>
-
         <!-- IMAGE UPLOAD FIELD -->
         <div class="field admin is-hidden">
           <label class="label">Image</label>
@@ -684,10 +696,11 @@
 
     <!-- OUR TEAM SECTION                                                                           OUR TEAM -->
     <section id="team" class="is-hidden">
-      <!-- HERO SECTION -->
+      <!-- spacer -->
+      <div style="height: 68px"></div>
       <!-- copied from learntohunt -->
       <section
-        class="hero is-medium hero-banner"
+        class="hero is-medium hero-banner mb-3"
         style="
           background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
             url('images/forest_banner.jpg') center/cover;
@@ -709,7 +722,7 @@
 
       <!-- got rid of old body -->
       <div
-        class="columns is-multiline is-centered is-vcentered"
+        class="columns is-multiline is-centered is-vcentered p-1"
         style="min-height: 100vh"
       >
         <!-- Card for each club officer -->
@@ -772,6 +785,8 @@
 
     <!-- CONTACT US SECTION                                                                         CONTACT US -->
     <section id="contact_us" class="is-hidden">
+      <!-- spacer -->
+      <div style="height: 68px"></div>
       <section
         class="hero is-medium hero-banner"
         style="
@@ -863,6 +878,8 @@
 
       <!-- Admin Page for Managing Users -->
       <section class="section">
+        <!-- spacer -->
+        <div style="height: 70px"></div>
         <div class="container" id="admin_page">
           <div class="box">
             <h1 class="title has-text-centered is-3">Manage Users</h1>
