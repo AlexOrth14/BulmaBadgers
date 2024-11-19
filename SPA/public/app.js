@@ -412,8 +412,9 @@ gallery_submit.addEventListener("click", async () => {
       url: url,
       // desc: document.querySelector("gal_desc").value,
     };
+    const docID = new Date().toISOString();
 
-    await db.collection("gallery").add(gallery_image);
+    await db.collection("gallery").doc(docID).set(gallery_image);
     configure_msg_bar("You've added a gallery photo!");
     show_gallery();
 
