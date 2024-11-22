@@ -426,21 +426,16 @@ gallery_submit.addEventListener("click", async () => {
   let file = document.querySelector("#gal_image").files[0];
 
   let image = new Date() + "_" + file.name;
-
-  console.log(image);
-
+  let title = document.querySelector("#gal_ttl").value;
   const task = ref.child(image).put(file);
-
-  console.log(task);
 
   try {
     const snapshot = await task;
     const url = await snapshot.ref.getDownloadURL();
 
-    console.log(url);
-
     let gallery_image = {
       // author: auth.currentUser.email,
+      title: title,
       url: url,
       // desc: document.querySelector("gal_desc").value,
     };
@@ -612,13 +607,19 @@ function show_gallery() {
       let html = ``;
 
       docs.forEach((d) => {
+        let date = d.id.split("").splice(0, 10).join("");
+        console.log(date);
         html += `<div class="gallery_card column">
+      <div class="card-header-title"> ${
+        d.data().title
+      } <p class="admin is-hidden">-- ${date}</p>
+      </div>
       <div class="card-image">
         <a> <img src="${d.data().url}" /></a>
         
       </div>
     
-      <button class="overlay-button" style="" onclick="gal_del_doc('${
+      <button class="overlay-button admin is-hidden" style="" onclick="gal_del_doc('${
         d.id
       }')">Delete</button>
     
@@ -1292,8 +1293,8 @@ function checkAdminStatus() {
         if (userDoc.exists && userDoc.data().admin === 1) {
           console.log("Admin user detected, showing admin options.");
           // Reveal delete buttons if user is an admin
-          document.querySelectorAll('.admin').forEach((el) => {
-            el.classList.remove('is-hidden');
+          document.querySelectorAll(".admin").forEach((el) => {
+            el.classList.remove("is-hidden");
           });
         } else {
           console.log("User is not an admin.");
@@ -1311,8 +1312,8 @@ function checkAdminStatus() {
 
 // Function to hide admin elements
 function hideAdminElements() {
-  document.querySelectorAll('.admin').forEach((el) => {
-    el.classList.add('is-hidden');
+  document.querySelectorAll(".admin").forEach((el) => {
+    el.classList.add("is-hidden");
   });
 }
 
@@ -1321,7 +1322,7 @@ function showOfficers() {
   const officerContainer = document.querySelector("#officers_container");
 
   // Clear the current content in the container
-  officerContainer.innerHTML = '';
+  officerContainer.innerHTML = "";
 
   // Fetch officer data from Firebase
   db.collection("officers")
@@ -1419,7 +1420,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       // Upload the officer photo to Firebase Storage
-      const photoFileName = `officers/${new Date().toISOString()}_${officerPhotoFile.name}`;
+      const photoFileName = `officers/${new Date().toISOString()}_${
+        officerPhotoFile.name
+      }`;
       const photoRef = firebase.storage().ref().child(photoFileName);
       const photoSnapshot = await photoRef.put(officerPhotoFile);
       const photoURL = await photoSnapshot.ref.getDownloadURL();

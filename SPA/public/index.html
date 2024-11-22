@@ -677,17 +677,20 @@
           <button class="next" id="next">&#10095;</button>
         </div>
         <!-- IMAGE UPLOAD FIELD -->
-        <div class="field admin is-hidden">
-          <label class="label">Image</label>
-          <div class="control">
-            <input
-              class="input"
-              type="file"
-              id="gal_image"
-              placeholder="Choose Image"
-            />
+        <div class="admin is-hidden is-flex is-justify-content-center">
+          <div id="gal_upload" class="field">
+            <label class="label ml-1">Image Upload: </label>
+            <div class="control">
+              <input type="text" id="gal_ttl" placeholder="Image Title" />
+              <input
+                class="input"
+                type="file"
+                id="gal_image"
+                placeholder="Choose Image"
+              />
+            </div>
+            <button id="gal_submit">Submit</button>
           </div>
-          <button id="gal_submit">Submit</button>
         </div>
 
         <div id="gallery_collection" class="columns is-flex"></div>
@@ -726,19 +729,37 @@
           <div class="field">
             <label class="label">Name</label>
             <div class="control">
-              <input id="officer_name" class="input" type="text" placeholder="Officer Name" required />
+              <input
+                id="officer_name"
+                class="input"
+                type="text"
+                placeholder="Officer Name"
+                required
+              />
             </div>
           </div>
           <div class="field">
             <label class="label">Email</label>
             <div class="control">
-              <input id="officer_email" class="input" type="email" placeholder="Officer Email" required />
+              <input
+                id="officer_email"
+                class="input"
+                type="email"
+                placeholder="Officer Email"
+                required
+              />
             </div>
           </div>
           <div class="field">
             <label class="label">Title</label>
             <div class="control">
-              <input id="officer_title" class="input" type="text" placeholder="Officer Title" required />
+              <input
+                id="officer_title"
+                class="input"
+                type="text"
+                placeholder="Officer Title"
+                required
+              />
             </div>
           </div>
           <div class="field">
@@ -752,10 +773,13 @@
           </div>
         </form>
       </div>
-      
-      
+
       <!-- Container to display officers -->
-      <div class="columns is-multiline is-centered is-vcentered p-1" id="officers_container" style="min-height: 100vh">
+      <div
+        class="columns is-multiline is-centered is-vcentered p-1"
+        id="officers_container"
+        style="min-height: 100vh"
+      >
         <!-- Officer cards will be added here dynamically -->
       </div>
     </section>
