@@ -75,6 +75,7 @@ const team = document.getElementById("team");
 const team_button = document.getElementById("team_button");
 const contact_us = document.getElementById("contact_us");
 const contact_button = document.getElementById("contact_button");
+const admin_messages_modal = document.getElementById("admin_messages_modal");
 const admin_button = document.getElementById("admin_button");
 const admin_page = document.getElementById("admin_page");
 const quick_home = document.getElementById("quick_home");
@@ -94,6 +95,7 @@ home_button.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
   show_announcements();
 });
 home_button.onclick = function () {
@@ -111,6 +113,7 @@ quick_home.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
   show_announcements();
 });
 quick_home.onclick = function () {
@@ -129,6 +132,7 @@ resources_button.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 resources_button.onclick = function () {
   window.scrollTo({
@@ -162,6 +166,7 @@ about_button.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 about_button.onclick = function () {
   window.scrollTo({
@@ -178,6 +183,7 @@ quick_about.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 quick_about.onclick = function () {
   window.scrollTo({
@@ -192,9 +198,11 @@ gallery_button.addEventListener("click", () => {
   resources.classList.add("is-hidden");
   home.classList.add("is-hidden");
   contact_us.classList.add("is-hidden");
-  home.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  // home.classList.add("is-hidden"); removed extra
   team.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 gallery_button.onclick = function () {
   window.scrollTo({
@@ -208,9 +216,11 @@ quick_gallery.addEventListener("click", () => {
   resources.classList.add("is-hidden");
   home.classList.add("is-hidden");
   contact_us.classList.add("is-hidden");
-  home.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  // home.classList.add("is-hidden"); removed extra
   team.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 quick_gallery.onclick = function () {
   window.scrollTo({
@@ -225,9 +235,11 @@ team_button.addEventListener("click", () => {
   resources.classList.add("is-hidden");
   home.classList.add("is-hidden");
   contact_us.classList.add("is-hidden");
-  home.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  // home.classList.add("is-hidden"); removed extra
   gallery.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 team_button.onclick = function () {
   window.scrollTo({
@@ -241,9 +253,11 @@ quick_team.addEventListener("click", () => {
   resources.classList.add("is-hidden");
   home.classList.add("is-hidden");
   contact_us.classList.add("is-hidden");
-  home.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  // home.classList.add("is-hidden"); removed extra
   gallery.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 quick_team.onclick = function () {
   window.scrollTo({
@@ -252,22 +266,23 @@ quick_team.onclick = function () {
   });
 };
 
-// JS FOR CONTACT US
-contact_button.addEventListener("click", () => {
-  contact_us.classList.remove("is-hidden");
-  resources.classList.add("is-hidden");
-  about_us.classList.add("is-hidden");
-  home.classList.add("is-hidden");
-  team.classList.add("is-hidden");
-  gallery.classList.add("is-hidden");
-  admin_page.classList.add("is-hidden");
-});
-contact_button.onclick = function () {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth", // Smooth scroll animation
-  });
-};
+// // JS FOR CONTACT US
+// contact_button.addEventListener("click", () => {
+//   contact_us.classList.remove("is-hidden");
+//   resources.classList.add("is-hidden");
+//   about_us.classList.add("is-hidden");
+//   home.classList.add("is-hidden");
+//   team.classList.add("is-hidden");
+//   gallery.classList.add("is-hidden");
+//   admin_page.classList.add("is-hidden");
+//   handleContactPageVisibility(); // Add this line
+// });
+// contact_button.onclick = function () {
+//   window.scrollTo({
+//     top: 0,
+//     behavior: "smooth", // Smooth scroll animation
+//   });
+// };
 
 quick_contact.addEventListener("click", () => {
   contact_us.classList.remove("is-hidden");
@@ -277,6 +292,7 @@ quick_contact.addEventListener("click", () => {
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
   admin_page.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 quick_contact.onclick = function () {
   window.scrollTo({
@@ -284,6 +300,20 @@ quick_contact.onclick = function () {
     behavior: "smooth", // Smooth scroll animation
   });
 };
+
+//JS FOR ADMIN MESSAGES PAGE
+
+// admin_messages_modal.addEventListener("click", () => {
+//   admin_messages_modal.classList.remove("is-hidden");
+//   contact_us.classList.add("is-hidden");
+//   resources.classList.add("is-hidden");
+//   about_us.classList.add("is-hidden");
+//   home.classList.add("is-hidden");
+//   team.classList.add("is-hidden");
+//   gallery.classList.add("is-hidden");
+//   admin_page.classList.add("is-hidden");
+// });
+// admin
 
 // JS FOR ADMIN PAGE
 admin_button.addEventListener("click", () => {
@@ -294,6 +324,7 @@ admin_button.addEventListener("click", () => {
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 admin_button.onclick = function () {
   window.scrollTo({
@@ -310,6 +341,7 @@ quick_admin.addEventListener("click", () => {
   home.classList.add("is-hidden");
   team.classList.add("is-hidden");
   gallery.classList.add("is-hidden");
+  admin_messages_modal.classList.add("is-hidden");
 });
 quick_admin.onclick = function () {
   window.scrollTo({
@@ -1043,11 +1075,13 @@ auth.onAuthStateChanged((user) => {
     signup_button.classList.add("is-hidden");
     logout_button.classList.remove("is-hidden");
 
+    admin_messages_modal.classList.add("is-hidden");
+
     db.collection("users")
       .doc(user.email)
       .get()
       .then((d) => {
-        let admin = d.exists ? d.data().admin : 0; // Default to 0 if document doesn't exist
+        let admin = d.exists ? d.data().admin : 0;
         console.log(admin);
 
         if (admin == 1) {
@@ -1055,6 +1089,9 @@ auth.onAuthStateChanged((user) => {
             a.classList.remove("is-hidden");
           });
           all_users("edit");
+          if (contact_us.classList.contains("is-hidden") === false) {
+            handleContactPageVisibility();
+          }
         } else {
           admin_view.forEach((a) => {
             a.classList.add("is-hidden");
@@ -1065,6 +1102,7 @@ auth.onAuthStateChanged((user) => {
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
+        admin_messages_modal.classList.add("is-hidden");
       });
   } else {
     login_button.classList.remove("is-hidden");
@@ -1075,6 +1113,171 @@ auth.onAuthStateChanged((user) => {
     admin_view.forEach((a) => {
       a.classList.add("is-hidden");
     });
+    admin_messages_modal.classList.add("is-hidden");
+    handleContactPageVisibility();
     show_announcements();
   }
 });
+
+// Contact page visibility and admin message handling
+const handleContactPageVisibility = () => {
+  const currentUser = auth.currentUser;
+
+  if (!currentUser) {
+    contact_us.classList.add("is-hidden");
+    admin_messages_modal.classList.add("is-hidden");
+    return;
+  }
+
+  if (
+    contact_us.classList.contains("is-hidden") &&
+    admin_messages_modal.classList.contains("is-hidden")
+  ) {
+    return;
+  }
+
+  // Check if user is admin
+  db.collection("users")
+    .doc(currentUser.email)
+    .get()
+    .then((doc) => {
+      const isAdmin = doc.exists && doc.data().admin === 1;
+
+      if (isAdmin) {
+        // Admin user - hide contact form, show messages
+        contact_us.classList.add("is-hidden");
+        admin_messages_modal.classList.remove("is-hidden");
+        loadAdminMessages();
+      } else {
+        // Regular user - show contact form, hide messages
+        contact_us.classList.remove("is-hidden");
+        admin_messages_modal.classList.add("is-hidden");
+      }
+    })
+    .catch((error) => {
+      console.error("Error checking admin status:", error);
+      // On error, show regular contact form
+      contact_us.classList.remove("is-hidden");
+      admin_messages_modal.classList.add("is-hidden");
+    });
+};
+
+// Load and display messages for admin users
+const loadAdminMessages = () => {
+  db.collection("messages")
+    .get()
+    .then((snapshot) => {
+      let messagesHtml = "";
+
+      if (snapshot.empty) {
+        message_list.innerHTML = '<div class="box">No messages found.</div>';
+        return;
+      }
+
+      snapshot.forEach((doc) => {
+        const message = doc.data();
+        messagesHtml += `
+          <div class="box">
+            <h2 class="subtitle">Message Details</h2>
+            <div class="content">
+              <p><strong>Email:</strong> ${message.contact_email}</p>
+              <p><strong>Subject:</strong> ${message.subject}</p>
+              <p><strong>Message:</strong> ${message.message_body}</p>
+            </div>
+            <div class="field">
+              <label class="checkbox">
+                <input type="checkbox" data-message-id="${
+                  doc.id
+                }" class="message-reply-checkbox" 
+                  ${message.replied ? "checked" : ""}/> Mark as Replied
+              </label>
+            </div>
+            <div class="field">
+              <label class="label">Admin Comment</label>
+              <div class="control">
+                <textarea class="textarea" data-message-id="${doc.id}" 
+                  placeholder="Add a comment...">${
+                    message.adminComment || ""
+                  }</textarea>
+              </div>
+            </div>
+            <div class="buttons">
+              <button class="button is-danger" onclick="deleteMessage('${
+                doc.id
+              }')">Delete</button>
+              <button class="button is-link" onclick="saveMessageChanges('${
+                doc.id
+              }')">Save Changes</button>
+            </div>
+          </div>
+        `;
+      });
+
+      message_list.innerHTML = messagesHtml;
+    })
+    .catch((error) => {
+      console.error("Error loading messages:", error);
+      message_list.innerHTML = '<div class="box">Error loading messages.</div>';
+    });
+};
+
+// Delete message handler
+const deleteMessage = (messageId) => {
+  if (confirm("Are you sure you want to delete this message?")) {
+    db.collection("messages")
+      .doc(messageId)
+      .delete()
+      .then(() => {
+        configure_msg_bar("Message deleted successfully!");
+        loadAdminMessages(); // Reload messages
+      })
+      .catch((error) => {
+        console.error("Error deleting message:", error);
+        configure_msg_bar("Error deleting message", "error");
+      });
+  }
+};
+
+// Save message changes handler
+const saveMessageChanges = (messageId) => {
+  const checkbox = document.querySelector(
+    `.message-reply-checkbox[data-message-id="${messageId}"]`
+  );
+  const textarea = document.querySelector(
+    `textarea[data-message-id="${messageId}"]`
+  );
+
+  const updates = {
+    replied: checkbox.checked,
+    adminComment: textarea.value,
+    lastUpdated: new Date(),
+  };
+
+  db.collection("messages")
+    .doc(messageId)
+    .update(updates)
+    .then(() => {
+      configure_msg_bar("Changes saved successfully!");
+    })
+    .catch((error) => {
+      console.error("Error saving changes:", error);
+      configure_msg_bar("Error saving changes", "error");
+    });
+};
+// JS FOR CONTACT US
+contact_button.addEventListener("click", () => {
+  contact_us.classList.remove("is-hidden");
+  resources.classList.add("is-hidden");
+  about_us.classList.add("is-hidden");
+  home.classList.add("is-hidden");
+  team.classList.add("is-hidden");
+  gallery.classList.add("is-hidden");
+  admin_page.classList.add("is-hidden");
+  handleContactPageVisibility(); // Add this line
+});
+contact_button.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Smooth scroll animation
+  });
+};
