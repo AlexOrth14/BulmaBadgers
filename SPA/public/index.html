@@ -720,66 +720,43 @@
         </div>
       </section>
 
-      <!-- got rid of old body -->
-      <div
-        class="columns is-multiline is-centered is-vcentered p-1"
-        style="min-height: 100vh"
-      >
-        <!-- Card for each club officer -->
-        <div class="column is-half-tablet is-one-third-desktop">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img
-                  src="images/Achal_Gowda.jpeg"
-                  alt="Club Officer Headshot"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">Achal Gowda</p>
-                  <p class="subtitle is-6">President</p>
-                </div>
-              </div>
-              <div class="content">
-                <p>
-                  Email:
-                  <a href="mailto:example@example.com">agowda2@wisc.edu</a>
-                </p>
-              </div>
+      <div id="add_officer_form" class="box admin is-hidden">
+        <h3 class="title is-4">Add New Officer</h3>
+        <form id="officer_creation_form">
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input id="officer_name" class="input" type="text" placeholder="Officer Name" required />
             </div>
           </div>
-        </div>
-
-        <!-- Duplicate the above card block for each additional club officer -->
-        <div class="column is-half-tablet is-one-third-desktop">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img
-                  src="images/Austin_Wiedemeier.jpeg"
-                  alt="Club Officer Headshot"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">Austin Wiedemeier</p>
-                  <p class="subtitle is-6">VP and Treasurer</p>
-                </div>
-              </div>
-              <div class="content">
-                <p>
-                  Email:
-                  <a href="mailto:example@example.com">awiedemeier@wisc.edu</a>
-                </p>
-              </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input id="officer_email" class="input" type="email" placeholder="Officer Email" required />
             </div>
           </div>
-        </div>
+          <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+              <input id="officer_title" class="input" type="text" placeholder="Officer Title" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Photo</label>
+            <div class="control">
+              <input id="officer_photo" class="input" type="file" required />
+            </div>
+          </div>
+          <div class="control mt-3">
+            <button type="submit" class="button is-link">Add Officer</button>
+          </div>
+        </form>
+      </div>
+      
+      
+      <!-- Container to display officers -->
+      <div class="columns is-multiline is-centered is-vcentered p-1" id="officers_container" style="min-height: 100vh">
+        <!-- Officer cards will be added here dynamically -->
       </div>
     </section>
 

@@ -28,7 +28,7 @@ const initNavbar = () => {
 };
 
 initNavbar();
-// sign up MODALTOGGLE
+// sign up fTOGGLE
 const signupButton = document.getElementById("signup_button");
 const signupModal = document.getElementById("signup_modal");
 const closeModal = document.querySelectorAll(".delete, #close_modal");
@@ -1281,3 +1281,171 @@ contact_button.onclick = function () {
     behavior: "smooth", // Smooth scroll animation
   });
 };
+
+// Function to check if the user is an admin
+function checkAdminStatus() {
+  firebase.auth().onAuthStateChanged(async (user) => {
+    if (user) {
+      try {
+        // Check if user exists in the 'users' collection and if they are an admin
+        const userDoc = await db.collection("users").doc(user.email).get();
+        if (userDoc.exists && userDoc.data().admin === 1) {
+          console.log("Admin user detected, showing admin options.");
+          // Reveal delete buttons if user is an admin
+          document.querySelectorAll('.admin').forEach((el) => {
+            el.classList.remove('is-hidden');
+          });
+        } else {
+          console.log("User is not an admin.");
+          hideAdminElements();
+        }
+      } catch (error) {
+        console.error("Error checking admin status:", error);
+      }
+    } else {
+      console.log("User is not logged in.");
+      hideAdminElements(); // Hide admin elements when logged out
+    }
+  });
+}
+
+// Function to hide admin elements
+function hideAdminElements() {
+  document.querySelectorAll('.admin').forEach((el) => {
+    el.classList.add('is-hidden');
+  });
+}
+
+// Fetch officers from Firebase and render them dynamically
+function showOfficers() {
+  const officerContainer = document.querySelector("#officers_container");
+
+  // Clear the current content in the container
+  officerContainer.innerHTML = '';
+
+  // Fetch officer data from Firebase
+  db.collection("officers")
+    .get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
+        const officer = doc.data();
+
+        // Create officer card HTML
+        let officerCard = `
+          <div class="column is-half-tablet is-one-third-desktop">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="${officer.photoURL}" alt="${officer.name} Headshot" />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4">${officer.name}</p>
+                    <p class="subtitle is-6">${officer.title}</p>
+                  </div>
+                </div>
+                <div class="content">
+                  <p>Email: <a href="mailto:${officer.email}">${officer.email}</a></p>
+                </div>
+                <button class="button is-danger is-small delete-officer-btn admin is-hidden" data-officer-id="${doc.id}">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Append officer card to the container
+        officerContainer.innerHTML += officerCard;
+      });
+
+      // Check if the logged-in user is an admin to reveal delete buttons if necessary
+      checkAdminStatus();
+
+      // Add event listeners for delete buttons if needed
+      addDeleteOfficerListeners();
+    })
+    .catch((error) => {
+      console.error("Error fetching officers:", error);
+    });
+}
+
+// Call the function to render officers when the page loads
+showOfficers();
+
+function addDeleteOfficerListeners() {
+  // Add event listeners to delete buttons
+  const deleteButtons = document.querySelectorAll(".delete-officer-btn");
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const officerId = event.target.getAttribute("data-officer-id");
+      deleteOfficer(officerId);
+    });
+  });
+}
+
+function deleteOfficer(officerId) {
+  // Delete officer from Firebase Firestore
+  db.collection("officers")
+    .doc(officerId)
+    .delete()
+    .then(() => {
+      configure_msg_bar("Officer deleted successfully!");
+      showOfficers(); // Refresh the list of officers after deletion
+    })
+    .catch((error) => {
+      console.error("Error deleting officer:", error);
+    });
+}
+
+// officer creation form
+document.addEventListener("DOMContentLoaded", function () {
+  const officerForm = document.getElementById("officer_creation_form");
+
+  officerForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const officerName = document.getElementById("officer_name").value.trim();
+    const officerEmail = document.getElementById("officer_email").value.trim();
+    const officerTitle = document.getElementById("officer_title").value.trim();
+    const officerPhotoFile = document.getElementById("officer_photo").files[0];
+
+    if (!officerPhotoFile) {
+      configure_msg_bar("Please select a photo for the officer!", "error");
+      return;
+    }
+
+    try {
+      // Upload the officer photo to Firebase Storage
+      const photoFileName = `officers/${new Date().toISOString()}_${officerPhotoFile.name}`;
+      const photoRef = firebase.storage().ref().child(photoFileName);
+      const photoSnapshot = await photoRef.put(officerPhotoFile);
+      const photoURL = await photoSnapshot.ref.getDownloadURL();
+
+      // Prepare officer object to be saved
+      const officerData = {
+        name: officerName,
+        email: officerEmail,
+        title: officerTitle,
+        photoURL: photoURL,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      };
+
+      // Save officer data to Firestore
+      await db.collection("officers").add(officerData);
+
+      configure_msg_bar("Officer added successfully!", "success");
+
+      // Reset the form
+      officerForm.reset();
+
+      // Refresh officers list (optional)
+      showOfficers();
+    } catch (error) {
+      console.error("Error adding officer:", error);
+      configure_msg_bar("Error adding officer: " + error.message, "error");
+    }
+  });
+});
