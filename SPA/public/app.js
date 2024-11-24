@@ -760,7 +760,7 @@ signupForm.addEventListener("submit", (e) => {
         .set(userInfo);
     })
     .then(() => {
-      console.log("User info saved to Firestore.");
+      // console.log("User info saved to Firestore.");
     })
     .catch((error) => {
       // Handle errors here
@@ -776,11 +776,17 @@ signin_form.addEventListener("submit", (e) => {
   let email = document.querySelector("#signin_email").value;
   let pass = document.querySelector("#signin_password").value;
 
-  auth.signInWithEmailAndPassword(email, pass).then((userCredential) => {
-    const user = userCredential.user;
-    configure_msg_bar(`User ${email} signed in!`);
-    document.querySelector("#signin_modal").classList.remove("is-active");
-  });
+  auth
+    .signInWithEmailAndPassword(email, pass)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      configure_msg_bar(`User ${email} signed in!`);
+      document.querySelector("#signin_modal").classList.remove("is-active");
+    })
+    .catch((error) => {
+      // Handle errors here
+      alert("The username or password is incorrect");
+    });
 });
 
 // LOGOUT
@@ -1082,8 +1088,9 @@ auth.onAuthStateChanged((user) => {
       .doc(user.email)
       .get()
       .then((d) => {
+        contact_button.classList.remove("is-hidden");
+        quick_contact.classList.remove("is-hidden");
         let admin = d.exists ? d.data().admin : 0;
-        console.log(admin);
 
         if (admin == 1) {
           admin_view.forEach((a) => {
@@ -1127,6 +1134,8 @@ const handleContactPageVisibility = () => {
   if (!currentUser) {
     contact_us.classList.add("is-hidden");
     admin_messages_modal.classList.add("is-hidden");
+    contact_button.classList.add("is-hidden");
+    quick_contact.classList.add("is-hidden");
     return;
   }
 
@@ -1152,6 +1161,8 @@ const handleContactPageVisibility = () => {
       } else {
         // Regular user - show contact form, hide messages
         contact_us.classList.remove("is-hidden");
+        contact_button.classList.remove("is-hidden");
+        quick_contact.classList.remove("is-hidden");
         admin_messages_modal.classList.add("is-hidden");
       }
     })
