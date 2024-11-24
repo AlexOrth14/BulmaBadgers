@@ -142,8 +142,6 @@ body {
   display: flex;
   /* align-items: stretch; */
   flex-wrap: wrap;
-  margin-right: 3%;
-  margin-left: 3%;
   padding-top: 15px;
   padding-bottom: 10px;
 }
@@ -153,6 +151,8 @@ body {
 /* note for later, apply this for gallery formatting */
 #home #announcements .card {
   flex: 1 1 100%;
+  margin-right: 5%;
+  margin-left: 5%;
   margin-bottom: 10px;
   border-radius: 10px;
 }
