@@ -689,14 +689,17 @@ const initContactForm = () => {
         configure_msg_bar("Please fill in all fields!", "error");
         return;
       }
+      // add timestamp to message
+      const timestamp = new Date().toISOString(); // Generate timestamp
 
       const message = {
         contact_email: contact_email,
         subject: subject,
         message_body: message_body,
+        timestamp: timestamp, // Include timestamp
       };
 
-      // Add console.log to debug
+      // Debug log
       console.log("Attempting to send message:", message);
 
       db.collection("messages")
@@ -1177,6 +1180,7 @@ const handleContactPageVisibility = () => {
 // Load and display messages for admin users
 const loadAdminMessages = () => {
   db.collection("messages")
+    .orderBy("timestamp", "desc") // Order by timestamp in descending order
     .get()
     .then((snapshot) => {
       let messagesHtml = "";
@@ -1188,6 +1192,12 @@ const loadAdminMessages = () => {
 
       snapshot.forEach((doc) => {
         const message = doc.data();
+
+        // Format the timestamp if it exists
+        const timestamp = message.timestamp
+          ? new Date(message.timestamp).toLocaleString() // Converts ISO to readable date/time
+          : "Timestamp not available";
+
         messagesHtml += `
           <div class="box">
             <h2 class="subtitle">Message Details</h2>
@@ -1195,6 +1205,7 @@ const loadAdminMessages = () => {
               <p><strong>Email:</strong> ${message.contact_email}</p>
               <p><strong>Subject:</strong> ${message.subject}</p>
               <p><strong>Message:</strong> ${message.message_body}</p>
+              <p><strong>Timestamp:</strong> ${timestamp}</p> <!-- Add timestamp here -->
             </div>
             <div class="field">
               <label class="checkbox">
