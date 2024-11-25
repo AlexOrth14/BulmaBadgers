@@ -263,6 +263,7 @@
       </div>
 
       <!-- EXTRA INFO TILES -->
+
       <div id="tiles" class="is-flex">
         <div class="tile_card card">
           <div class="card-content has-text-centered m-0">
@@ -444,21 +445,43 @@
             </div>
 
             <!-- Image Section -->
-            <div class="columns is-centered is-variable is-8 mt-6">
-              <!-- Main Image - Group of People -->
-              <div class="column is-full">
-                <figure class="image is-3by1">
-                  <img
-                    src="images/maxresdefault.jpg"
-                    alt="Group of people learning to hunt"
-                    class="main-hunt-image"
-                  />
-                </figure>
-              </div>
+            <!-- <div class="columns is-centered is-variable is-8 mt-6"> -->
+            <!-- Main Image - Group of People -->
+            <div class="column is-full">
+              <figure class="image is-3by1 mb-2">
+                <img
+                  src="images/maxresdefault.jpg"
+                  alt="Group of people learning to hunt"
+                  class="main-hunt-image"
+                />
+              </figure>
             </div>
+          </div>
 
-            <!-- Surrounding Images -->
-            <div class="columns is-variable is-8 is-multiline is-centered mt-6">
+          <!-- submission -->
+          <div class="admin is-hidden is-flex is-justify-content-center p-3">
+            <div id="tile_upload" class="field">
+              <label class="label ml-1">Card Upload: </label>
+              <div class="control">
+                <input type="text" id="tile_title" placeholder="Card Title" />
+                <input
+                  type="text"
+                  id="tile_url"
+                  placeholder="Link to Resource"
+                />
+                <input
+                  class="input"
+                  type="file"
+                  id="tile_image"
+                  placeholder="Choose Image"
+                />
+              </div>
+              <button id="tile_submit">Submit</button>
+            </div>
+          </div>
+
+          <!-- Surrounding Images -->
+          <!-- <div class="columns is-variable is-8 is-multiline is-centered mt-6">
               <div class="column is-one-quarter">
                 <figure class="image is-4by3">
                   <img
@@ -466,33 +489,33 @@
                     alt="Tracking wildlife"
                   />
                 </figure>
-              </div>
-              <div class="column is-one-quarter">
-                <figure class="image is-4by3">
-                  <img
-                    src="images/60ab94_cf3c63b7f421484884a6a262a3c14add~mv2.jpg"
-                    alt="Hunting gear and equipment"
-                  />
-                </figure>
-              </div>
-              <div class="column is-one-quarter">
-                <figure class="image is-4by3">
-                  <img
-                    src="images/firearm_safety.jpg"
-                    alt="Firearm safety training"
-                  />
-                </figure>
-              </div>
-              <div class="column is-one-quarter">
-                <figure class="image is-4by3">
-                  <img
-                    src="images/field_dressing.jpg"
-                    alt="Field dressing a deer"
-                  />
-                </figure>
-              </div>
+              </div> -->
+          <!-- <div class="column is-one-quarter">
+              <figure class="image is-4by3">
+                <img
+                  src="images/60ab94_cf3c63b7f421484884a6a262a3c14add~mv2.jpg"
+                  alt="Hunting gear and equipment"
+                />
+              </figure>
             </div>
-          </div>
+            <div class="column is-one-quarter">
+              <figure class="image is-4by3">
+                <img
+                  src="images/firearm_safety.jpg"
+                  alt="Firearm safety training"
+                />
+              </figure>
+            </div>
+            <div class="column is-one-quarter">
+              <figure class="image is-4by3">
+                <img
+                  src="images/field_dressing.jpg"
+                  alt="Field dressing a deer"
+                />
+              </figure>
+            </div>
+          </div> -->
+          <!-- </div> -->
 
           <div class="columns is-variable is-8 is-multiline">
             <!-- Hunting Basics -->

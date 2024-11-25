@@ -161,6 +161,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: large;
 }
 
 #home #admin_ann {
@@ -382,6 +383,12 @@ body {
 }
 
 #gallery #gal_upload {
+  border: solid 2px black;
+  width: 80%;
+  background-color: white;
+}
+
+#tile_upload {
   border: solid 2px black;
   width: 80%;
   background-color: white;
