@@ -1,7 +1,3 @@
-// HEY THERE BUDDY!.... ONLY PLACE CONTENT THAT APPLIES TO ALL PAGES HERE
-/* Pro tip, link this app.js to your page in addition to your custom .js file*/
-//console.log(firebase);
-
 // MOBILE NAVBAR CODE
 // had to add this for fitting navbar better on mobile
 // document.addEventListener("DOMContentLoaded", () => {
@@ -473,6 +469,16 @@ function gal_del_doc(id) {
     });
 }
 
+function res_del_doc(id) {
+  db.collection("resources")
+    .doc(id)
+    .delete()
+    .then(() => {
+      configure_msg_bar("Resource card deleted!");
+      show_resources();
+    });
+}
+
 const ann_submit = document.querySelector("#ann_submit");
 
 ann_submit.addEventListener("click", () => {
@@ -499,6 +505,45 @@ ann_submit.addEventListener("click", () => {
   document.querySelector("#ann_topic").value = "";
   document.querySelector("#ann_content").value = "";
 });
+
+const resources_submit = document.querySelector("#tile_submit");
+
+resources_submit.addEventListener("click", async () => {
+  let file = document.querySelector("#tile_image").files[0];
+
+  let image = new Date() + "_" + file.name;
+  let title = document.querySelector("#tile_title").value;
+  let content = document.querySelector("#tile_content").value;
+  let link = document.querySelector("#tile_link").value;
+  const task = ref.child(image).put(file);
+
+  try {
+    const snapshot = await task;
+    const url = await snapshot.ref.getDownloadURL();
+
+    let resources_tile = {
+      image: url,
+      title: title,
+      content: content,
+      link: link,
+    };
+    const docID = new Date().toISOString();
+
+    await db.collection("resources").doc(docID).set(resources_tile);
+    configure_msg_bar("You've added a resources card!");
+    show_resources();
+
+    document.querySelector("#tile_image").value = "";
+    document.querySelector("#tile_title").value = "";
+    document.querySelector("#tile_link").value = "";
+    document.querySelector("#tile_content").value = "";
+  } catch (error) {
+    // Handle any errors that occurred during the upload or form submission
+    console.error("Error:", error);
+  }
+});
+
+show_resources();
 
 // Show announcements V2
 function show_announcements() {
@@ -590,6 +635,50 @@ function show_gallery() {
     </div>`;
       });
       document.querySelector("#gallery_collection").innerHTML = html;
+    });
+}
+
+function show_resources() {
+  db.collection("resources")
+    .get()
+    .then((mydata) => {
+      let docs = mydata.docs;
+
+      let html = ``;
+
+      docs.forEach((d) => {
+        html += `
+<div class="column is-one-third">
+              <div
+                class="card feature-card"
+                style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
+              >
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="${d.data().image}" alt="BHC Resource Tile" />
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                 <button class="is-pulled-right admin is-hidden" onclick="res_del_doc('${
+                   d.id
+                 }')">Delete</button>
+                  <h3 class="title is-5 has-text-dark">${d.data().title}</h3>
+                  <p class="has-text-grey-dark">
+                    ${d.data().content}
+                  </p>
+                  <a
+                    href="${d.data().link}"
+                    class="button is-warning is-outlined is-rounded mt-3"
+                    style="transition: transform 0.3s"
+                    >Learn More</a
+                  >
+                 
+                </div>
+              </div>
+            </div>
+    `;
+      });
+      document.querySelector("#resource_tiles").innerHTML = html;
     });
 }
 

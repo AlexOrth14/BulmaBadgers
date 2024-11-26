@@ -461,12 +461,17 @@
           <!-- submission -->
           <div class="admin is-hidden is-flex is-justify-content-center p-3">
             <div id="tile_upload" class="field">
-              <label class="label ml-1">Card Upload: </label>
+              <label class="label ml-1">External Resource Tile Upload: </label>
               <div class="control">
                 <input type="text" id="tile_title" placeholder="Card Title" />
                 <input
                   type="text"
-                  id="tile_url"
+                  id="tile_content"
+                  placeholder="Card Content"
+                />
+                <input
+                  type="text"
+                  id="tile_link"
                   placeholder="Link to Resource"
                 />
                 <input
@@ -481,15 +486,17 @@
           </div>
 
           <!-- Surrounding Images -->
-          <!-- <div class="columns is-variable is-8 is-multiline is-centered mt-6">
-              <div class="column is-one-quarter">
+          <!-- <div
+            class="columns is-variable is-8 is-multiline is-centered mt-6"
+          > -->
+          <!-- <div class="column is-one-quarter">
                 <figure class="image is-4by3">
                   <img
                     src="images/60ab94_3b2f23faaa7e4e92965c1bec635b70a0~mv2.jpg"
                     alt="Tracking wildlife"
                   />
                 </figure>
-              </div> -->
+              </div>  -->
           <!-- <div class="column is-one-quarter">
               <figure class="image is-4by3">
                 <img
@@ -517,9 +524,11 @@
           </div> -->
           <!-- </div> -->
 
-          <div class="columns is-variable is-8 is-multiline">
-            <!-- Hunting Basics -->
-            <div class="column is-one-third">
+          <div
+            id="resource_tiles"
+            class="columns is-variable is-8 is-multiline pt-4"
+          >
+            <!-- <div class="column is-one-third">
               <div
                 class="card feature-card"
                 style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
@@ -544,10 +553,10 @@
                   >
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Choosing Your Gear -->
-            <div class="column is-one-third">
+            <!-- <div class="column is-one-third">
               <div
                 class="card feature-card"
                 style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
@@ -571,10 +580,10 @@
                   >
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Hunting Seasons & Licenses -->
-            <div class="column is-one-third">
+            <!-- <div class="column is-one-third">
               <div
                 class="card feature-card"
                 style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
@@ -603,7 +612,7 @@
                   >
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
 
           <div class="content mt-6">
