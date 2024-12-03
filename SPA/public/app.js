@@ -1,9 +1,4 @@
 // MOBILE NAVBAR CODE
-// had to add this for fitting navbar better on mobile
-// document.addEventListener("DOMContentLoaded", () => {
-//   const burger = document.querySelector(".navbar-burger");
-//   const menu = document.getElementById("navMenu");
-
 //   burger.addEventListener("click", () => {
 //     burger.classList.toggle("is-active");
 //     menu.classList.toggle("is-active");
@@ -298,7 +293,6 @@ quick_contact.onclick = function () {
 };
 
 //JS FOR ADMIN MESSAGES PAGE
-
 // admin_messages_modal.addEventListener("click", () => {
 //   admin_messages_modal.classList.remove("is-hidden");
 //   contact_us.classList.add("is-hidden");
@@ -685,48 +679,6 @@ function show_resources() {
 show_announcements();
 show_gallery();
 
-//submitting a message on contact us
-// document.addEventListener("DOMContentLoaded", function () {
-//   const submitButton = document.querySelector("#submit_btn");
-
-//   if (submitButton) {
-//     submitButton.addEventListener("click", function () {
-//       const contact_email = document.querySelector("#contact_email").value;
-//       const subject = document.querySelector("#subject").value;
-//       const message_body = document.querySelector("#message_body").value;
-
-//       // Validation
-//       if (!contact_email || !subject || !message_body) {
-//         configure_msg_bar("Please fill in all fields!", "error");
-//         return;
-//       }
-
-//       const message = {
-//         contact_email: contact_email,
-//         subject: subject,
-//         message_body: message_body,
-//       };
-
-//       // Add console.log to debug
-//       console.log("Attempting to send message:", message);
-
-//       db.collection("messages")
-//         .add(message)
-//         .then(() => {
-//           configure_msg_bar("Message sent!", "success");
-//           document.getElementById("contact_form").reset();
-//           console.log("Message sent successfully");
-//         })
-//         .catch((error) => {
-//           console.error("Error writing to database:", error);
-//           configure_msg_bar("Error sending message: " + error.message, "error");
-//         });
-//     });
-//   } else {
-//     console.error("Submit button not found");
-//   }
-// });
-
 // new message submit function
 const initContactForm = () => {
   const submitButton = document.querySelector("#submit_btn");
@@ -867,86 +819,6 @@ const closeModalButton = document.querySelector("#close_modal");
 if (closeModalButton) {
   closeModalButton.addEventListener("click", closeSignupModal);
 }
-
-// commenting out there is already a onAuthStateChanged event listener below,
-// added functionality was doing referesh for when admin and reg user login and refreshing on logout
-// auth.onAuthStateChanged((user) => {
-//   if (user) {
-//     document.querySelector(
-//       "#view_user"
-//     ).innerHTML += `&nbsp; user: ${user.email}`;
-//     login_button.classList.add("is-hidden");
-//     signup_button.classList.add("is-hidden");
-//     logout_button.classList.remove("is-hidden");
-
-//     db.collection("users")
-//       .doc(user.email)
-//       .get()
-//       .then((d) => {
-//         // admin value of 1 means admin user. a value of 0 means no admin
-//         let admin = d.data().admin;
-//         console.log(admin);
-
-//         if (admin == 1) {
-//           // admin can see admin editing boxes
-//           admin_view.forEach((a) => {
-//             a.classList.remove("is-hidden");
-//           });
-//         } else {
-//           // a signed-in admin user can view and edit user roles
-//           admin_view.forEach((a) => {
-//             a.classList.add("is-hidden");
-//           });
-//         }
-//       });
-//   } else {
-//     login_button.classList.remove("is-hidden");
-//     signup_button.classList.remove("is-hidden");
-//     logout_button.classList.add("is-hidden");
-//     document.querySelector("#view_user").innerHTML = "";
-
-//     admin_view.forEach((a) => {
-//       a.classList.add("is-hidden");
-//     });
-//   }
-// });
-
-// gallery function v1
-// document.addEventListener("DOMContentLoaded", function () {
-//   let slideIndex = 0;
-//   const slides = document.querySelectorAll(".rotating-gallery .slide");
-//   const nextButton = document.getElementById("next");
-//   const prevButton = document.getElementById("prev");
-
-//   // Function to show a particular slide
-//   function showSlide(index) {
-//     slides.forEach((slide, i) => {
-//       slide.style.display = i === index ? "block" : "none";
-//     });
-//   }
-
-//   // Function to move to the next slide
-//   function nextSlide() {
-//     slideIndex = (slideIndex + 1) % slides.length; // Loop to the beginning if at the end
-//     showSlide(slideIndex);
-//   }
-
-//   // Function to move to the previous slide
-//   function prevSlide() {
-//     slideIndex = (slideIndex - 1 + slides.length) % slides.length; // Loop to the end if at the beginning
-//     showSlide(slideIndex);
-//   }
-
-//   // Set up click event listeners for next and previous buttons
-//   nextButton.addEventListener("click", nextSlide);
-//   prevButton.addEventListener("click", prevSlide);
-
-//   // Set up autoplay to change slides every 3 seconds
-//   setInterval(nextSlide, 3000);
-
-//   // Initial display of the first slide
-//   showSlide(slideIndex);
-// });
 
 // gallery function v2
 const initGallery = () => {
