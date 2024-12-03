@@ -550,7 +550,7 @@ function show_announcements() {
     db.collection("announcements")
       .get()
       .then((mydata) => {
-        let docs = mydata.docs;
+        let docs = mydata.docs.reverse();
         let html = ``;
 
         docs.forEach((d) => {
