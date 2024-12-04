@@ -6,14 +6,39 @@
 // });
 
 // burger function no DOMContentLoaded
+// const initNavbar = () => {
+//   const burger = document.querySelector(".navbar-burger");
+//   const menu = document.getElementById("navMenu");
+
+//   if (burger && menu) {
+//     burger.addEventListener("click", () => {
+//       burger.classList.toggle("is-active");
+//       menu.classList.toggle("is-active");
+//     });
+//   }
+// };
+
+// new burger function to hide when clicked
 const initNavbar = () => {
   const burger = document.querySelector(".navbar-burger");
   const menu = document.getElementById("navMenu");
 
   if (burger && menu) {
+    // Toggle menu on burger click
     burger.addEventListener("click", () => {
       burger.classList.toggle("is-active");
       menu.classList.toggle("is-active");
+    });
+
+    // Add click event to all links in the menu
+    const links = menu.querySelectorAll("a");
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        // Close the menu and deactivate the burger
+        burger.classList.remove("is-active");
+        menu.classList.remove("is-active");
+      });
     });
   }
 };
