@@ -775,10 +775,15 @@ signupForm.addEventListener("submit", (e) => {
       const user = userCredential.user;
       configure_msg_bar(`User ${signup_email} created successfully!`);
 
-      // close the modal after signup
+      // Clear input fields after signup
+      document.querySelector("#signup_email").value = "";
+      document.querySelector("#signup_password").value = "";
+      document.querySelector("#full_name").value = "";
+
+      // Close the modal after signup
       closeSignupModal();
 
-      // You can also add additional code to save more user info to Firestore
+      // Additional code to save more user info to Firestore
       const userInfo = {
         email: signup_email,
         name: signup_name,
@@ -814,6 +819,12 @@ signin_form.addEventListener("submit", (e) => {
     .then((userCredential) => {
       const user = userCredential.user;
       configure_msg_bar(`User ${email} signed in!`);
+
+      // Clear input fields after successful login
+      document.querySelector("#signin_email").value = "";
+      document.querySelector("#signin_password").value = "";
+
+      // Close the login modal
       document.querySelector("#signin_modal").classList.remove("is-active");
     })
     .catch((error) => {
