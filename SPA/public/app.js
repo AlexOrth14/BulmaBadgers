@@ -1357,3 +1357,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Function to send a password reset email
+function sendPasswordReset(email) {
+  auth
+    .sendPasswordResetEmail(email)
+    .then(() => {
+      // change to configure message bar
+      alert("Password reset email sent!");
+    })
+    .catch((error) => {
+      console.error("Error sending password reset email:", error);
+      alert(`Error: ${error.message}`);
+    });
+}
+
+// Example usage: Assume you have an input field and button in your HTML
+document.getElementById("reset_pwd").addEventListener("click", () => {
+  const email = document.getElementById("signin_email").value;
+  if (email) {
+    sendPasswordReset(email);
+  } else {
+    alert("Please enter your email address.");
+  }
+});
