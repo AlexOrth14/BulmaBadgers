@@ -498,6 +498,22 @@ function res_del_doc(id) {
     });
 }
 
+const deleteUser = (userId) => {
+  if (confirm("Are you sure you want to delete this user?")) {
+    db.collection("users")
+      .doc(userId)
+      .delete()
+      .then(() => {
+        configure_msg_bar("User deleted successfully!");
+        all_users("edit"); // Reload messages
+      })
+      .catch((error) => {
+        console.error("Error deleting user:", error);
+        configure_msg_bar("Error deleting user", "error");
+      });
+  }
+};
+
 const ann_submit = document.querySelector("#ann_submit");
 
 ann_submit.addEventListener("click", () => {
@@ -960,7 +976,15 @@ function all_users(mode) {
                   ? `<button onclick="make_admin('${doc.id}')" class="button is-small is-link is-outlined">Make Admin</button>`
                   : `<button onclick="make_regular_user('${doc.id}')" class="button is-small is-danger is-outlined">Revoke Admin</button>`
                 : ""
-            }
+            } 
+          </td>
+          <td>
+           ${
+             mode === "edit" && doc.id !== auth.currentUser.email
+               ? `<button onclick="deleteUser('${doc.id}')" class="button is-small is-danger is-outlined">Delete</button>
+              `
+               : ""
+           } 
           </td>
         </tr>`;
       });
