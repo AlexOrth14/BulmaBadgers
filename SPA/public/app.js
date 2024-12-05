@@ -1412,26 +1412,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Function to send a password reset email
 function sendPasswordReset(email) {
+  const signinModal = document.getElementById("signin_modal");
+
+  if (!email) {
+    // Close the modal and display the error message
+    if (signinModal) {
+      signinModal.classList.remove("is-active");
+    }
+    configure_msg_bar("Please enter your email address.", "error");
+    return;
+  }
+
   auth
     .sendPasswordResetEmail(email)
     .then(() => {
-      // change to configure message bar
-      alert("Password reset email sent!");
+      // Close the modal
+      if (signinModal) {
+        signinModal.classList.remove("is-active");
+      }
+
+      // Display success message
+      configure_msg_bar("Password reset email sent!");
     })
     .catch((error) => {
       console.error("Error sending password reset email:", error);
-      alert(`Error: ${error.message}`);
+
+      // Close the modal and display the error message
+      if (signinModal) {
+        signinModal.classList.remove("is-active");
+      }
+      configure_msg_bar(
+        "Error sending password reset email: " + error.message,
+        "error"
+      );
     });
 }
 
-// Example usage: Assume you have an input field and button in your HTML
+// Example usage
 document.getElementById("reset_pwd").addEventListener("click", () => {
   const email = document.getElementById("signin_email").value;
-  if (email) {
-    sendPasswordReset(email);
-  } else {
-    alert("Please enter your email address.");
-  }
+  sendPasswordReset(email.trim());
 });
