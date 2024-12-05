@@ -766,24 +766,22 @@ signupForm.addEventListener("submit", (e) => {
   let signup_pass = document.querySelector("#signup_password").value;
   let signup_name = document.querySelector("#full_name").value;
 
-  // Firebase Authentication to create a new user
+  // Basic validation
+  if (!signup_email || !signup_pass || !signup_name) {
+    configure_msg_bar("Please fill in all fields", "error");
+    return;
+  }
+
+  // Variable to store the created user reference
+  let createdUser;
+
   firebase
     .auth()
     .createUserWithEmailAndPassword(signup_email, signup_pass)
     .then((userCredential) => {
-      // User successfully signed up
-      const user = userCredential.user;
-      configure_msg_bar(`User ${signup_email} created successfully!`);
+      // Store the user reference
+      createdUser = userCredential.user;
 
-      // Clear input fields after signup
-      document.querySelector("#signup_email").value = "";
-      document.querySelector("#signup_password").value = "";
-      document.querySelector("#full_name").value = "";
-
-      // Close the modal after signup
-      closeSignupModal();
-
-      // Additional code to save more user info to Firestore
       const userInfo = {
         email: signup_email,
         name: signup_name,
@@ -791,19 +789,51 @@ signupForm.addEventListener("submit", (e) => {
         createdAt: new Date(),
       };
 
+      // Return Firestore operation
       return firebase
         .firestore()
         .collection("users")
         .doc(signup_email)
-        .set(userInfo);
+        .set(userInfo)
+        .catch((firestoreError) => {
+          // If Firestore operation fails, delete the auth user and throw error
+          console.error("Error saving to Firestore:", firestoreError);
+          return createdUser.delete().then(() => {
+            throw new Error(
+              "Failed to create user profile. Please try again. Error: " +
+                firestoreError.message
+            );
+          });
+        });
     })
     .then(() => {
-      // console.log("User info saved to Firestore.");
+      // Both Authentication and Firestore operations succeeded
+      configure_msg_bar(`User ${signup_email} created successfully!`);
+
+      // Clear input fields
+      document.querySelector("#signup_email").value = "";
+      document.querySelector("#signup_password").value = "";
+      document.querySelector("#full_name").value = "";
+
+      // Close the modal
+      closeSignupModal();
     })
     .catch((error) => {
-      // Handle errors here
-      const errorMessage = error.message;
-      alert("Error: " + errorMessage);
+      // Handle all errors here
+      console.error("Error during signup process:", error);
+
+      // If we have a created user but reached an error, ensure cleanup
+      if (createdUser) {
+        createdUser.delete().catch((deleteError) => {
+          console.error("Error deleting incomplete user:", deleteError);
+        });
+      }
+
+      // Show error to user
+      configure_msg_bar("Error: " + error.message, "error");
+
+      // Keep the form open so user can try again
+      document.querySelector("#signup_password").value = "";
     });
 });
 
