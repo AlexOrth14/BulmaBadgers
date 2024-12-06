@@ -947,6 +947,17 @@ const initGallery = () => {
 
 initGallery();
 
+const bylaws_submission = document.getElementById("bylaws_submit");
+
+bylaws_submission.addEventListener("click", (e) => {
+  let url = document.querySelector("#bylaws_upload").value;
+  document.querySelector(
+    "#tiles > div:nth-child(4) > div.card-image > a"
+  ).href = url;
+  configure_msg_bar("New Bylaws uploaded!");
+  document.querySelector("#bylaws_upload").value = "";
+});
+
 // Function to display all users and allow admin actions if applicable
 function all_users(mode) {
   // Fetch all users from Firestore
