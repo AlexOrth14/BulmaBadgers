@@ -485,6 +485,7 @@ function gal_del_doc(id) {
     .then(() => {
       configure_msg_bar("Image deleted!");
       show_gallery();
+      checkAdminStatus(); // Ensure admin buttons remain visible after deletion
     });
 }
 
@@ -654,22 +655,18 @@ function show_gallery() {
         let date = d.id.split("").splice(0, 10).join("");
         console.log(date);
         html += `<div class="gallery_card column">
-      <div class="card-header-title"> ${
-        d.data().title
-      } <p class="admin is-hidden">-- ${date}</p>
-      </div>
-      <div class="card-image">
-        <a> <img src="${d.data().url}" /></a>
-        
-      </div>
-    
-      <button class="overlay-button admin is-hidden" style="" onclick="gal_del_doc('${
-        d.id
-      }')">Delete</button>
-    
-    </div>`;
+          <div class="card-header-title"> ${d.data().title} <p class="admin is-hidden">-- ${date}</p>
+          </div>
+          <div class="card-image">
+            <a> <img src="${d.data().url}" /></a>
+          </div>
+          <button class="overlay-button admin is-hidden" onclick="gal_del_doc('${d.id}')">Delete</button>
+        </div>`;
       });
       document.querySelector("#gallery_collection").innerHTML = html;
+
+      // Check if the user is an admin and show admin elements
+      checkAdminStatus();
     });
 }
 
