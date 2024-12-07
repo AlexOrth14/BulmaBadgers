@@ -944,6 +944,17 @@ const initGallery = () => {
 
 initGallery();
 
+const bylaws_submission = document.getElementById("bylaws_submit");
+
+bylaws_submission.addEventListener("click", (e) => {
+  let url = document.querySelector("#bylaws_upload").value;
+  document.querySelector(
+    "#tiles > div:nth-child(4) > div.card-image > a"
+  ).href = url;
+  configure_msg_bar("New Bylaws uploaded!");
+  document.querySelector("#bylaws_upload").value = "";
+});
+
 // Function to display all users and allow admin actions if applicable
 function all_users(mode) {
   // Fetch all users from Firestore
@@ -1409,26 +1420,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Function to send a password reset email
 function sendPasswordReset(email) {
+  const signinModal = document.getElementById("signin_modal");
+
+  if (!email) {
+    // Close the modal and display the error message
+    if (signinModal) {
+      signinModal.classList.remove("is-active");
+    }
+    configure_msg_bar("Please enter your email address.", "error");
+    return;
+  }
+
   auth
     .sendPasswordResetEmail(email)
     .then(() => {
-      // change to configure message bar
-      alert("Password reset email sent!");
+      // Close the modal
+      if (signinModal) {
+        signinModal.classList.remove("is-active");
+      }
+
+      // Display success message
+      configure_msg_bar("Password reset email sent!");
     })
     .catch((error) => {
       console.error("Error sending password reset email:", error);
-      alert(`Error: ${error.message}`);
+
+      // Close the modal and display the error message
+      if (signinModal) {
+        signinModal.classList.remove("is-active");
+      }
+      configure_msg_bar(
+        "Error sending password reset email: " + error.message,
+        "error"
+      );
     });
 }
 
-// Example usage: Assume you have an input field and button in your HTML
+// Example usage
 document.getElementById("reset_pwd").addEventListener("click", () => {
   const email = document.getElementById("signin_email").value;
-  if (email) {
-    sendPasswordReset(email);
-  } else {
-    alert("Please enter your email address.");
-  }
+  sendPasswordReset(email.trim());
 });
