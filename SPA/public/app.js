@@ -485,6 +485,7 @@ function gal_del_doc(id) {
     .then(() => {
       configure_msg_bar("Image deleted!");
       show_gallery();
+      checkAdminStatus(); // Ensure admin buttons remain visible after deletion
     });
 }
 
@@ -657,22 +658,18 @@ function show_gallery() {
         // console.log(date);
 
         html += `<div class="gallery_card column">
-      <div class="card-header-title"> ${
-        d.data().title
-      } <p class="admin is-hidden">-- ${date}</p>
-      </div>
-      <div class="card-image">
-        <a> <img src="${d.data().url}" /></a>
-        
-      </div>
-    
-      <button class="overlay-button admin is-hidden" style="" onclick="gal_del_doc('${
-        d.id
-      }')">Delete</button>
-    
-    </div>`;
+          <div class="card-header-title"> ${d.data().title} <p class="admin is-hidden">-- ${date}</p>
+          </div>
+          <div class="card-image">
+            <a> <img src="${d.data().url}" /></a>
+          </div>
+          <button class="overlay-button admin is-hidden" onclick="gal_del_doc('${d.id}')">Delete</button>
+        </div>`;
       });
       document.querySelector("#gallery_collection").innerHTML = html;
+
+      // Check if the user is an admin and show admin elements
+      checkAdminStatus();
     });
 }
 
@@ -907,49 +904,80 @@ if (closeModalButton) {
 }
 
 // gallery function v2
-const initGallery = () => {
+function showGalleryCarousel() {
+  const galleryContainer = document.querySelector(".rotating-gallery");
+  const slidesContainer = document.querySelector(".rotating-gallery");
+  const slides = document.querySelectorAll(".rotating-gallery .slide");
+
+  if (!galleryContainer || !slidesContainer) {
+    console.error("Gallery container not found.");
+    return;
+  }
+
+  // Fetch images dynamically from the gallery collection
+  db.collection("gallery")
+    .get()
+    .then((querySnapshot) => {
+      let slidesHTML = "";
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        slidesHTML += `
+          <div class="slide">
+            <img src="${data.url}" alt="${data.title}" />
+          </div>
+        `;
+      });
+
+      // Update the gallery container with the slides
+      slidesContainer.innerHTML = slidesHTML;
+
+      // Reinitialize the carousel
+      initGallery();
+    })
+    .catch((error) => {
+      console.error("Error fetching gallery images: ", error);
+    });
+}
+
+function initGallery() {
   let slideIndex = 0;
   const slides = document.querySelectorAll(".rotating-gallery .slide");
   const nextButton = document.getElementById("next");
   const prevButton = document.getElementById("prev");
 
-  // Check if required elements exist
-  if (!slides.length || !nextButton || !prevButton) {
-    console.error("Gallery elements not found");
+  if (!slides.length) {
+    console.error("No slides found for the rotating gallery.");
     return;
   }
 
-  // Function to show a particular slide
   function showSlide(index) {
     slides.forEach((slide, i) => {
       slide.style.display = i === index ? "block" : "none";
     });
   }
 
-  // Function to move to the next slide
   function nextSlide() {
-    slideIndex = (slideIndex + 1) % slides.length; // Loop to the beginning if at the end
+    slideIndex = (slideIndex + 1) % slides.length;
     showSlide(slideIndex);
   }
 
-  // Function to move to the previous slide
   function prevSlide() {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length; // Loop to the end if at the beginning
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
     showSlide(slideIndex);
   }
 
-  // Set up click event listeners for next and previous buttons
-  nextButton.addEventListener("click", nextSlide);
-  prevButton.addEventListener("click", prevSlide);
+  if (nextButton && prevButton) {
+    nextButton.addEventListener("click", nextSlide);
+    prevButton.addEventListener("click", prevSlide);
+  }
 
-  // Set up autoplay to change slides every 3 seconds
   setInterval(nextSlide, 3000);
-
-  // Initial display of the first slide
   showSlide(slideIndex);
-};
+}
 
-initGallery();
+// Call the function to show the gallery carousel
+showGalleryCarousel();
+
 
 const bylaws_submission = document.getElementById("bylaws_submit");
 
