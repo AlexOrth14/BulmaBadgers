@@ -652,7 +652,10 @@ function show_gallery() {
 
       docs.forEach((d) => {
         let date = d.id.split("").splice(0, 10).join("");
-        console.log(date);
+
+        // commenting this out so it doesn't display in the console
+        // console.log(date);
+
         html += `<div class="gallery_card column">
       <div class="card-header-title"> ${
         d.data().title
@@ -746,14 +749,15 @@ const initContactForm = () => {
       };
 
       // Debug log
-      console.log("Attempting to send message:", message);
+      // console.log("Attempting to send message:", message);
 
       db.collection("messages")
         .add(message)
         .then(() => {
           configure_msg_bar("Message sent!", "success");
           document.getElementById("contact_form").reset();
-          console.log("Message sent successfully");
+          // commented out below line so it doesn't show in production
+          // console.log("Message sent successfully");
         })
         .catch((error) => {
           console.error("Error writing to database:", error);
@@ -1255,26 +1259,27 @@ contact_button.onclick = function () {
 
 // Function to check if the user is an admin
 function checkAdminStatus() {
+  const DEBUG = false; // Set to true during development, false in production
+
   firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
       try {
-        // Check if user exists in the 'users' collection and if they are an admin
         const userDoc = await db.collection("users").doc(user.email).get();
         if (userDoc.exists && userDoc.data().admin === 1) {
-          console.log("Admin user detected, showing admin options.");
-          // Reveal delete buttons if user is an admin
+          DEBUG && console.log("Admin user detected, showing admin options.");
           document.querySelectorAll(".admin").forEach((el) => {
             el.classList.remove("is-hidden");
           });
         } else {
-          console.log("User is not an admin.");
+          DEBUG && console.log("User is not an admin.");
           hideAdminElements();
         }
       } catch (error) {
-        console.error("Error checking admin status:", error);
+        DEBUG && console.error("Error checking admin status:", error);
+        hideAdminElements();
       }
     } else {
-      console.log("User is not logged in.");
+      DEBUG && console.log("User is not logged in.");
       hideAdminElements(); // Hide admin elements when logged out
     }
   });
