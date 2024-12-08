@@ -19,6 +19,8 @@ async function go() {
   await page.type("#signin_password", "admin123");
   //   click on submit button
   await page.click("#signin_form > div:nth-child(4) > div > button");
+  //wait a sec for admin announcement form to come up
+  await new Promise((r) => setTimeout(r, 3000));
   // Create Announcement
   console.log("Creating announcement...");
   await page.type("#ann_title", "Puppeteer Test Title Number One");
@@ -30,9 +32,10 @@ async function go() {
   await page.click("#ann_submit");
 
   // Wait for announcement submission
-  await page.waitForTimeout(2000);
+  await new Promise((r) => setTimeout(r, 3000));
   // Navigate to Gallery
   console.log("Navigating to gallery...");
+  await page.click("body > nav > div.navbar-brand > span");
   await page.click("#gallery_button");
 
   // Upload Image
@@ -47,9 +50,13 @@ async function go() {
   await page.click("#gal_submit");
 
   // Wait for upload to complete
-  await page.waitForTimeout(3000);
+  await new Promise((r) => setTimeout(r, 3000));
 
   console.log("Test completed successfully");
+
+  //   sign out BHC website
+  await page.click("body > nav > div.navbar-brand > span");
+  await page.click("#logout_button");
 
   // Close browser
   await browser.close();
