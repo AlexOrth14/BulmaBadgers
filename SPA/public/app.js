@@ -658,12 +658,16 @@ function show_gallery() {
         // console.log(date);
 
         html += `<div class="gallery_card column">
-          <div class="card-header-title"> ${d.data().title} <p class="admin is-hidden">-- ${date}</p>
+          <div class="card-header-title"> ${
+            d.data().title
+          } <p class="admin is-hidden">-- ${date}</p>
           </div>
           <div class="card-image">
             <a> <img src="${d.data().url}" /></a>
           </div>
-          <button class="overlay-button admin is-hidden" onclick="gal_del_doc('${d.id}')">Delete</button>
+          <button class="overlay-button admin is-hidden" onclick="gal_del_doc('${
+            d.id
+          }')">Delete</button>
         </div>`;
       });
       document.querySelector("#gallery_collection").innerHTML = html;
@@ -978,7 +982,6 @@ function initGallery() {
 // Call the function to show the gallery carousel
 showGalleryCarousel();
 
-
 const bylaws_submission = document.getElementById("bylaws_submit");
 
 bylaws_submission.addEventListener("click", (e) => {
@@ -989,6 +992,41 @@ bylaws_submission.addEventListener("click", (e) => {
   configure_msg_bar("New Bylaws uploaded!");
   document.querySelector("#bylaws_upload").value = "";
 });
+
+// const feature_submit = document.getElementById("feature_submit");
+
+// feature_submit.addEventListener("click", (e) => {
+//   // let link = document.querySelector("#feature_link").value;
+//   // let file = document.querySelector("#feature_image").files[0];
+
+//   let link = document.querySelector("#feature_link").value;
+//   let fileInput = document.querySelector("#feature_image");
+//   let file = fileInput.files[0];
+
+//   if (!file || !link) {
+//     console.error("File or link is missing.");
+//     configure_msg_bar("Please provide both a file and a link!");
+//     return;
+//   }
+
+//   // Create a URL for the uploaded file
+//   const fileURL = URL.createObjectURL(file);
+
+//   // Update the link and image in the DOM
+//   let anchor = document.querySelector("#main_resource > a");
+//   let img = document.querySelector("#main_resource > a > img");
+
+//   if (anchor && img) {
+//     anchor.href = link; // Set the link to the entered URL
+//     img.src = fileURL; // Set the image source to the uploaded file
+//     configure_msg_bar("Feature Resource Updated!");
+//   } else {
+//     console.error("HTML elements for link or image are missing.");
+//   }
+
+//   // Optionally, clear the file input for a fresh upload
+//   fileInput.value = "";
+// });
 
 // Function to display all users and allow admin actions if applicable
 function all_users(mode) {

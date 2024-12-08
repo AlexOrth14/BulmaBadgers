@@ -457,13 +457,35 @@
             <!-- Image Section -->
             <!-- <div class="columns is-centered is-variable is-8 mt-6"> -->
             <!-- Main Image - Group of People -->
-            <div class="column is-full">
-              <figure class="image is-3by1 mb-2">
-                <img
-                  src="images/maxresdefault.jpg"
-                  alt="Group of people learning to hunt"
-                  class="main-hunt-image"
+            <!-- <div class="admin is-hidden has-text-right">
+              <p>
+                Featured Resource Upload:
+                <input
+                  style="height: 30px"
+                  type="text"
+                  id="feature_link"
+                  placeholder="URL of Resource"
                 />
+
+                <input
+                  style="width: 13rem; height: 30px; font-size: 14px"
+                  class="input"
+                  type="file"
+                  id="feature_image"
+                  placeholder="Choose Image"
+                />
+                <button id="feature_submit">Submit</button>
+              </p>
+            </div> -->
+            <div class="column is-full">
+              <figure id="main_resource" class="image is-3by1 mb-2">
+                <a href="www.google.com">
+                  <img
+                    src="images/maxresdefault.jpg"
+                    alt="Group of people learning to hunt"
+                    class="main-hunt-image"
+                  />
+                </a>
               </figure>
             </div>
           </div>
@@ -497,7 +519,7 @@
 
           <div
             id="resource_tiles"
-            class="columns is-variable is-8 is-multiline pt-4"
+            class="columns is-variable is-8 is-multiline pt-2"
           ></div>
 
           <div class="content mt-6">
@@ -520,7 +542,7 @@
       </section>
 
       <!-- TESTIMONIAL SECTION -->
-      <section class="section has-background-light">
+      <!-- <section class="section has-background-light"> 
         <div class="container">
           <h2
             class="title has-text-centered is-uppercase has-text-dark is-size-3 has-text-weight-bold"
@@ -550,10 +572,10 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
     </section>
 
-    <!-- GALLERY SECTION                                                                           GALLERY -->
+    <!-- GALLERY SECTION       -->
 
     <section id="gallery" class="is-hidden">
       <div style="height: 100px"></div>
