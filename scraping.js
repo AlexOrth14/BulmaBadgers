@@ -41,7 +41,7 @@ async function go() {
 
   // Handle file upload
   const inputFile = await page.$("#gal_image");
-  await inputFile.uploadFile("BulmaBadgers/placeholder.jpg");
+  await inputFile.uploadFile("./placeholder.jpg");
 
   // Submit gallery upload
   await page.click("#gal_submit");
