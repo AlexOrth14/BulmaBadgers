@@ -679,47 +679,38 @@ function show_gallery() {
 
 function show_resources() {
   db.collection("resources")
-    .get()
-    .then((mydata) => {
-      let docs = mydata.docs;
+      .get()
+      .then((mydata) => {
+          let docs = mydata.docs;
+          let html = ``;
 
-      let html = ``;
+          docs.forEach((d) => {
+              html += `
+                  <div class="column is-one-third">
+                      <div class="card feature-card" style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)">
+                          <div class="card-image">
+                              <figure class="image is-4by3">
+                                  <img src="${d.data().image}" alt="Resource Tile Image" />
+                              </figure>
+                          </div>
+                          <div class="card-content has-text-centered">
+                              <button class="is-pulled-right admin is-hidden" onclick="res_del_doc('${d.id}')">Delete</button>
+                              <h3 class="title is-5 has-text-dark">${d.data().title}</h3>
+                              <p class="has-text-grey-dark">${d.data().content}</p>
+                              <a href="${d.data().link}" class="button is-warning is-outlined is-rounded mt-3" style="transition: transform 0.3s">Learn More</a>
+                          </div>
+                      </div>
+                  </div>
+              `;
+          });
 
-      docs.forEach((d) => {
-        html += `
-<div class="column is-one-third">
-              <div
-                class="card feature-card"
-                style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)"
-              >
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img src="${d.data().image}" alt="BHC Resource Tile" />
-                  </figure>
-                </div>
-                <div class="card-content has-text-centered">
-                 <button class="is-pulled-right admin is-hidden" onclick="res_del_doc('${
-                   d.id
-                 }')">Delete</button>
-                  <h3 class="title is-5 has-text-dark">${d.data().title}</h3>
-                  <p class="has-text-grey-dark">
-                    ${d.data().content}
-                  </p>
-                  <a
-                    href="${d.data().link}"
-                    class="button is-warning is-outlined is-rounded mt-3"
-                    style="transition: transform 0.3s"
-                    >Learn More</a
-                  >
-                 
-                </div>
-              </div>
-            </div>
-    `;
+          document.querySelector("#resource_tiles").innerHTML = html;
+
+          // Ensure admin elements are visible if applicable
+          checkAdminStatus();
       });
-      document.querySelector("#resource_tiles").innerHTML = html;
-    });
 }
+
 
 show_announcements();
 show_gallery();
@@ -1325,31 +1316,25 @@ contact_button.onclick = function () {
 
 // Function to check if the user is an admin
 function checkAdminStatus() {
-  const DEBUG = false; // Set to true during development, false in production
+  const currentUser = auth.currentUser;
 
-  firebase.auth().onAuthStateChanged(async (user) => {
-    if (user) {
-      try {
-        const userDoc = await db.collection("users").doc(user.email).get();
-        if (userDoc.exists && userDoc.data().admin === 1) {
-          DEBUG && console.log("Admin user detected, showing admin options.");
-          document.querySelectorAll(".admin").forEach((el) => {
-            el.classList.remove("is-hidden");
+  if (currentUser) {
+      db.collection("users")
+          .doc(currentUser.email)
+          .get()
+          .then((doc) => {
+              if (doc.exists && doc.data().admin === 1) {
+                  document.querySelectorAll(".admin").forEach((el) => {
+                      el.classList.remove("is-hidden");
+                  });
+              }
+          })
+          .catch((error) => {
+              console.error("Error fetching admin status: ", error);
           });
-        } else {
-          DEBUG && console.log("User is not an admin.");
-          hideAdminElements();
-        }
-      } catch (error) {
-        DEBUG && console.error("Error checking admin status:", error);
-        hideAdminElements();
-      }
-    } else {
-      DEBUG && console.log("User is not logged in.");
-      hideAdminElements(); // Hide admin elements when logged out
-    }
-  });
+  }
 }
+
 
 // Function to hide admin elements
 function hideAdminElements() {
