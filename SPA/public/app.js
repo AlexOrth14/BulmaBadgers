@@ -1316,23 +1316,30 @@ contact_button.onclick = function () {
 
 // Function to check if the user is an admin
 function checkAdminStatus() {
-  const currentUser = auth.currentUser;
+  const DEBUG = false; // Set to true during development, false in production
 
-  if (currentUser) {
-      db.collection("users")
-          .doc(currentUser.email)
-          .get()
-          .then((doc) => {
-              if (doc.exists && doc.data().admin === 1) {
-                  document.querySelectorAll(".admin").forEach((el) => {
-                      el.classList.remove("is-hidden");
-                  });
-              }
-          })
-          .catch((error) => {
-              console.error("Error fetching admin status: ", error);
+  firebase.auth().onAuthStateChanged(async (user) => {
+    if (user) {
+      try {
+        const userDoc = await db.collection("users").doc(user.email).get();
+        if (userDoc.exists && userDoc.data().admin === 1) {
+          DEBUG && console.log("Admin user detected, showing admin options.");
+          document.querySelectorAll(".admin").forEach((el) => {
+            el.classList.remove("is-hidden");
           });
-  }
+        } else {
+          DEBUG && console.log("User is not an admin.");
+          hideAdminElements();
+        }
+      } catch (error) {
+        DEBUG && console.error("Error checking admin status:", error);
+        hideAdminElements();
+      }
+    } else {
+      DEBUG && console.log("User is not logged in.");
+      hideAdminElements(); // Hide admin elements when logged out
+    }
+  });
 }
 
 
