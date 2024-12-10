@@ -679,38 +679,47 @@ function show_gallery() {
 
 function show_resources() {
   db.collection("resources")
-      .get()
-      .then((mydata) => {
-          let docs = mydata.docs;
-          let html = ``;
+    .get()
+    .then((mydata) => {
+      let docs = mydata.docs;
+      let html = ``;
 
-          docs.forEach((d) => {
-              html += `
+      docs.forEach((d) => {
+        html += `
                   <div class="column is-one-third">
                       <div class="card feature-card" style="box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2)">
                           <div class="card-image">
                               <figure class="image is-4by3">
-                                  <img src="${d.data().image}" alt="Resource Tile Image" />
+                                  <img src="${
+                                    d.data().image
+                                  }" alt="Resource Tile Image" />
                               </figure>
                           </div>
                           <div class="card-content has-text-centered">
-                              <button class="is-pulled-right admin is-hidden" onclick="res_del_doc('${d.id}')">Delete</button>
-                              <h3 class="title is-5 has-text-dark">${d.data().title}</h3>
-                              <p class="has-text-grey-dark">${d.data().content}</p>
-                              <a href="${d.data().link}" class="button is-warning is-outlined is-rounded mt-3" style="transition: transform 0.3s">Learn More</a>
+                              <button class="is-pulled-right admin is-hidden" onclick="res_del_doc('${
+                                d.id
+                              }')">Delete</button>
+                              <h3 class="title is-5 has-text-dark">${
+                                d.data().title
+                              }</h3>
+                              <p class="has-text-grey-dark">${
+                                d.data().content
+                              }</p>
+                              <a href="${
+                                d.data().link
+                              }" class="button is-warning is-outlined is-rounded mt-3" style="transition: transform 0.3s">Learn More</a>
                           </div>
                       </div>
                   </div>
               `;
-          });
-
-          document.querySelector("#resource_tiles").innerHTML = html;
-
-          // Ensure admin elements are visible if applicable
-          checkAdminStatus();
       });
-}
 
+      document.querySelector("#resource_tiles").innerHTML = html;
+
+      // Ensure admin elements are visible if applicable
+      checkAdminStatus();
+    });
+}
 
 show_announcements();
 show_gallery();
@@ -740,16 +749,11 @@ const initContactForm = () => {
         timestamp: timestamp, // Include timestamp
       };
 
-      // Debug log
-      // console.log("Attempting to send message:", message);
-
       db.collection("messages")
         .add(message)
         .then(() => {
           configure_msg_bar("Message sent!", "success");
           document.getElementById("contact_form").reset();
-          // commented out below line so it doesn't show in production
-          // console.log("Message sent successfully");
         })
         .catch((error) => {
           console.error("Error writing to database:", error);
@@ -1195,7 +1199,8 @@ const loadAdminMessages = () => {
       let messagesHtml = "";
 
       if (snapshot.empty) {
-        message_list.innerHTML = '<div class="box">No messages found.</div>';
+        message_list.innerHTML =
+          '<div class="box">No messages found.</div><div style="height: 120px"></div>';
         return;
       }
 
@@ -1341,7 +1346,6 @@ function checkAdminStatus() {
     }
   });
 }
-
 
 // Function to hide admin elements
 function hideAdminElements() {
