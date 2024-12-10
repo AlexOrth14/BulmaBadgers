@@ -784,7 +784,8 @@ signupForm.addEventListener("submit", (e) => {
 
   // Basic validation
   if (!signup_email || !signup_pass || !signup_name) {
-    configure_msg_bar("Please fill in all fields", "error");
+    // configure_msg_bar("Please fill in all fields", "error");
+    alert("Please fill in all fields", "error");
     return;
   }
 
@@ -846,7 +847,8 @@ signupForm.addEventListener("submit", (e) => {
       }
 
       // Show error to user
-      configure_msg_bar("Error: " + error.message, "error");
+      // configure_msg_bar("Error: " + error.message, "error");
+      alert("Error: " + error.message, "error");
 
       // Keep the form open so user can try again
       document.querySelector("#signup_password").value = "";
